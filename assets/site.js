@@ -5,6 +5,12 @@
     el.textContent = new Date().getFullYear();
   });
 
+  // Section switcher: on phones it is a swipeable row, so bring the current section into view
+  document.querySelectorAll('.cats a[aria-current="page"]').forEach(function (a) {
+    var row = a.closest('.cats');
+    if (row && row.scrollWidth > row.clientWidth) row.scrollLeft = a.parentElement.offsetLeft - row.offsetLeft - 16;
+  });
+
   // Case-study drawers (Trade Shows & Conferences)
   document.querySelectorAll('[data-dialog]').forEach(function (btn) {
     btn.addEventListener('click', function () {

@@ -14,6 +14,7 @@ Daniel Sullivan's marketing portfolio. Plain HTML and CSS with no build step. Ve
 | `/marketing-strategy-innovation` | `marketing-strategy-innovation.html` | Section index: Marketing Strategy & Innovation |
 | `/events-experiences` | `events-experiences.html` | Section index: Events & Experiences (Sumo Slam Jam, Global Sales Kickoff, Threat Hunting Workshops; detail pages to come) |
 | `/demand-revenue-marketing` | `demand-revenue-marketing.html` | Section index: Demand & Revenue Marketing (empty "coming soon" state until the first card is added inside `.cases`) |
+| `/ai-innovation` | `ai-innovation.html` | Section index: AI & Innovation ("Projects & experiments"; empty "coming soon" state until the first card is added inside `.cases`) |
 | `/global-planning-framework` | `global-planning-framework.html` | Case study: Global Field & Partner Marketing Planning Framework |
 
 Shared files: `assets/site.js` (footer year, case-study drawers, mobile menu) and `assets/` (images).
