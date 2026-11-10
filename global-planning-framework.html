@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Field &amp; Partner Marketing Planning Framework</title>
+<meta name="description" content="Building a global field and partner marketing planning framework at Sumo Logic.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+:root{--ground:#F4F3EF;--paper:#FFFFFF;--ink:#111111;--body:#2B2B2B;--muted:#565656;--line:#D6D3CB;--dash:#7E7A72;--focus:#1F4FD8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:#111111}a:hover{color:#565656}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--ink);color:#fff;padding:12px 16px;border-radius:8px;z-index:100;text-decoration:none}
+.skip:focus{top:12px;color:#fff}
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.muted{color:var(--muted)}
+.site{position:sticky;top:0;z-index:30;background:rgba(244,243,239,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.site-in{display:flex;align-items:center;justify-content:space-between;gap:8px 16px;min-height:68px;flex-wrap:wrap}
+.brand{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.nav{display:flex;flex-wrap:wrap;gap:28px;list-style:none;margin:0;padding:0}
+.nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:15px;font-weight:500;color:var(--ink);border-bottom:2px solid transparent}
+.nav a:hover,.nav a[aria-current="page"]{border-bottom-color:var(--ink);color:var(--ink)}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px 10px;list-style:none;margin:0 0 32px;padding:0;font-size:14px;color:var(--muted)}
+.crumbs li{display:flex;align-items:center}
+.crumbs li+li::before{content:"/";margin-right:10px;color:var(--dash)}
+.crumbs a{color:var(--ink);text-underline-offset:3px;display:inline-block;padding:10px 0}
+.eyebrow{margin:0 0 20px}
+.display{font-family:'Inter Tight',sans-serif;font-weight:700;letter-spacing:-.04em;line-height:.94;margin:0}
+.lede{font-size:clamp(18px,1.5vw,20px);line-height:1.6;color:var(--body);margin:0;max-width:62ch}
+.intro{padding-top:40px}
+.sec{padding-top:104px}
+.sec-head{border-top:1.5px solid var(--ink);padding-top:18px;margin-bottom:36px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:start}
+.sec-head .lbl{grid-column:1 / span 4;display:flex;flex-direction:column;gap:14px}
+.sec-head .copy{grid-column:6 / -1;display:flex;flex-direction:column;gap:16px}
+.sec-head .copy p{margin:0;color:var(--body);max-width:62ch}
+.sec-h{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.025em;line-height:1.02;margin:0}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 22px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:#fff;font:600 15px 'Inter',sans-serif;text-decoration:none;transition:background .2s ease,color .2s ease}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:#fff}
+.foot{margin-top:104px;border-top:1.5px solid var(--ink)}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:22px;padding-bottom:22px}
+
+.hero-h{font-size:clamp(40px,6vw,92px);max-width:16ch}
+.hero-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;margin-top:40px}
+.hero-grid .lede{grid-column:6 / -1}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:48px 0 0;border-top:1px solid var(--line)}
+.facts > div{padding:14px 16px 14px 0;border-bottom:1px solid var(--line)}
+.facts dt{color:var(--muted);margin-bottom:4px}
+.facts dd{margin:0;font-weight:500;font-size:15px}
+
+/* Challenge */
+.gap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.gap-col{border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.gap-has{border:1.5px solid var(--line)}
+.gap-miss{border:1.5px dashed var(--ink);background:var(--paper)}
+.gap-col h3{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.015em;margin:0;line-height:1.15}
+.gap-col ul{list-style:none;margin:0;padding:0}
+.gap-col li{padding:11px 0;border-top:1px solid var(--line);font-weight:500;font-size:15.5px}
+
+/* Flow — single source of truth */
+.flow{background:var(--ink);color:#fff;border-radius:26px;padding:40px}
+.flow .mono{color:#CFCBC2}
+.flow-h{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(26px,2.8vw,40px);letter-spacing:-.025em;line-height:1;margin:10px 0 28px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:s}
+.steps li{position:relative;border:1px solid #4A4A4A;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:19px;line-height:1.15}
+.steps li::before{counter-increment:s;content:"0" counter(s);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:#CFCBC2;font-weight:500}
+.steps li + li::after{content:"";position:absolute;left:-13px;top:50%;width:12px;height:1.5px;background:#fff}
+.flow-note{margin:24px 0 0;color:#E6E3DC;max-width:70ch}
+
+/* Components */
+.comp{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.comp{align-items:start}
+.comp li{background:var(--paper);border-radius:20px}
+.comp summary{list-style:none;display:grid;grid-template-columns:minmax(0,1fr) 28px;gap:14px;align-items:start;padding:24px 24px;cursor:pointer;min-height:44px}
+.comp summary::-webkit-details-marker{display:none}
+.comp summary:hover h3{text-decoration:underline;text-underline-offset:4px}
+.comp .t{display:flex;flex-direction:column;gap:8px}
+.plus{display:inline-flex;width:28px;height:28px;border-radius:50%;border:1px solid var(--ink);align-items:center;justify-content:center;transition:transform .3s ease}
+details[open] > summary .plus{transform:rotate(45deg)}
+.comp details p{padding:0 24px 24px}
+.demo{background:var(--paper);border:1.5px solid var(--ink);border-radius:26px;padding:44px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:end}
+.demo .l{grid-column:1 / span 6;display:flex;flex-direction:column;gap:14px}
+.demo .r{grid-column:8 / -1;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.demo h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,3vw,44px);line-height:1.02;letter-spacing:-.03em;margin:0}
+.demo p{margin:0;color:var(--body)}
+@media (max-width:900px){.demo .l,.demo .r{grid-column:1 / -1}}
+@media (max-width:640px){.demo{padding:24px}}
+.comp h3{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.015em;line-height:1.15;margin:4px 0 0}
+.comp p{margin:0;font-size:15.5px;color:var(--body);line-height:1.55}
+
+/* Impact */
+.impact{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.impact li{border:1.5px solid var(--ink);border-radius:18px;padding:24px;background:var(--paper);display:flex;flex-direction:column;gap:8px}
+.impact li:first-child{grid-column:1 / -1;background:var(--ink);color:#fff}
+.impact li:first-child p{color:#E6E3DC}
+.impact strong{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(22px,2vw,28px);letter-spacing:-.02em;line-height:1.1}
+.impact p{margin:0;color:var(--body);font-size:15.5px}
+.end{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.steps li + li::after{display:none}.comp{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){
+.wrap{padding:0 24px}
+.hero-grid .lede,.sec-head .lbl,.sec-head .copy{grid-column:1 / -1}
+.sec-head{gap:16px}
+.facts,.gap,.impact{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+.wrap{padding:0 16px}
+.sec{padding-top:72px}
+.nav{gap:18px}.nav a{font-size:14px}
+.steps,.comp{grid-template-columns:minmax(0,1fr)}
+.flow{padding:24px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
+
+html,body{overflow-x:clip}
+</style>
+</head>
+<body>
+<div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+<div class="wrap site-in">
+<a class="brand" href="/" aria-label="Daniel Sullivan — home">Daniel Sullivan</a>
+<nav aria-label="Primary">
+<ul class="nav">
+<li><a href="/#approach">Approach</a></li>
+<li><a href="/#work" aria-current="page">Work</a></li>
+<li><a href="/#contact">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main id="main" tabindex="-1">
+<section class="wrap intro" aria-labelledby="page-title">
+<nav aria-label="Breadcrumb">
+<ol class="crumbs">
+<li><a href="/#work">Portfolio</a></li>
+<li><a href="/marketing-strategy-innovation">Marketing Strategy &amp; Innovation</a></li>
+<li><span aria-current="page">Global Planning Framework</span></li>
+</ol>
+</nav>
+<p class="mono eyebrow muted">Case study — Sumo Logic · Marketing strategy &amp; innovation</p>
+<h1 class="display hero-h" id="page-title">Building a Global Field &amp; Partner Marketing Planning Framework</h1>
+<div class="hero-grid">
+<p class="lede">Designed and implemented a centralized planning and investment management framework to bring greater visibility, financial accountability, and pipeline predictability to Sumo Logic’s global field and partner marketing organization.</p>
+</div>
+<dl class="facts">
+<div><dt class="mono">Company</dt><dd>Sumo Logic</dd></div>
+<div><dt class="mono">My role</dt><dd>Strategy, framework development &amp; global implementation</dd></div>
+<div><dt class="mono">Regions</dt><dd>North America · EMEA · APJ</dd></div>
+</dl>
+</section>
+
+<section class="wrap sec" aria-labelledby="ch-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">01</span><h2 class="sec-h" id="ch-h">The challenge</h2></div>
+<div class="copy">
+<p>When I joined Sumo Logic, regional marketing planning was fragmented across teams, markets, partners, and budget sources. While finance systems tracked purchase orders and spending, there was no consolidated view of what marketing initiatives were planned, how investments aligned to business priorities, or what pipeline contribution was expected.</p>
+<p>This made it difficult to assess overall marketing coverage, prioritize investments, balance resources across regions, and communicate a clear view of marketing activity and anticipated business impact to leadership.</p>
+</div>
+</div>
+<div class="gap">
+<div class="gap-col gap-has">
+<span class="mono muted">What was tracked</span>
+<h3>Spend, through finance systems</h3>
+<ul><li>Purchase orders</li><li>Spending</li></ul>
+</div>
+<div class="gap-col gap-miss">
+<span class="mono">What was missing</span>
+<h3>A consolidated view of</h3>
+<ul><li>What marketing initiatives were planned</li><li>How investments aligned to business priorities</li><li>What pipeline contribution was expected</li></ul>
+</div>
+</div>
+</section>
+
+<section class="wrap sec" aria-labelledby="ap-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">02</span><h2 class="sec-h" id="ap-h">Objective &amp; approach</h2></div>
+<div class="copy">
+<p>Set out to create a single source of truth connecting strategic planning, initiative approvals, budget allocation, and demand generation forecasting.</p>
+<p>Developed a standardized planning framework that gave the global team a consistent way to propose, evaluate, approve, and track investments while providing leadership with visibility into where marketing dollars were going and what commercial outcomes they were expected to deliver.</p>
+</div>
+</div>
+<div class="flow">
+<span class="mono">The framework</span>
+<p class="flow-h">One source of truth, end to end</p>
+<ol class="steps">
+<li>Strategic planning</li>
+<li>Initiative approvals</li>
+<li>Budget allocation</li>
+<li>Demand generation forecasting</li>
+</ol>
+<p class="flow-note">The framework evolved from an initiative planning and approval tool into a more comprehensive operating model for managing marketing investments against regional pipeline goals.</p>
+</div>
+</section>
+
+<section class="wrap sec" aria-labelledby="demo-h" style="padding-top:56px">
+<div class="demo">
+<div class="l"><span class="mono muted">Interactive demo</span><h2 id="demo-h">Explore the Global Marketing Planning Framework</h2></div>
+<div class="r">
+<p>See how I connected regional marketing plans, investment approvals, budget visibility, and pipeline forecasting into a centralized operating model.</p>
+<p>Explore an interactive recreation of the framework, using illustrative data, to understand how it supported more strategic planning and decision-making.</p>
+<a class="btn" href="https://planning-framework-demo.danielsullivanportfolio.com/" target="_blank" rel="noopener">Explore the Interactive Framework <span aria-hidden="true">→</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> (opens in a new tab)</span></a>
+</div>
+</div>
+</section>
+
+<section class="wrap sec" aria-labelledby="cp-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">03</span><h2 class="sec-h" id="cp-h">Key components</h2></div>
+</div>
+<ul class="comp">
+
+<li><details><summary><span class="t"><span class="mono muted">01</span><h3>Centralized global marketing plan</h3></span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></span></summary><p>Established a single initiative register spanning North America, EMEA, and APJ, bringing together field programs, partner activities, industry events, ABM initiatives, and other investments. Standardized planning attributes including ownership, timing, region, audience segment, product solution, business objective, and investment category.</p></details></li>
+
+<li><details><summary><span class="t"><span class="mono muted">02</span><h3>Investment governance &amp; prioritization</h3></span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></span></summary><p>Introduced an initiative submission and approval process with defined program priorities and tiering. Created greater accountability around investment decisions, ensuring proposed activities could be reviewed against regional needs, strategic objectives, available budget, and expected business contribution.</p></details></li>
+
+<li><details><summary><span class="t"><span class="mono muted">03</span><h3>Budget management &amp; financial reconciliation</h3></span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></span></summary><p>Connected planned and approved investments with finance tracking to monitor budget allocations, purchase orders, actual commitments, and spending variances. Enabled the team to identify available funds, reconcile differences, and reallocate investment as priorities evolved.</p></details></li>
+
+<li><details><summary><span class="t"><span class="mono muted">04</span><h3>Demand forecasting &amp; pipeline planning</h3></span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></span></summary><p>Integrated expected marketing outcomes into the planning process, including engagements, MQLs, pipeline creation, partner deal registrations, and influenced pipeline. Enabled regional teams to evaluate planned investments against quarterly demand generation targets and identify potential gaps before execution.</p></details></li>
+
+<li><details><summary><span class="t"><span class="mono muted">05</span><h3>Regional visibility &amp; portfolio analysis</h3></span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></span></summary><p>Built reporting views across regions, subregions, budget sources, solutions, audience segments, and program categories. Provided a clearer picture of marketing investment distribution and helped identify where programs were overrepresented, underfunded, or misaligned with business priorities.</p></details></li>
+
+<li><details><summary><span class="t"><span class="mono muted">06</span><h3>Leadership reporting &amp; cross-functional alignment</h3></span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></span></summary><p>Created a consistent framework for sharing investment plans, program priorities, budget utilization, and anticipated pipeline contribution with marketing and sales leadership. Improved transparency across the global team and supported more productive conversations around performance, resource allocation, and execution priorities.</p></details></li>
+
+</ul>
+</section>
+
+<section class="wrap sec" aria-labelledby="im-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">04</span><h2 class="sec-h" id="im-h">Business impact</h2></div>
+</div>
+<ul class="impact">
+
+<li><strong>Single source of truth</strong><p>for global field and partner marketing planning, investments, and pipeline forecasts</p></li>
+
+<li><strong>Greater financial accountability</strong><p>through standardized approvals, budget visibility, and reconciliation</p></li>
+
+<li><strong>Improved demand predictability</strong><p>by connecting planned marketing investments to quarterly pipeline goals</p></li>
+
+<li><strong>More agile investment decisions</strong><p>through visibility into available funding, program priorities, and forecasted outcomes</p></li>
+
+<li><strong>Stronger leadership alignment</strong><p>with consistent regional reporting and a shared view of marketing plans and expected business impact</p></li>
+
+</ul>
+<div class="end">
+<a class="btn" href="/marketing-strategy-innovation"><span aria-hidden="true">←</span> Back to Marketing Strategy &amp; Innovation</a>
+</div>
+</section>
+</main>
+
+<footer class="foot wrap" id="about">
+<div class="foot-in">
+<span class="brand">Daniel Sullivan</span>
+<nav aria-label="Footer">
+<ul class="nav">
+<li><a href="/">Home</a></li>
+<li><a href="mailto:daniel@danielsullivanportfolio.com">Email</a></li>
+<li><a href="https://www.linkedin.com/in/daniel---sullivan/" target="_blank" rel="noopener">LinkedIn</a></li>
+</ul>
+</nav>
+</div>
+</footer>
+</div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

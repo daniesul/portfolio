@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trade Shows &amp; Conferences</title>
+<meta name="description" content="Trade shows and conferences as investments in measurable business outcomes — case studies from AWS re:Invent, RSAC, and regional cybersecurity events.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+:root{--ground:#F4F3EF;--paper:#FFFFFF;--ink:#111111;--body:#2B2B2B;--muted:#565656;--line:#D6D3CB;--soft:#EAE7E0;--dash:#7E7A72;--focus:#1F4FD8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:#111111}a:hover{color:#565656}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--ink);color:#fff;padding:12px 16px;border-radius:8px;z-index:100;text-decoration:none}
+.skip:focus{top:12px;color:#fff}
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.muted{color:var(--muted)}
+.page{padding-bottom:24px}
+
+/* Portfolio header */
+.site{position:sticky;top:0;z-index:30;background:rgba(244,243,239,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.site-in{position:relative;display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.nav{display:flex;gap:32px;list-style:none;margin:0;padding:0}
+.nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:15px;font-weight:500;color:var(--ink);border-bottom:2px solid transparent}
+.nav a:hover{border-bottom-color:var(--ink);color:var(--ink)}
+.nav a[aria-current="page"]{border-bottom-color:var(--ink)}
+.menu-btn{display:none;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:1px solid var(--ink);border-radius:999px;background:transparent;font:500 14px 'Inter',sans-serif;color:var(--ink);cursor:pointer}
+
+/* Type */
+.eyebrow{margin:0 0 20px}
+.cats{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 32px;padding:0;list-style:none}
+.cats a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--paper);text-decoration:none;font-size:14px;font-weight:500;color:var(--ink)}
+.cats a:hover{border-color:var(--ink);color:var(--ink)}
+.cats a[aria-current="page"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.display{font-family:'Inter Tight',sans-serif;font-weight:700;letter-spacing:-.04em;line-height:.9;margin:0}
+.display .ln{display:block}
+.d-xl{font-size:clamp(52px,9.4vw,140px)}
+.d-l{font-size:clamp(44px,6.4vw,96px)}
+.d-m{font-size:clamp(38px,4.8vw,68px);line-height:.95}
+.lede{font-size:clamp(18px,1.55vw,21px);line-height:1.55;color:var(--body);margin:0;max-width:64ch}
+.lede-s{font-size:17px}
+h2.sec-h{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(30px,3vw,42px);letter-spacing:-.025em;line-height:1;margin:0}
+.sec{padding-top:72px}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-top:1.5px solid var(--ink);padding-top:18px;margin-bottom:28px}
+
+/* Intros */
+.intro{padding-top:88px}
+.ed-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;margin-top:48px;align-items:start}
+.ed-index{grid-column:1 / span 4;list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.ed-index li{border-bottom:1px solid var(--line)}
+.ed-index a{display:flex;justify-content:space-between;align-items:center;min-height:48px;text-decoration:none;font-weight:500;color:var(--ink)}
+.ed-index a:hover .arr{transform:translateY(2px)}
+.arr{transition:transform .25s ease}
+.ed-lede{grid-column:6 / -1}
+.mod-intro{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:end}
+.mod-intro .t{grid-column:1 / span 7}
+.mod-intro .lede{grid-column:8 / -1}
+.stat-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.pill{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;border-radius:999px;background:var(--paper);text-decoration:none;color:var(--ink);font-size:15px;font-weight:500}
+.pill:hover{background:var(--ink);color:#fff}
+.wf-intro{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:end;padding-bottom:8px}
+.wf-intro .t{grid-column:1 / span 5}
+.wf-intro .r{grid-column:6 / -1;display:flex;flex-direction:column;gap:18px}
+.textlink{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:500;color:var(--ink)}
+
+/* Approach — editorial accordion */
+.ap-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:start}
+.ap-side{grid-column:1 / span 4;display:flex;flex-direction:column;gap:24px;position:sticky;top:96px}
+.ap-list{grid-column:5 / -1;border-top:1px solid var(--line)}
+.acc{border-bottom:1px solid var(--line)}
+.acc summary{list-style:none;display:grid;grid-template-columns:52px minmax(0,1fr) 28px;gap:16px;align-items:center;padding:18px 4px;cursor:pointer;min-height:56px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary:hover .acc-t{text-decoration:underline;text-underline-offset:4px}
+.acc-txt{display:flex;flex-wrap:wrap;column-gap:18px;row-gap:2px;align-items:baseline}
+.acc-t{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.01em}
+.acc-s{color:var(--muted);font-size:15px}
+.plus{display:inline-flex;width:28px;height:28px;border-radius:50%;border:1px solid var(--ink);align-items:center;justify-content:center;transition:transform .3s ease}
+details[open] > summary .plus{transform:rotate(45deg)}
+.acc-b{padding:0 4px 24px 72px;max-width:72ch;color:var(--body);animation:fadeIn .35s ease}
+.acc-b p{margin:0}
+
+/* Collaboration graphic */
+.collab{display:flex;flex-direction:column;gap:12px}
+.collab-line{position:relative;display:flex;justify-content:space-between;align-items:center;height:36px}
+.collab-line::before{content:"";position:absolute;left:14px;right:14px;top:50%;height:2px;background:var(--ink)}
+.node{position:relative;width:30px;height:30px;border-radius:50%;background:var(--ground);border:1.5px solid var(--ink);display:inline-flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500}
+.collab-cap{font-size:15px;color:var(--body);margin:0}
+.collab-cap strong{color:var(--ink)}
+
+/* Approach — modular tiles */
+.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;align-items:start}
+.tile{background:var(--paper);border-radius:18px;padding:22px 20px 18px;display:flex;flex-direction:column;gap:10px;min-height:236px;transition:transform .3s ease, box-shadow .3s ease}
+.tile:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(17,17,17,.06)}
+.tile-t{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:21px;line-height:1.1;letter-spacing:-.015em;margin:14px 0 0}
+.tile-s{margin:0;color:var(--muted);font-size:15px;line-height:1.5;flex:1}
+.tile-more summary{list-style:none;display:inline-flex;align-items:center;gap:10px;min-height:44px;font-weight:500;font-size:14px;cursor:pointer}
+.tile-more summary::-webkit-details-marker{display:none}
+.tile-more summary .plus{width:24px;height:24px}
+.tile-more p{margin:4px 0 6px;font-size:15px;color:var(--body);animation:fadeIn .35s ease}
+.collab-bar{margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--ink);color:#fff;border-radius:18px;padding:16px 22px}
+.collab-bar .mono{color:#fff}
+.collab-bar span:last-child{color:#D9D6CF;font-size:15px}
+
+/* Approach — work-first */
+.wf-chips{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.wf-chips li{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-weight:500;font-size:15px}
+.wf-more > summary{list-style:none;display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 22px;border:1.5px solid var(--ink);border-radius:999px;font-weight:600;font-size:15px;cursor:pointer}
+.wf-more > summary::-webkit-details-marker{display:none}
+.wf-more > summary:hover{background:var(--ink);color:#fff}
+.wf-more > summary:hover .plus{border-color:#fff}
+.wf-more[open] > summary .lbl-open{display:none}
+.wf-more:not([open]) > summary .lbl-close{display:none}
+.wf-body{margin-top:28px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;animation:fadeIn .35s ease}
+.wf-body .collab{grid-column:1 / span 4}
+.wf-body .ap-list{grid-column:5 / -1}
+
+/* Case study cards */
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.card{background:var(--paper);border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:20px;transition:transform .3s ease, box-shadow .3s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(17,17,17,.07)}
+.card--open{grid-column:1 / -1}
+.card--open:hover{transform:none;box-shadow:none}
+.card--ph{background:repeating-linear-gradient(135deg,#F7F6F2 0 12px,#EFEDE7 12px 24px);border:1.5px dashed var(--dash)}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.tag{display:inline-flex;align-items:center;gap:8px;min-height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--ink);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;background:var(--paper)}
+.tag--ph{border-style:dashed;border-color:var(--ink);background:var(--paper)}
+.tag--pending{border-style:dashed}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ink)}
+.dot--hollow{background:transparent;border:1.5px solid var(--ink)}
+.card-img{display:block;width:100%;aspect-ratio:16 / 9;object-fit:cover;object-position:50% 50%;border-radius:14px;background:#111111}
+.card-img--contain{object-fit:contain}
+.card-img--booth{object-position:50% 62%}
+.img-slot{aspect-ratio:16 / 5;border-radius:14px;border:1px dashed var(--dash);display:flex;align-items:center;justify-content:center;gap:10px;color:var(--muted);background:var(--ground)}
+.card-title{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(30px,2.8vw,42px);line-height:.98;letter-spacing:-.03em;margin:0}
+.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:0;border-top:1px solid var(--line)}
+.meta > div{padding:12px 12px 12px 0;border-bottom:1px solid var(--line)}
+.meta dt{color:var(--muted);margin-bottom:4px}
+.meta dd{margin:0;font-weight:500;font-size:15px}
+.role{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--ink);color:#fff;border-radius:12px;padding:12px 16px}
+.role .mono{color:#CFCBC2}
+.role strong{font-family:'Inter Tight',sans-serif;font-size:18px;font-weight:600;letter-spacing:-.01em}
+.card--ph .role{background:transparent;color:var(--ink);border:1.5px dashed var(--ink)}
+.card--ph .role .mono{color:var(--muted)}
+.overview{margin:0;color:var(--body)}
+.scope{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.scope li{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:var(--ground);font-size:14px;font-weight:500}
+.scope li::before{content:"";width:6px;height:6px;background:var(--ink);border-radius:1px;flex:none}
+.scope-empty{margin:0;padding:10px 12px;border:1px dashed var(--dash);border-radius:10px;color:var(--muted);background:var(--paper);align-self:flex-start}
+.card-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:4px}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 22px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:#fff;font:600 15px 'Inter',sans-serif;cursor:pointer;transition:background .2s ease,color .2s ease}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.btn .arr{transition:transform .25s ease}
+.btn:hover .arr{transform:translateX(3px)}
+.card--ph .btn{background:var(--paper);color:var(--ink)}
+.card--ph .btn:hover{background:var(--ink);color:#fff}
+.btn--ghost{background:transparent;color:var(--ink);text-decoration:none}
+.btn--ghost:hover{background:var(--ink);color:#fff}
+.btn--inv{background:#fff;color:var(--ink);border-color:#fff;text-decoration:none}
+.btn--inv:hover{background:transparent;color:#fff}
+.live{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;background:var(--ink);color:#fff;border-radius:18px;padding:24px;margin:6px 0 4px}
+.live .mono{color:#CFCBC2}
+.live h3{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.015em;line-height:1.15;margin:6px 0 6px}
+.live p{margin:0;color:#E6E3DC;font-size:15px}
+@media (max-width:640px){.live{grid-template-columns:minmax(0,1fr)}}
+
+/* Modular variant of cards */
+.cases--mod .card{border-radius:14px;padding:26px}
+.cases--mod .meta{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* Detail content (shared) */
+.inline{border-top:1.5px solid var(--ink);padding-top:8px;animation:fadeIn .35s ease}
+.d-sec{padding:22px 0;border-bottom:1px solid var(--line)}
+.d-sec:last-child{border-bottom:0}
+.d-h{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;margin:0 0 14px;color:var(--ink)}
+.d-sec p{margin:0;color:var(--body);max-width:74ch;white-space:pre-line}
+.comp{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.comp li{background:var(--ground);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.comp-t{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:17px;letter-spacing:-.01em;line-height:1.2}
+.comp-d{font-size:14.5px;color:var(--body);line-height:1.5}
+.res-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.res-head .d-h{margin:0}
+.res{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.res li{border:1.5px dashed var(--dash);border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-height:118px;background:var(--paper)}
+.res-l{font-size:14.5px;font-weight:500;line-height:1.35}
+.res-v{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.02em}
+.impact{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.impact li{display:flex;gap:12px;align-items:flex-start;border:1.5px solid var(--ink);border-radius:14px;padding:16px 18px;background:var(--paper);font-weight:500;font-size:15px;line-height:1.45}
+.impact li::before{content:"";flex:none;width:8px;height:8px;margin-top:7px;background:var(--ink);border-radius:2px}
+.res--final li{border:1.5px solid var(--ink);justify-content:flex-start;gap:8px}
+.res-num{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:36px;line-height:1;letter-spacing:-.03em;color:var(--ink)}
+.note{margin-top:14px !important;font-size:14px;color:var(--muted) !important}
+.ph-fields{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ph-fields > div{border:1.5px dashed var(--dash);border-radius:12px;padding:14px 16px;background:var(--paper)}
+.ph-fields dt{font-weight:600;font-size:15px;margin-bottom:6px}
+.ph-fields dd{margin:0;color:var(--muted)}
+.ph-banner{display:flex;align-items:center;gap:10px;padding:12px 16px;border:1.5px dashed var(--ink);border-radius:12px;background:var(--paper);font-size:15px}
+
+/* Dialog / drawer */
+.scrim{position:fixed;inset:0;z-index:60;background:rgba(17,17,17,.45);border:0;padding:0;margin:0;cursor:pointer;animation:fadeIn .3s ease}
+.panel{position:fixed;z-index:70;background:var(--ground);overflow-y:auto;overscroll-behavior:contain}
+.panel--drawer{top:0;right:0;bottom:0;width:min(680px,100%);animation:slideIn .4s cubic-bezier(.2,.7,.2,1)}
+.panel--modal{top:4vh;left:0;right:0;margin:0 auto;width:min(1000px,calc(100% - 48px));max-height:92vh;border-radius:24px;animation:riseIn .4s cubic-bezier(.2,.7,.2,1)}
+.panel-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 28px;background:rgba(244,243,239,.96);border-bottom:1px solid var(--line)}
+.close{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font:600 14px 'Inter',sans-serif;cursor:pointer}
+.close:hover{background:var(--ink);color:#fff}
+.panel-body{padding:28px 28px 40px}
+.panel-body .dlg-title{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(34px,4vw,52px);line-height:.95;letter-spacing:-.035em;margin:12px 0 10px}
+.panel-sub{margin:0 0 18px;color:var(--muted);font-weight:500}
+.panel-intro{display:flex;flex-direction:column;gap:16px;padding-bottom:10px}
+.panel--drawer .comp{grid-template-columns:repeat(2,minmax(0,1fr))}
+.panel--drawer .res{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+/* Prototype switcher (not part of the portfolio) */
+.proto{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:6px;padding:6px 6px 6px 16px;border-radius:999px;background:#1E1E1E;color:#fff;box-shadow:0 12px 36px rgba(0,0,0,.28);border:1px solid #3A3A3A}
+.proto-lbl{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#C9C9C9;margin-right:6px;white-space:nowrap}
+.proto-lbl .dot{background:#F2C14E}
+.proto-btn{min-height:44px;padding:0 16px;border-radius:999px;border:0;background:transparent;color:#E6E6E6;font:500 14px 'Inter',sans-serif;cursor:pointer;white-space:nowrap}
+.proto-btn:hover{background:#333333}
+.proto-btn[aria-pressed="true"]{background:#FFFFFF;color:#111111}
+.proto-btn:focus-visible{outline:2px solid #F2C14E;outline-offset:2px}
+.proto-n{font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.7;margin-right:6px}
+
+/* Footer */
+.foot{margin-top:96px;border-top:1.5px solid var(--ink)}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:22px;padding-bottom:22px}
+.foot .nav{gap:24px}
+
+.layout{animation:fadeIn .45s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideIn{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes riseIn{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+
+@media (max-width:1100px){
+.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+.res{grid-template-columns:repeat(3,minmax(0,1fr))}
+.comp{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+.wrap{padding:0 24px}
+.ed-index,.ed-lede,.mod-intro .t,.mod-intro .lede,.wf-intro .t,.wf-intro .r,.ap-side,.ap-list,.wf-body .collab,.wf-body .ap-list{grid-column:1 / -1}
+.ap-side{position:static}
+.cases{grid-template-columns:minmax(0,1fr)}
+.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+.menu-btn{display:inline-flex}
+.site .nav{display:none}
+.site .nav.is-open{display:flex;flex-direction:column;gap:0;position:absolute;top:68px;left:-16px;right:-16px;background:var(--ground);padding:4px 16px 16px;border-bottom:1px solid var(--line)}
+.site .nav.is-open a{font-family:'Inter Tight',sans-serif;font-size:24px;font-weight:600;min-height:56px;width:100%;border-bottom:1px solid var(--line)}
+.panel--modal{top:auto;bottom:0;width:100%;max-height:92vh;border-radius:22px 22px 0 0}
+.panel--drawer .comp,.panel--drawer .res{grid-template-columns:minmax(0,1fr)}
+.proto{padding:5px;left:12px;right:12px;transform:none;justify-content:space-between}
+.proto-lbl{display:none}
+.proto-btn{flex:1;padding:0 8px;font-size:13px}
+.proto-n{display:none}
+}
+@media (max-width:640px){
+.wrap{padding:0 16px}
+.intro{padding-top:56px}
+.sec{padding-top:56px}
+.card{padding:22px;border-radius:18px}
+.tiles,.comp,.res,.impact,.ph-fields,.cases--mod .meta{grid-template-columns:minmax(0,1fr)}
+.tile{min-height:0}
+.res li{min-height:0;flex-direction:row;align-items:center}
+.acc summary{grid-template-columns:36px minmax(0,1fr) 28px;gap:12px}
+.acc-b{padding-left:0}
+.panel-head,.panel-body{padding-left:18px;padding-right:18px}
+}
+@media (prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+.card:hover,.tile:hover{transform:none}
+}
+
+html,body{overflow-x:clip}
+
+dialog.panel{margin:0;padding:0;border:0;max-height:none;max-width:none;width:min(680px,100%);height:100%;height:100dvh;inset:0 0 0 auto;color:inherit}
+dialog.panel::backdrop{background:rgba(17,17,17,.45)}
+</style>
+</head>
+<body>
+<div class="page">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+<div class="wrap site-in">
+<a class="brand" href="/" aria-label="Daniel Sullivan — home">Daniel Sullivan</a>
+<button type="button" class="menu-btn" aria-expanded="false" aria-controls="primary-nav" data-navtoggle>
+<span>Menu</span>
+<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 5h12M2 11h12" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg>
+</button>
+<nav aria-label="Portfolio">
+<ul class="nav" id="primary-nav">
+<li><a href="/#approach">Approach</a></li>
+<li><a href="/#work" aria-current="page">Work</a></li>
+<li><a href="/#contact">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main id="main" tabindex="-1" class="layout">
+
+<!-- ========== INTRO ========== -->
+<section class="wrap intro" aria-labelledby="page-title">
+<nav aria-label="Portfolio sections"><ul class="cats"><li><a href="/trade-shows-conferences" aria-current="page">Trade Shows &amp; Conferences</a></li><li><a href="/partner-marketing-strategy">Partner Marketing Strategy</a></li><li><a href="/marketing-strategy-innovation">Marketing Strategy &amp; Innovation</a></li></ul></nav>
+<h1 class="display d-xl" id="page-title"><span class="ln">Trade Shows</span> <span class="ln">&amp; Conferences</span></h1>
+<div class="ed-grid">
+<ul class="ed-index">
+<li><a href="#approach"><span>My approach</span><span class="mono muted">5 pillars <span class="arr" aria-hidden="true">↓</span></span></a></li>
+<li><a href="#work"><span>Selected work</span><span class="mono muted">Case studies <span class="arr" aria-hidden="true">↓</span></span></a></li>
+</ul>
+<p class="lede ed-lede">I approach trade shows and conferences as investments in measurable business outcomes—from brand awareness and customer engagement to pipeline creation. I prioritize events and investment levels against those objectives, then bring teams and partners together to maximize our presence through coordinated campaigns and distinctive experiences. Each program connects the opportunity to reach our buyers with a clear plan to engage them, follow through, and evaluate results.</p>
+</div>
+</section>
+
+<!-- ========== APPROACH ========== -->
+<section class="wrap sec" id="approach" aria-labelledby="ap-h">
+<div class="sec-head"><h2 class="sec-h" id="ap-h">My approach</h2><span class="mono muted">Five pillars</span></div>
+<div class="ap-grid">
+<div class="ap-side">
+<div class="collab">
+<div class="collab-line" aria-hidden="true"><span class="node">1</span><span class="node">2</span><span class="node">3</span><span class="node">4</span><span class="node">5</span></div>
+<p class="collab-cap"><strong>Cross-functional collaboration</strong> runs across all five pillars — sales, marketing, partner, and creative teams working from one plan.</p>
+</div>
+</div>
+<div class="ap-list">
+
+<details class="acc">
+<summary><span class="mono muted">01</span><span class="acc-txt"><span class="acc-t">Event Identification</span><span class="acc-s">Choose events and investment levels aligned with our buyers and business goals.</span></span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></span></summary>
+<div class="acc-b"><p>I research where our target buyers and buying committees gather, then compare events against our marketing and business priorities. I recommend participation and investment levels based on audience fit, opportunities to reach prospects and customers, and expected contribution to brand awareness, relationships, and pipeline. For demand-focused programs, I work backward from revenue goals through conversion assumptions to understand what each investment needs to deliver. This informs annual planning and identifies the key events around which we align launches and campaigns.</p></div>
+</details>
+
+<details class="acc">
+<summary><span class="mono muted">02</span><span class="acc-txt"><span class="acc-t">Integrated Event Strategy</span><span class="acc-s">Align teams, partners, and activities to maximize the opportunity.</span></span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></span></summary>
+<div class="acc-b"><p>I bring sales, marketing, and partner teams together to define success and build a coordinated plan for achieving it. I look across the full opportunity—sponsorship benefits, speaking sessions, pre-event outreach, customer meetings, partner collaboration, and ancillary events—to determine how the pieces can reinforce one another. My focus is on maximizing a moment when our buyers and ecosystem are in one place, directing budget and resources toward the activities most likely to advance our goals.</p></div>
+</details>
+
+<details class="acc">
+<summary><span class="mono muted">03</span><span class="acc-txt"><span class="acc-t">Creative Activation</span><span class="acc-s">Create distinctive experiences that attract the right people and make engagement valuable.</span></span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></span></summary>
+<div class="acc-b"><p>I develop experiences that give the right people a compelling reason to spend time with our brand during a crowded event week. Working with creative teams and partners, I connect booth engagement, content, and surrounding experiences to the audience’s interests and the program’s objectives. I consider both what will attract attention and what makes that interaction valuable—whether that means building awareness, starting a substantive conversation, or deepening a customer relationship.</p></div>
+</details>
+
+<details class="acc">
+<summary><span class="mono muted">04</span><span class="acc-txt"><span class="acc-t">Post-Event Follow-Up</span><span class="acc-s">Carry event engagement into relevant conversations and opportunities.</span></span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></span></summary>
+<div class="acc-b"><p>I build the follow-up strategy into planning, aligning sales and marketing on ownership, timing, and next steps. The approach should reflect who engaged, what they expressed interest in, and where they are in their relationship with us. My focus is on carrying the experience into relevant conversations that support pipeline creation, opportunity progression, or continued customer engagement, with clear accountability for what happens next.</p></div>
+</details>
+
+<details class="acc">
+<summary><span class="mono muted">05</span><span class="acc-txt"><span class="acc-t">Measurement &amp; Improvement</span><span class="acc-s">Evaluate outcomes, learn from execution, and strengthen future investments.</span></span><span class="plus" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></span></summary>
+<div class="acc-b"><p>I evaluate each program against its original objectives, distinguishing immediate engagement from outcomes that develop over time. For pipeline-focused investments, that includes examining how engagement progresses into qualified leads, opportunities, and revenue against our planning assumptions. I also bring teams together to review the strategy, experience, and execution—what worked, what fell short, and why. Those findings shape recommendations on which events to repeat, where to adjust investment, and how to strengthen the next program.</p></div>
+</details>
+
+</div>
+</div>
+</section>
+
+<!-- ========== SELECTED WORK (shared, reusable cards) ========== -->
+<section class="wrap sec" id="work" aria-labelledby="work-h">
+<div class="sec-head"><h2 class="sec-h" id="work-h">Selected work</h2><span class="mono muted">4 programs</span></div>
+<div class="cases">
+
+<article class="card" aria-labelledby="t-reinvent">
+<div class="card-top">
+<span class="mono muted">Case study 01</span>
+<span class="tag"><span class="dot"></span>Global trade show sponsorship</span>
+
+</div>
+
+<h3 class="card-title" id="t-reinvent">AWS re:Invent 2025</h3>
+<dl class="meta">
+
+<div><dt class="mono">Company</dt><dd>Sumo Logic</dd></div>
+
+<div><dt class="mono">Year</dt><dd>2025</dd></div>
+
+<div><dt class="mono">Category</dt><dd>Global trade show sponsorship</dd></div>
+
+</dl>
+<div class="role"><span class="mono">My role</span><strong>Overall program lead</strong></div>
+<p class="overview">One of Sumo Logic’s two largest global industry conferences, bringing together a major sponsorship, product launch, and customer, prospect, and partner experiences.</p>
+
+<ul class="scope" aria-label="Scope highlights">
+<li>20 × 20-foot booth &amp; presentation theater</li><li>Product launch &amp; roadmap sessions</li><li>Breakout + partner booth presentations</li><li>Sumo Slam Jam ancillary event</li>
+</ul>
+
+<div class="card-actions">
+
+<button type="button" class="btn" id="open-reinvent" aria-haspopup="dialog" data-dialog="dlg-reinvent"><span>Explore program</span><span class="arr" aria-hidden="true">→</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">: AWS re:Invent 2025</span></button>
+
+</div>
+
+</article>
+
+<article class="card" aria-labelledby="t-rsac">
+<div class="card-top">
+<span class="mono muted">Case study 02</span>
+<span class="tag"><span class="dot"></span>Flagship cybersecurity conference</span>
+
+</div>
+
+<h3 class="card-title" id="t-rsac">RSAC 2026</h3>
+<dl class="meta">
+
+<div><dt class="mono">Company</dt><dd>Sumo Logic</dd></div>
+
+<div><dt class="mono">Year</dt><dd>2026</dd></div>
+
+<div><dt class="mono">Category</dt><dd>Flagship cybersecurity conference</dd></div>
+
+</dl>
+<div class="role"><span class="mono">My role</span><strong>Overall program lead</strong></div>
+<p class="overview">Sumo Logic’s flagship cybersecurity conference, bringing together an immersive, AI-inspired booth experience, product innovation, executive engagement, customer experiences, and strategic partner activations to drive brand awareness and pipeline growth.</p>
+
+<ul class="scope" aria-label="Scope highlights">
+<li>20 × 20-foot Futuristic Dojo booth</li><li>Meeting suite &amp; 3 CISO dinners</li><li>10+ partner events co-sponsored</li><li>Sponsored speaking session</li>
+</ul>
+
+<div class="card-actions">
+
+<button type="button" class="btn" id="open-rsac" aria-haspopup="dialog" data-dialog="dlg-rsac"><span>Explore program</span><span class="arr" aria-hidden="true">→</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">: RSAC 2026</span></button>
+
+</div>
+
+</article>
+
+<article class="card" aria-labelledby="t-regional">
+<div class="card-top">
+<span class="mono muted">Case study 03</span>
+<span class="tag"><span class="dot"></span>Regional event program</span>
+
+</div>
+
+<h3 class="card-title" id="t-regional">Scaling Regional Cybersecurity Engagement</h3>
+<dl class="meta">
+
+<div><dt class="mono">Company</dt><dd>Sumo Logic</dd></div>
+
+<div><dt class="mono">Timeframe</dt><dd>12 months</dd></div>
+
+<div><dt class="mono">Scope</dt><dd>30+ events · Tier 1 &amp; 2 U.S. markets</dd></div>
+
+</dl>
+<div class="role"><span class="mono">My role</span><strong>Strategy &amp; program lead</strong></div>
+<p class="overview">Built a scalable regional event marketing program leveraging practitioner-focused cybersecurity conferences to expand Sumo Logic’s presence in priority U.S. markets, reach new buyers, and create additional pipeline opportunities for regional sales teams.</p>
+
+<ul class="scope" aria-label="Scope highlights">
+<li>30+ events across Tier 1 &amp; 2 U.S. markets</li><li>Two event providers evaluated</li><li>Turnkey 10 × 10-foot booth kit</li><li>Sales-led execution model</li>
+</ul>
+
+<div class="card-actions">
+
+<button type="button" class="btn" id="open-regional" aria-haspopup="dialog" data-dialog="dlg-regional"><span>Explore program</span><span class="arr" aria-hidden="true">→</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">: Scaling Regional Cybersecurity Engagement</span></button>
+
+</div>
+
+</article>
+
+<article class="card" aria-labelledby="t-estimator">
+<div class="card-top">
+<span class="mono muted">Case study 04</span>
+<span class="tag"><span class="dot"></span>Pipeline forecasting model</span>
+
+</div>
+
+<h3 class="card-title" id="t-estimator">Trade Show Pipeline Estimator</h3>
+<dl class="meta">
+
+<div><dt class="mono">Type</dt><dd>Planning &amp; forecasting framework</dd></div>
+
+<div><dt class="mono">Scope</dt><dd>Third-party event investments</dd></div>
+
+</dl>
+<div class="role"><span class="mono">My role</span><strong>Strategy, framework development &amp; implementation</strong></div>
+<p class="overview">Developed a data-driven pipeline forecasting model to evaluate third-party event investments, establish measurable performance expectations, and align marketing and sales around anticipated pipeline contribution.</p>
+
+<ul class="scope" aria-label="Scope highlights">
+<li>Standardized forecasting model</li><li>Scenario planning by participation level</li><li>Shared marketing &amp; sales targets</li><li>Forecast-vs-actual measurement</li>
+</ul>
+
+<div class="card-actions">
+
+<button type="button" class="btn" id="open-estimator" aria-haspopup="dialog" data-dialog="dlg-estimator"><span>Explore program</span><span class="arr" aria-hidden="true">→</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">: Trade Show Pipeline Estimator</span></button>
+
+<a class="btn btn--ghost" href="https://pipeline.danielsullivanportfolio.com/" target="_blank" rel="noopener"><span>Try the live estimator</span><span aria-hidden="true">↗</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> (opens in a new tab)</span></a>
+
+</div>
+
+</article>
+
+</div>
+</section>
+
+</main>
+
+<footer class="foot wrap" id="about">
+<div class="foot-in">
+<span class="brand">Daniel Sullivan</span>
+<nav aria-label="Portfolio, footer">
+<ul class="nav">
+<li><a href="/">Home</a></li>
+<li><a href="mailto:daniel@danielsullivanportfolio.com">Email</a></li>
+<li><a href="https://www.linkedin.com/in/daniel---sullivan/" target="_blank" rel="noopener">LinkedIn</a></li>
+</ul>
+</nav>
+</div>
+</footer>
+
+<dialog class="panel panel--drawer" id="dlg-reinvent" aria-labelledby="dlg-title-reinvent">
+<div class="panel-head">
+<span class="mono muted">Case study 01</span>
+<button type="button" class="close" data-close aria-label="Close program details"><span>Close</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg></button>
+</div>
+<div class="panel-body">
+<div class="panel-intro">
+
+<span class="tag" style="align-self:flex-start"><span class="dot"></span>Global trade show sponsorship</span>
+
+<h2 class="dlg-title" id="dlg-title-reinvent">AWS re:Invent 2025</h2>
+<div class="role"><span class="mono">My role</span><strong>Overall program lead</strong></div>
+<p class="overview">One of Sumo Logic’s two largest global industry conferences, bringing together a major sponsorship, product launch, and customer, prospect, and partner experiences.</p>
+
+</div>
+
+<div class="d-sec"><h3 class="d-h">Objective &amp; approach</h3><p>Led an integrated program to build brand awareness, generate new-logo pipeline, support customer retention and expansion, accelerate open opportunities, and strengthen AWS and ecosystem relationships. Coordinated the sponsorship and surrounding activities to maximize our presence throughout the conference week.</p></div>
+<div class="d-sec"><h3 class="d-h">Key components</h3>
+<ul class="comp">
+<li><span class="comp-t">20 × 20-foot booth</span><span class="comp-d">Presentation theater for customer and prospect sessions, plus an interactive demo designed to drive traffic and engagement.</span></li><li><span class="comp-t">Product launch &amp; roadmap sessions</span><span class="comp-d">A key product launch aligned to the conference, with dedicated meeting space for one-to-one and group roadmap conversations with customers and prospects.</span></li><li><span class="comp-t">Speaking &amp; partner collaboration</span><span class="comp-d">A breakout presentation and reciprocal booth presentations with ecosystem partners to extend our reach.</span></li><li><span class="comp-t">Sumo Slam Jam</span><span class="comp-d">An ancillary event designed to cut through the noise of re:Invent week and create a distinctive, memorable experience for customers, prospects, and ecosystem partners.</span></li><li><span class="comp-t">Integrated promotion &amp; content</span><span class="comp-d">Pre-event, on-site, and post-event communications across the event website, targeted LinkedIn advertising, blogs, and video—including content captured on the show floor—to build awareness, drive engagement, and support follow-up.</span></li><li><span class="comp-t">Sales activation &amp; enablement</span><span class="comp-d">Targeted account lists, outreach sequences, meeting goals, and a sales toolkit to equip sales and SDR teams to drive meetings and carry conversations forward after the event.</span></li>
+</ul>
+</div>
+<div class="d-sec">
+
+<div class="res-head"><h3 class="d-h">Results — figures to be confirmed</h3><span class="tag tag--pending"><span class="dot dot--hollow"></span>Pending confirmation</span></div>
+<ul class="res">
+<li><span class="res-l">Meetings booked</span><span class="res-v">[To confirm]</span></li><li><span class="res-l">Existing-customer ARR represented</span><span class="res-v">[To confirm]</span></li><li><span class="res-l">Pipeline influenced</span><span class="res-v">[To confirm]</span></li><li><span class="res-l">New-logo pipeline generated</span><span class="res-v">[To confirm]</span></li><li><span class="res-l">Closed-won revenue</span><span class="res-v">[To confirm]</span></li>
+</ul>
+<p class="note">No figures are shown until they are confirmed. Reported results will reflect achieved outcomes, kept separate from program goals.</p>
+
+</div>
+
+</div>
+</dialog>
+
+<dialog class="panel panel--drawer" id="dlg-rsac" aria-labelledby="dlg-title-rsac">
+<div class="panel-head">
+<span class="mono muted">Case study 02</span>
+<button type="button" class="close" data-close aria-label="Close program details"><span>Close</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg></button>
+</div>
+<div class="panel-body">
+<div class="panel-intro">
+
+<span class="tag" style="align-self:flex-start"><span class="dot"></span>Flagship cybersecurity conference</span>
+
+<h2 class="dlg-title" id="dlg-title-rsac">RSAC 2026</h2>
+<div class="role"><span class="mono">My role</span><strong>Overall program lead</strong></div>
+<p class="overview">Sumo Logic’s flagship cybersecurity conference, bringing together an immersive, AI-inspired booth experience, product innovation, executive engagement, customer experiences, and strategic partner activations to drive brand awareness and pipeline growth.</p>
+
+</div>
+
+<div class="d-sec"><h3 class="d-h">Objective &amp; approach</h3><p>Led an integrated conference strategy to elevate Sumo Logic’s position in AI-powered security operations, showcase its new Agentic Dojo platform, generate new-logo pipeline, and accelerate existing opportunities. Built a connected program of on-site experiences, executive engagement, partner activations, digital promotion, and sales enablement to maximize reach and commercial impact throughout RSAC week.</p></div>
+<div class="d-sec"><h3 class="d-h">Key components</h3>
+<ul class="comp">
+<li><span class="comp-t">20 × 20-foot Futuristic Dojo booth</span><span class="comp-d">Developed a creative concept inspired by the traditional Japanese dojo, reimagined for the AI era to bring the new Agentic Dojo platform to life. The immersive experience featured live product demonstrations, a presentation theater, and four interactive Dojo Challenge stations designed to attract attendees and encourage hands-on engagement.</span></li><li><span class="comp-t">Executive meetings &amp; customer experiences</span><span class="comp-d">Hosted customers, prospects, and partners in a dedicated meeting suite, organized three intimate CISO dinners with Sumo Logic’s CISO and CPO, and delivered a customer trolley experience around San Francisco to strengthen relationships and create meaningful engagement beyond the show floor.</span></li><li><span class="comp-t">Partner ecosystem activations</span><span class="comp-d">Co-sponsored 10+ partner events and experiences throughout conference week, extending Sumo Logic’s presence beyond its booth and creating additional networking, relationship-building, and pipeline development opportunities for sales and partner teams.</span></li><li><span class="comp-t">Thought leadership &amp; product storytelling</span><span class="comp-d">Delivered a sponsored speaking session alongside live product demonstrations and theater presentations to showcase Sumo Logic’s AI-driven security innovation and engage cybersecurity decision-makers.</span></li><li><span class="comp-t">Sales activation &amp; pipeline acceleration</span><span class="comp-d">Developed a comprehensive sales toolkit, persona- and account-specific outreach sequences, and a centralized meeting accountability tracker. Enabled sales teams to identify attending customers and prospects, match priority accounts to relevant conference experiences, and track meeting commitments, with regular leadership reporting and incentives to drive participation.</span></li><li><span class="comp-t">Integrated promotion &amp; content</span><span class="comp-d">Built an integrated digital strategy spanning a dedicated event landing page, targeted and geofenced digital advertising, pre-event outreach, and post-event follow-up. Developed a social media and on-site content creation plan featuring show-floor activity and customer engagement to extend the conference’s reach beyond the event itself.</span></li>
+</ul>
+</div>
+<div class="d-sec">
+
+<div class="res-head"><h3 class="d-h">Results</h3></div>
+<ul class="res res--final">
+<li><span class="res-num">3,800+</span><span class="res-l">Booth engagements</span></li><li><span class="res-num">350</span><span class="res-l">Product demos</span></li><li><span class="res-num">70+</span><span class="res-l">Customer, prospect &amp; partner meetings</span></li><li><span class="res-num">$7M</span><span class="res-l">New-logo pipeline generated</span></li><li><span class="res-num">$12.8M</span><span class="res-l">Pipeline influenced &amp; accelerated</span></li>
+</ul>
+
+</div>
+
+</div>
+</dialog>
+
+<dialog class="panel panel--drawer" id="dlg-regional" aria-labelledby="dlg-title-regional">
+<div class="panel-head">
+<span class="mono muted">Case study 03</span>
+<button type="button" class="close" data-close aria-label="Close program details"><span>Close</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg></button>
+</div>
+<div class="panel-body">
+<div class="panel-intro">
+
+<span class="tag" style="align-self:flex-start"><span class="dot"></span>Regional event program</span>
+
+<h2 class="dlg-title" id="dlg-title-regional">Scaling Regional Cybersecurity Engagement</h2>
+<div class="role"><span class="mono">My role</span><strong>Strategy &amp; program lead</strong></div>
+<p class="overview">Built a scalable regional event marketing program leveraging practitioner-focused cybersecurity conferences to expand Sumo Logic’s presence in priority U.S. markets, reach new buyers, and create additional pipeline opportunities for regional sales teams.</p>
+
+</div>
+
+<div class="d-sec"><h3 class="d-h">Objective &amp; approach</h3><p>Addressed a key new-logo acquisition challenge by expanding our field presence beyond large industry conferences into smaller, locally focused cybersecurity events. Developed a 12-month strategy spanning 30+ events across Tier 1 and Tier 2 U.S. markets, testing two event providers to evaluate audience reach, engagement quality, lead conversion, and pipeline impact.
+
+Created a repeatable, cost-efficient activation model that enabled regional sales teams to engage cybersecurity practitioners without requiring dedicated on-site marketing resources.</p></div>
+<div class="d-sec"><h3 class="d-h">Key components</h3>
+<ul class="comp">
+<li><span class="comp-t">Regional event strategy &amp; optimization</span><span class="comp-d">Built a coordinated first-half and second-half event calendar targeting priority U.S. markets. Evaluated two event providers based on audience composition, attendee quality, engagement, and pipeline contribution to inform future investment decisions.</span></li><li><span class="comp-t">Turnkey booth &amp; event activation</span><span class="comp-d">Developed a standardized 10 × 10-foot booth kit with predefined messaging, presentation content, demo requirements, displays, branded materials, and swag. Designed for easy shipment and sales-led execution, enabling activation across 30+ events without dedicated marketing support on-site.</span></li><li><span class="comp-t">Speaking &amp; practitioner engagement</span><span class="comp-d">Secured speaking opportunities in select priority markets, complementing booth engagement with thought leadership and practical conversations tailored to local cybersecurity professionals.</span></li><li><span class="comp-t">Sales enablement &amp; activation</span><span class="comp-d">Equipped sales and SDR teams with standardized event playbooks, targeted outreach sequences, and customizable “Meet Me At” social content and templates. Simplified pre-event promotion and on-site execution to increase field participation while minimizing marketing resources.</span></li><li><span class="comp-t">Integrated follow-up &amp; lead nurturing</span><span class="comp-d">Developed segmented post-event engagement journeys based on lead qualification and buying intent. Combined targeted SDR outreach with personalized meeting incentives, including a complimentary lunch offer, and progressive nurture campaigns featuring product education, demos, and free trials to convert event engagement into sales conversations.</span></li><li><span class="comp-t">Scalable operating model</span><span class="comp-d">Standardized event planning, logistics, creative assets, sales resources, and post-event workflows to deliver a consistent brand experience across markets while reducing the operational burden on the central field marketing team.</span></li>
+</ul>
+</div>
+<div class="d-sec">
+
+<div class="res-head"><h3 class="d-h">Results</h3></div>
+<ul class="res res--final">
+<li><span class="res-num">30+</span><span class="res-l">Regional cybersecurity events activated over 12 months</span></li><li><span class="res-num">10,000+</span><span class="res-l">Cybersecurity contacts acquired</span></li><li><span class="res-num">600</span><span class="res-l">Marketing-qualified leads (MQLs) generated</span></li><li><span class="res-num">$6M</span><span class="res-l">New pipeline generated</span></li><li><span class="res-num">$3M</span><span class="res-l">Existing pipeline influenced &amp; accelerated</span></li>
+</ul>
+
+</div>
+
+</div>
+</dialog>
+
+<dialog class="panel panel--drawer" id="dlg-estimator" aria-labelledby="dlg-title-estimator">
+<div class="panel-head">
+<span class="mono muted">Case study 04</span>
+<button type="button" class="close" data-close aria-label="Close program details"><span>Close</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg></button>
+</div>
+<div class="panel-body">
+<div class="panel-intro">
+
+<span class="tag" style="align-self:flex-start"><span class="dot"></span>Pipeline forecasting model</span>
+
+<h2 class="dlg-title" id="dlg-title-estimator">Trade Show Pipeline Estimator</h2>
+<div class="role"><span class="mono">My role</span><strong>Strategy, framework development &amp; implementation</strong></div>
+<p class="overview">Developed a data-driven pipeline forecasting model to evaluate third-party event investments, establish measurable performance expectations, and align marketing and sales around anticipated pipeline contribution.</p>
+
+<div class="live">
+<div><span class="mono">Live tool</span><h3>Try the Trade Show Pipeline Estimator</h3><p>Explore the working estimator behind this case study.</p></div>
+<a class="btn btn--inv" href="https://pipeline.danielsullivanportfolio.com/" target="_blank" rel="noopener"><span>Open the estimator</span><span aria-hidden="true">↗</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> (opens in a new tab)</span></a>
+</div>
+
+</div>
+
+<div class="d-sec"><h3 class="d-h">Objective &amp; approach</h3><p>Trade shows represent a significant investment, yet forecasting their impact can be challenging due to differences in audience size, sponsorship levels, engagement opportunities, and historical performance.
+
+To bring greater consistency and financial accountability to event planning, I developed a standardized pipeline estimator that translated event participation into projected lead generation, sales opportunities, and pipeline value.
+
+The model combined historical performance data, conversion assumptions, and event-specific inputs to support more informed investment decisions and establish measurable targets before committing budget.</p></div>
+<div class="d-sec"><h3 class="d-h">Key components</h3>
+<ul class="comp">
+<li><span class="comp-t">Data-driven forecasting framework</span><span class="comp-d">Developed a standardized model incorporating estimated attendance, audience engagement, MQL conversion, sales meeting conversion, opportunity creation rates, and average opportunity value to forecast potential pipeline contribution.</span></li><li><span class="comp-t">Scenario planning &amp; investment evaluation</span><span class="comp-d">Enabled marketing teams to evaluate different event participation scenarios, including sponsorship levels, booth presence, speaking opportunities, and ancillary activations, to understand potential impact and set realistic performance expectations.</span></li><li><span class="comp-t">Pipeline targets &amp; sales alignment</span><span class="comp-d">Translated event forecasts into measurable engagement, lead generation, meeting, and opportunity targets, creating shared accountability between marketing, sales, and SDR teams.</span></li><li><span class="comp-t">Budget planning &amp; portfolio prioritization</span><span class="comp-d">Introduced a consistent approach to comparing third-party event investments, helping prioritize opportunities based on projected pipeline contribution and alignment with regional business objectives.</span></li><li><span class="comp-t">Performance measurement &amp; optimization</span><span class="comp-d">Established a framework for evaluating actual results against initial forecasts, identifying performance gaps, and refining assumptions to improve future event planning and investment decisions.</span></li>
+</ul>
+</div>
+<div class="d-sec">
+
+<div class="res-head"><h3 class="d-h">Results &amp; business impact</h3></div>
+<ul class="impact">
+<li>Standardized pipeline forecasting across third-party event investment planning</li><li>Greater visibility into expected ROI before sponsorship commitments</li><li>Improved alignment between marketing investment and sales pipeline expectations</li><li>More consistent performance measurement across events and regions</li>
+</ul>
+
+</div>
+
+</div>
+</dialog>
+
+</div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

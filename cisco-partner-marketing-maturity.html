@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rethinking Partner Marketing — Cisco</title>
+<meta name="description" content="How a data-driven partner marketing maturity model reshaped coverage for 350 Cisco partners.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+:root{--ground:#F4F3EF;--paper:#FFFFFF;--ink:#111111;--body:#2B2B2B;--muted:#565656;--line:#D6D3CB;--dash:#7E7A72;--focus:#1F4FD8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:#111111}a:hover{color:#565656}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--ink);color:#fff;padding:12px 16px;border-radius:8px;z-index:100;text-decoration:none}
+.skip:focus{top:12px;color:#fff}
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.muted{color:var(--muted)}
+.site{position:sticky;top:0;z-index:30;background:rgba(244,243,239,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.site-in{display:flex;align-items:center;justify-content:space-between;gap:8px 16px;min-height:68px;flex-wrap:wrap}
+.brand{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.nav{display:flex;flex-wrap:wrap;gap:28px;list-style:none;margin:0;padding:0}
+.nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:15px;font-weight:500;color:var(--ink);border-bottom:2px solid transparent}
+.nav a:hover,.nav a[aria-current="page"]{border-bottom-color:var(--ink);color:var(--ink)}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px 10px;list-style:none;margin:0 0 32px;padding:0;font-size:14px;color:var(--muted)}
+.crumbs li+li::before{content:"/";margin-right:10px;color:var(--dash)}
+.crumbs a{color:var(--ink);text-underline-offset:3px;display:inline-block;padding:10px 0}
+.crumbs li{display:flex;align-items:center}
+.eyebrow{margin:0 0 20px}
+.display{font-family:'Inter Tight',sans-serif;font-weight:700;letter-spacing:-.04em;line-height:.92;margin:0}
+.display .ln{display:block}
+.lede{font-size:clamp(18px,1.5vw,20px);line-height:1.6;color:var(--body);margin:0;max-width:62ch}
+.sub{font-family:'Inter Tight',sans-serif;font-weight:500;font-size:clamp(22px,2.2vw,30px);line-height:1.2;letter-spacing:-.015em;margin:0}
+.intro{padding-top:40px}
+.sec{padding-top:104px}
+.sec-head{border-top:1.5px solid var(--ink);padding-top:18px;margin-bottom:36px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:start}
+.sec-head .lbl{grid-column:1 / span 4;display:flex;flex-direction:column;gap:14px}
+.sec-head .copy{grid-column:6 / -1;display:flex;flex-direction:column;gap:16px}
+.sec-head .copy p{margin:0;color:var(--body);max-width:62ch}
+.sec-h{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.025em;line-height:1.02;margin:0;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 22px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:#fff;font:600 15px 'Inter',sans-serif;text-decoration:none;transition:background .2s ease,color .2s ease}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:#fff}
+.btn--inv{background:#fff;color:var(--ink);border-color:#fff}
+.btn--inv:hover{background:transparent;color:#fff}
+.foot{margin-top:104px;border-top:1.5px solid var(--ink)}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:22px;padding-bottom:22px}
+
+/* Hero */
+.hero-h{font-size:clamp(50px,8.6vw,128px);text-transform:uppercase}
+.hero-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;margin-top:48px;align-items:start}
+.hero-grid .sub{grid-column:1 / span 5}
+.hero-copy{grid-column:6 / -1;display:flex;flex-direction:column;gap:18px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:48px 0 0;border-top:1px solid var(--line)}
+.facts > div{padding:14px 16px 14px 0;border-bottom:1px solid var(--line)}
+.facts dt{color:var(--muted);margin-bottom:4px}
+.facts dd{margin:0;font-weight:500;font-size:15px}
+
+/* Visual 1 — metrics */
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin:0}
+.metrics > div{display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:12px;border-top:1.5px solid var(--ink);padding-top:20px}
+.metrics dd{margin:0;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(76px,10vw,156px);line-height:.85;letter-spacing:-.055em}
+.metrics dt{font-size:17px;font-weight:500;color:var(--body);max-width:22ch}
+.question{margin:88px 0 0;padding:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px}
+.question .mono{grid-column:1 / span 4;padding-top:14px}
+.question p{grid-column:5 / -1;margin:0;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(30px,4vw,58px);line-height:1.04;letter-spacing:-.03em}
+
+/* Visual 2 — before / after */
+.ba{display:grid;grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);align-items:stretch}
+.ba-col{border-radius:22px;padding:34px;display:flex;flex-direction:column;gap:18px}
+.ba-before{border:1.5px solid var(--line);background:transparent}
+.ba-after{background:var(--ink);color:#fff}
+.ba-after .mono{color:#CFCBC2}
+.ba-t{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,2.3vw,32px);letter-spacing:-.02em;line-height:1.05;margin:0}
+.ba ul{list-style:none;margin:0;padding:0}
+.ba li{padding:13px 0;border-top:1px solid var(--line);font-weight:500}
+.ba-after li{border-top-color:#3A3A3A}
+.ba-before li{color:var(--body)}
+.ba-arrow{display:flex;align-items:center;justify-content:center;color:var(--ink)}
+
+/* Visual 3 — framework */
+.fw{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.82fr) minmax(0,1fr);gap:44px;align-items:center}
+.fw-col{display:flex;flex-direction:column;gap:20px}
+.fw-cat{position:relative;background:var(--paper);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.fw-left .fw-cat::after,.fw-right .fw-cat::before{content:"";position:absolute;top:50%;width:44px;height:1.5px;background:var(--ink)}
+.fw-left .fw-cat::after{right:-44px}
+.fw-right .fw-cat::before{left:-44px}
+.fw-cat h3{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.015em;line-height:1.15;margin:0}
+.attrs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.attrs li{font-size:13.5px;font-weight:500;padding:5px 10px;border-radius:8px;background:var(--ground);line-height:1.35}
+.fw-core{position:relative;background:var(--ink);color:#fff;border-radius:28px;padding:36px 30px;display:flex;flex-direction:column;gap:18px;text-align:center;align-items:center}
+.fw-core .mono{color:#CFCBC2}
+.fw-core h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(26px,2.4vw,34px);line-height:1;letter-spacing:-.025em;margin:0;text-transform:uppercase}
+.fw-score{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;border:1px solid #5A5A5A;border-radius:999px;padding:8px 14px}
+.fw-eq{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:15px;color:#E6E3DC}
+.fw-eq li span{font-family:'IBM Plex Mono',monospace;color:#fff;margin-right:6px}
+.fw-down{display:flex;justify-content:center;padding:18px 0}
+.fw-out{list-style:none;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:960px}
+.fw-out li{border:1.5px solid var(--ink);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:12px;background:var(--paper)}
+.fw-out strong{font-family:'Inter Tight',sans-serif;font-size:17px;letter-spacing:.01em;text-transform:uppercase;line-height:1.15}
+.meter{display:flex;gap:5px}
+.meter span{width:28px;height:8px;border-radius:2px;border:1.5px solid var(--ink)}
+.meter span.on{background:var(--ink)}
+.note{margin:28px auto 0;max-width:80ch;text-align:center;font-size:14px;color:var(--muted)}
+
+/* CTA */
+.cta{background:var(--ink);color:#fff;border-radius:26px;padding:48px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:end}
+.cta .l{grid-column:1 / span 6;display:flex;flex-direction:column;gap:16px}
+.cta .r{grid-column:8 / -1;display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.cta .mono{color:#CFCBC2}
+.cta h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,50px);line-height:1;letter-spacing:-.03em;margin:0;text-transform:uppercase}
+.cta p{margin:0;color:#E6E3DC}
+
+/* Visual 4 — tiers */
+.key{margin:0 0 28px;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(22px,2.2vw,30px);line-height:1.15;letter-spacing:-.015em;max-width:34ch}
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.tier{background:var(--paper);border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:16px;border-top:6px solid var(--ink)}
+.tier-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.tier h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,2.2vw,30px);line-height:1.02;letter-spacing:-.02em;margin:0}
+.tier-mode{display:inline-flex;align-self:flex-start;align-items:center;min-height:28px;padding:0 12px;border-radius:999px;background:var(--ground)}
+.tier ul{list-style:none;margin:0;padding:0;flex:1}
+.tier li{display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:15.5px;font-weight:500}
+.tier li::before{content:"";flex:none;width:6px;height:6px;margin-top:9px;background:var(--ink);border-radius:1px}
+.tier-note{margin:0;font-size:14.5px;color:var(--body);padding:14px 16px;background:var(--ground);border-radius:12px}
+.meter-l{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+
+/* Investment + closing */
+.invest{margin-top:56px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;border-top:1px solid var(--line);padding-top:28px}
+.invest h3{grid-column:1 / span 4;margin:0;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.015em;line-height:1.15}
+.invest p{grid-column:6 / -1;margin:0;color:var(--body);max-width:62ch}
+.close-body{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px}
+.close-body .txt{grid-column:6 / -1;display:flex;flex-direction:column;gap:18px}
+.close-body .txt p{margin:0;font-size:clamp(18px,1.5vw,20px);line-height:1.6;color:var(--body)}
+.close-body .txt p.em{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(22px,2vw,28px);line-height:1.2;letter-spacing:-.015em;color:var(--ink)}
+.close-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
+
+@media (max-width:1100px){
+.fw{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.fw-core{grid-column:1 / -1;order:-1}
+.fw-left .fw-cat::after,.fw-right .fw-cat::before{display:none}
+}
+@media (max-width:900px){
+.wrap{padding:0 24px}
+.hero-grid .sub,.hero-copy,.sec-head .lbl,.sec-head .copy,.question .mono,.question p,.cta .l,.cta .r,.invest h3,.invest p,.close-body .txt{grid-column:1 / -1}
+.sec-head{gap:16px}
+.metrics,.tiers,.fw-out{grid-template-columns:minmax(0,1fr)}
+.metrics{gap:24px}
+.ba{grid-template-columns:minmax(0,1fr);gap:0}
+.ba-arrow{padding:12px 0}
+.ba-arrow svg{transform:rotate(90deg)}
+.facts{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+.wrap{padding:0 16px}
+.sec{padding-top:72px}
+.nav{gap:18px}.nav a{font-size:14px}
+.fw{grid-template-columns:minmax(0,1fr)}
+.ba-col,.tier,.cta{padding:24px}
+.question{margin-top:56px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
+
+html,body{overflow-x:clip}
+</style>
+</head>
+<body>
+<div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+<div class="wrap site-in">
+<a class="brand" href="/" aria-label="Daniel Sullivan — home">Daniel Sullivan</a>
+<nav aria-label="Primary">
+<ul class="nav">
+<li><a href="/#approach">Approach</a></li>
+<li><a href="/#work" aria-current="page">Work</a></li>
+<li><a href="/#contact">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- Hero -->
+<section class="wrap intro" aria-labelledby="page-title">
+<nav aria-label="Breadcrumb">
+<ol class="crumbs">
+<li><a href="/#work">Portfolio</a></li>
+<li><a href="/partner-marketing-strategy">Partner Marketing Strategy</a></li>
+<li><span aria-current="page">Cisco Partner Marketing Maturity Model</span></li>
+</ol>
+</nav>
+<p class="mono eyebrow muted">Case study — Cisco · Partner marketing strategy</p>
+<h1 class="display hero-h" id="page-title"><span class="ln">Rethinking</span> <span class="ln">Partner Marketing</span></h1>
+<div class="hero-grid">
+<p class="sub">A data-driven approach to partner maturity, coverage strategy, and scalable marketing support.</p>
+<div class="hero-copy">
+<p class="lede">Faced with a reduction in partner marketing resources across the Americas, I challenged Cisco’s historically driven approach to partner coverage.</p>
+<p class="lede">Rather than simply reducing support, I developed a quantitative and qualitative marketing maturity framework to better understand which partners required dedicated marketing management, where scalable programs could be introduced, and how resources could be aligned with partner capabilities and commercial opportunity.</p>
+</div>
+</div>
+<dl class="facts">
+<div><dt class="mono">Company</dt><dd>Cisco</dd></div>
+<div><dt class="mono">Category</dt><dd>Partner Marketing Strategy</dd></div>
+<div><dt class="mono">Focus</dt><dd>Partner segmentation · Marketing maturity · Coverage strategy · Scalable programs</dd></div>
+</dl>
+</section>
+
+<!-- Visual 1 — scale of the challenge -->
+<section class="wrap sec" aria-labelledby="scale-h">
+<div class="sec-head"><div class="lbl"><h2 class="mono" id="scale-h" style="margin:0">The scale of the challenge</h2></div></div>
+<dl class="metrics">
+<div><dt>Partners assessed</dt><dd>350</dd></div>
+<div><dt>Marketing positions reduced</dt><dd>4</dd></div>
+<div><dt>Partner coverages potentially impacted</dt><dd>80–100</dd></div>
+</dl>
+<blockquote class="question">
+<span class="mono muted">The question behind the framework</span>
+<p>“Were we supporting the right partners—or simply maintaining historical coverage?”</p>
+</blockquote>
+</section>
+
+<!-- Visual 2 — the strategic shift -->
+<section class="wrap sec" aria-labelledby="shift-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">01 — The strategic shift</span><h2 class="sec-h" id="shift-h">Challenging the traditional coverage model</h2></div>
+<div class="copy"><p>Historically, partner marketing coverage was shaped by regional assignments, established relationships, and local sales priorities. I wanted to introduce a more objective way to evaluate which partners were best positioned to benefit from dedicated marketing resources.</p></div>
+</div>
+<div class="ba">
+<div class="ba-col ba-before">
+<span class="mono muted">Before</span>
+<h3 class="ba-t">Historically driven coverage</h3>
+<ul>
+<li>Regional and geographic assignments</li>
+<li>Established partner relationships</li>
+<li>Sales-led partner prioritization</li>
+<li>Limited consistency in assessing marketing readiness</li>
+</ul>
+</div>
+<div class="ba-arrow" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40"><path d="M6 20h26M23 11l9 9-9 9" fill="none" stroke="currentColor" stroke-width="2"></path></svg></div>
+<div class="ba-col ba-after">
+<span class="mono">After</span>
+<h3 class="ba-t">Maturity-informed coverage</h3>
+<ul>
+<li>Standardized partner evaluations</li>
+<li>Commercial performance and growth</li>
+<li>Marketing capability and execution readiness</li>
+<li>Differentiated support based on maturity</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- Visual 3 — assessment framework -->
+<section class="wrap sec" aria-labelledby="fw-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">02 — The assessment</span><h2 class="sec-h" id="fw-h">A data-driven partner maturity model</h2></div>
+<div class="copy">
+<p>I developed a standardized assessment combining quantitative partner performance data with qualitative evaluations of marketing capabilities, execution readiness, and strategic alignment.</p>
+<p>Individual criteria were assigned different weights based on their importance, producing an overall maturity score out of 100. Additional qualification rules ensured that practical factors—such as having dedicated partner marketing resources—were considered in the final classification.</p>
+</div>
+</div>
+<figure style="margin:0" aria-labelledby="fw-cap">
+<figcaption id="fw-cap" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Four categories of assessment criteria feed a weighted, 100-point maturity assessment, which classifies partners as high, medium, or low marketing maturity.</figcaption>
+<div class="fw">
+<div class="fw-col fw-left">
+
+<div class="fw-cat"><span class="mono muted">01</span><h3>Commercial Performance</h3><ul class="attrs"><li>Annual partner revenue</li><li>Year-over-year revenue growth</li><li>Partner certification and status</li><li>Cross-portfolio sales participation</li><li>Deal registration volume</li><li>Deal registration value</li><li>Partner pipeline contribution</li></ul></div>
+
+<div class="fw-cat"><span class="mono muted">02</span><h3>Marketing Investment &amp; Execution</h3><ul class="attrs"><li>MDF / contra funding utilization</li><li>Funding relative to partner revenue</li><li>Campaign execution consistency</li><li>Proof-of-performance compliance</li><li>Partner marketing portal engagement</li><li>Joint marketing activity completion</li></ul></div>
+
+</div>
+<div class="fw-core">
+<span class="mono">Central model</span>
+<h3>Weighted maturity assessment</h3>
+<span class="fw-score">100-point scoring model</span>
+<ul class="fw-eq">
+<li>Quantitative performance</li>
+<li><span>+</span>qualitative capability assessments</li>
+<li><span>+</span>qualification criteria</li>
+</ul>
+</div>
+<div class="fw-col fw-right">
+
+<div class="fw-cat"><span class="mono muted">03</span><h3>Marketing Capabilities</h3><ul class="attrs"><li>Dedicated partner marketing resources</li><li>Marketing technology sophistication</li><li>Digital campaign capabilities</li><li>Marketing automation maturity</li><li>Demand-generation capabilities</li><li>Website and Cisco brand representation</li></ul></div>
+
+<div class="fw-cat"><span class="mono muted">04</span><h3>Strategic Alignment &amp; Engagement</h3><ul class="attrs"><li>Joint Cisco go-to-market plan</li><li>Strategic alignment with Cisco priorities</li><li>Quality of marketing planning</li><li>Partner marketing responsiveness</li><li>Willingness to collaborate</li><li>Proactive marketing engagement</li></ul></div>
+
+</div>
+</div>
+<div class="fw-down" aria-hidden="true"><svg width="20" height="52" viewBox="0 0 20 52"><path d="M10 0v46M3 39l7 8 7-8" fill="none" stroke="#111111" stroke-width="1.6"></path></svg></div>
+<ul class="fw-out" aria-label="Maturity classifications">
+
+<li><span class="meter" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span></span><strong>High marketing maturity</strong></li>
+
+<li><span class="meter" aria-hidden="true"><span class="on"></span><span class="on"></span><span class=""></span></span><strong>Medium marketing maturity</strong></li>
+
+<li><span class="meter" aria-hidden="true"><span class="on"></span><span class=""></span><span class=""></span></span><strong>Low marketing maturity</strong></li>
+
+</ul>
+</figure>
+<p class="note">The framework incorporated additional assessment criteria and weighted qualification rules. Attributes shown are representative examples, not an exhaustive reproduction of the original Cisco scoring model.</p>
+</section>
+
+<!-- CTA — sample assessment -->
+<section class="wrap sec" aria-labelledby="cta-h" style="padding-top:56px">
+<div class="cta">
+<div class="l"><span class="mono">Supporting example</span><h2 id="cta-h">See the assessment in action</h2></div>
+<div class="r">
+<p>Explore a fictional partner assessment illustrating how commercial performance, marketing execution, digital capabilities, and strategic alignment informed partner marketing maturity classifications.</p>
+<a class="btn btn--inv" href="/sample-partner-maturity-assessment">Explore a Sample Partner Maturity Assessment <span aria-hidden="true">→</span></a>
+</div>
+</div>
+</section>
+
+<!-- Visual 4 — three-tier model -->
+<section class="wrap sec" aria-labelledby="tier-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">03 — Coverage &amp; programs</span><h2 class="sec-h" id="tier-h">Translating partner maturity into differentiated support</h2></div>
+<div class="copy">
+<p>The assessment provided a consistent foundation for aligning the type and intensity of partner marketing support with each partner’s capabilities and readiness to execute.</p>
+<p>Rather than treating every partner equally, we developed differentiated coverage and enablement approaches to support the broader ecosystem more effectively.</p>
+</div>
+</div>
+<p class="key">Different partner capabilities required different levels and types of marketing support.</p>
+<div class="tiers">
+
+<article class="tier" aria-labelledby="tier-high">
+<div class="tier-top">
+<span class="mono">High maturity</span>
+<span class="meter-l"><span class="meter" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span></span></span>
+</div>
+<h3 id="tier-high">Dedicated Strategic Coverage</h3>
+<span class="tier-mode mono">Dedicated</span>
+<ul><li>Dedicated partner marketing manager</li><li>Joint strategic marketing planning</li><li>Customized go-to-market programs</li><li>More intensive one-to-one collaboration</li><li>Priority access to marketing expertise</li><li>Prioritized investment consideration</li></ul>
+<p class="tier-note">For highest-priority partners, marketing coverage could be particularly concentrated, with one partner marketing manager supporting approximately three to five partners.</p>
+</article>
+
+<article class="tier" aria-labelledby="tier-medium">
+<div class="tier-top">
+<span class="mono">Medium maturity</span>
+<span class="meter-l"><span class="meter" aria-hidden="true"><span class="on"></span><span class="on"></span><span class=""></span></span></span>
+</div>
+<h3 id="tier-medium">Scalable Programmatic Coverage</h3>
+<span class="tier-mode mono">Programmatic</span>
+<ul><li>Centralized demand-generation programs</li><li>Lead-generation initiatives</li><li>Virtual partner marketing support</li><li>Repeatable co-marketing campaigns</li><li>Access to structured marketing services</li></ul>
+<p class="tier-note">The focus was on providing valuable marketing support without requiring the same level of dedicated resources.</p>
+</article>
+
+<article class="tier" aria-labelledby="tier-low">
+<div class="tier-top">
+<span class="mono">Low maturity</span>
+<span class="meter-l"><span class="meter" aria-hidden="true"><span class="on"></span><span class=""></span><span class=""></span></span></span>
+</div>
+<h3 id="tier-low">Digital Self-Service Enablement</h3>
+<span class="tier-mode mono">Self-service</span>
+<ul><li>Cisco partner marketing portal</li><li>Ready-to-execute campaigns</li><li>Digital marketing resources</li><li>Marketing nurture programs</li><li>Self-service co-marketing tools</li><li>Scalable enablement</li></ul>
+<p class="tier-note">The goal was to support partners with accessible marketing resources, even when they lacked dedicated internal marketing teams.</p>
+</article>
+
+</div>
+<div class="invest">
+<h3>Informing Partner Investment Decisions</h3>
+<p>The maturity classifications also helped inform partner marketing investment priorities. Partners demonstrating stronger marketing readiness, execution capabilities, and commercial potential received greater consideration for dedicated funding, creating a more consistent approach to evaluating partner investment requests.</p>
+</div>
+</section>
+
+<!-- Closing -->
+<section class="wrap sec" aria-labelledby="close-h">
+<div class="sec-head" style="margin-bottom:0;border-bottom:0">
+<div class="lbl"><span class="mono muted">04 — The takeaway</span><h2 class="sec-h" id="close-h">A more intentional approach to partner marketing</h2></div>
+<div class="copy close-body" style="display:flex">
+<div class="txt" style="display:flex">
+<p>By replacing historically driven coverage decisions with a standardized assessment framework, I established a more objective way to evaluate 350 partners across the Americas.</p>
+<p>The model helped determine where dedicated marketing resources were most valuable, how scalable programs could support partners with different capabilities, and how investment decisions could be better aligned with execution readiness and growth potential.</p>
+<p class="em">It created a more consistent, differentiated approach to partner marketing—connecting partner maturity to the support and opportunities available across the ecosystem.</p>
+<div class="close-links">
+<a class="btn" href="/sample-partner-maturity-assessment">View the sample assessment <span aria-hidden="true">→</span></a>
+<a class="btn btn--ghost" href="/partner-marketing-strategy"><span aria-hidden="true">←</span> Back to Partner Marketing Strategy</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="foot wrap" id="about">
+<div class="foot-in">
+<span class="brand">Daniel Sullivan</span>
+<nav aria-label="Footer">
+<ul class="nav">
+<li><a href="/">Home</a></li>
+<li><a href="mailto:daniel@danielsullivanportfolio.com">Email</a></li>
+<li><a href="https://www.linkedin.com/in/daniel---sullivan/" target="_blank" rel="noopener">LinkedIn</a></li>
+</ul>
+</nav>
+</div>
+</footer>
+</div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
