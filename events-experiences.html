@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Events &amp; Experiences</title>
+<meta name="description" content="Signature brand experiences, global sales kickoffs, and hands-on technical workshops that connect people and drive business impact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+:root{--ground:#F4F3EF;--paper:#FFFFFF;--ink:#111111;--body:#2B2B2B;--muted:#565656;--line:#D6D3CB;--dash:#7E7A72;--focus:#1F4FD8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:#111111}a:hover{color:#565656}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--ink);color:#fff;padding:12px 16px;border-radius:8px;z-index:100;text-decoration:none}
+.skip:focus{top:12px;color:#fff}
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.muted{color:var(--muted)}
+.site{position:sticky;top:0;z-index:30;background:rgba(244,243,239,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.site-in{display:flex;align-items:center;justify-content:space-between;gap:8px 16px;min-height:68px;flex-wrap:wrap}
+.brand{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.nav{display:flex;flex-wrap:wrap;gap:28px;list-style:none;margin:0;padding:0}
+.nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:15px;font-weight:500;color:var(--ink);border-bottom:2px solid transparent}
+.nav a:hover,.nav a[aria-current="page"]{border-bottom-color:var(--ink);color:var(--ink)}
+.cats{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 32px;padding:0;list-style:none}
+.cats a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--paper);text-decoration:none;font-size:14px;font-weight:500;color:var(--ink)}
+.cats a:hover{border-color:var(--ink);color:var(--ink)}
+.cats a[aria-current="page"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.eyebrow{margin:0 0 20px}
+.display{font-family:'Inter Tight',sans-serif;font-weight:700;letter-spacing:-.04em;line-height:.92;margin:0}
+.display .ln{display:block}
+.lede{font-size:clamp(18px,1.55vw,21px);line-height:1.55;color:var(--body);margin:0;max-width:64ch}
+.sub{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(26px,2.8vw,40px);line-height:1.1;letter-spacing:-.02em;margin:0}
+.intro{padding-top:56px}
+.sec{padding-top:88px}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-top:1.5px solid var(--ink);padding-top:18px;margin-bottom:28px}
+.sec-h{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.025em;line-height:1.02;margin:0}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 22px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:#fff;font:600 15px 'Inter',sans-serif;text-decoration:none;transition:background .2s ease,color .2s ease}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:#fff}
+.card-actions{display:flex;flex-wrap:wrap;gap:10px}
+.foot{margin-top:96px;border-top:1.5px solid var(--ink)}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:22px;padding-bottom:22px}
+
+.ms-title{font-size:clamp(52px,8.4vw,128px)}
+.ms-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;margin-top:48px;align-items:start}
+.ms-grid .sub{grid-column:1 / span 5}
+.ms-copy{grid-column:7 / -1;display:flex;flex-direction:column;gap:18px}
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.card{background:var(--paper);border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:20px;transition:transform .3s ease,box-shadow .3s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(17,17,17,.07)}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.tag{display:inline-flex;align-items:center;gap:8px;min-height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--ink);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ink)}
+.card-title{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,2.6vw,40px);line-height:1;letter-spacing:-.03em;margin:0}
+.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0;border-top:1px solid var(--line)}
+.meta > div{padding:12px 12px 12px 0;border-bottom:1px solid var(--line)}
+.meta dt{color:var(--muted);margin-bottom:4px}
+.meta dd{margin:0;font-weight:500;font-size:15px}
+.overview{margin:0;color:var(--body)}
+.scope{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.scope li{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:var(--ground);font-size:14px;font-weight:500}
+.card-note{display:inline-flex;align-items:center;min-height:48px}
+.scope li::before{content:"";width:6px;height:6px;background:var(--ink);border-radius:1px;flex:none}
+@media (max-width:900px){.wrap{padding:0 24px}.ms-grid .sub,.ms-copy{grid-column:1 / -1}.cases{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){.wrap{padding:0 16px}.sec{padding-top:64px}.nav{gap:18px}.nav a{font-size:14px}.card{padding:22px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.card:hover{transform:none}}
+
+html,body{overflow-x:clip}
+</style>
+</head>
+<body>
+<div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+<div class="wrap site-in">
+<a class="brand" href="/" aria-label="Daniel Sullivan — home">Daniel Sullivan</a>
+<nav aria-label="Primary">
+<ul class="nav">
+<li><a href="/">Home</a></li>
+<li><a href="/#approach">Approach</a></li>
+<li><a href="/#work" aria-current="page">Work</a></li>
+<li><a href="/#contact">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main id="main" tabindex="-1">
+<section class="wrap intro" aria-labelledby="page-title">
+<nav aria-label="Portfolio sections">
+<ul class="cats">
+<li><a href="/trade-shows-conferences">Trade Shows &amp; Conferences</a></li>
+<li><a href="/partner-marketing-strategy">Partner Marketing Strategy</a></li>
+<li><a href="/marketing-strategy-innovation">Marketing Strategy &amp; Innovation</a></li>
+<li><a href="/events-experiences" aria-current="page">Events &amp; Experiences</a></li>
+</ul>
+</nav>
+<h1 class="display ms-title" id="page-title"><span class="ln">Events</span> <span class="ln">&amp; Experiences</span></h1>
+<div class="ms-grid">
+<p class="sub">Creating experiences that connect people and drive business impact.</p>
+<div class="ms-copy">
+<p class="lede">From large-scale signature events and global sales kickoffs to hands-on workshops and intimate executive experiences, this collection showcases how I’ve designed and delivered programs that generate pipeline, accelerate opportunities, drive customer adoption, strengthen relationships, and enable sales teams and partners for success.</p>
+</div>
+</div>
+</section>
+
+<section class="wrap sec" aria-labelledby="cs-h">
+<div class="sec-head"><h2 class="sec-h" id="cs-h">Case studies</h2><span class="mono muted">3 case studies</span></div>
+<div class="cases">
+
+<article class="card" aria-labelledby="t-sumo-slam-jam">
+<div class="card-top"><span class="mono muted">Case study 01</span><span class="tag"><span class="dot"></span>Signature Brand Experience</span></div>
+<h3 class="card-title" id="t-sumo-slam-jam">Sumo Slam Jam</h3>
+<dl class="meta">
+<div><dt class="mono">Company</dt><dd>Sumo Logic</dd></div>
+<div><dt class="mono">Format</dt><dd>Ancillary event during AWS re:Invent</dd></div>
+</dl>
+<p class="overview">A flagship ancillary event hosted during AWS re:Invent, designed to create a distinctive experience for customers, prospects, and partners while extending engagement beyond the main conference.</p>
+<ul class="scope" aria-label="Focus areas">
+<li>Experience design</li><li>Partner sponsorship &amp; co-funding</li><li>Brand differentiation</li><li>Pipeline generation</li>
+</ul>
+<div class="card-actions"><span class="card-note mono muted">Full case study coming soon</span></div>
+</article>
+
+<article class="card" aria-labelledby="t-global-sales-kickoff">
+<div class="card-top"><span class="mono muted">Case study 02</span><span class="tag"><span class="dot"></span>Sales Enablement &amp; Internal Experience</span></div>
+<h3 class="card-title" id="t-global-sales-kickoff">Global Sales Kickoff</h3>
+<dl class="meta">
+<div><dt class="mono">Company</dt><dd>Sumo Logic</dd></div>
+<div><dt class="mono">Format</dt><dd>Multi-day global sales conference</dd></div>
+</dl>
+<p class="overview">A multi-day global sales conference designed to align leadership, equip the sales organization, reinforce business priorities, and create an engaging internal experience.</p>
+<ul class="scope" aria-label="Focus areas">
+<li>Executive alignment</li><li>Content &amp; agenda development</li><li>Sales enablement</li><li>Production &amp; operations</li>
+</ul>
+<div class="card-actions"><span class="card-note mono muted">Full case study coming soon</span></div>
+</article>
+
+<article class="card" aria-labelledby="t-threat-hunting-workshops">
+<div class="card-top"><span class="mono muted">Case study 03</span><span class="tag"><span class="dot"></span>Technical Education &amp; Customer Engagement</span></div>
+<h3 class="card-title" id="t-threat-hunting-workshops">Threat Hunting Workshops</h3>
+<dl class="meta">
+<div><dt class="mono">Company</dt><dd>Sumo Logic</dd></div>
+<div><dt class="mono">Format</dt><dd>Repeatable regional workshop series</dd></div>
+</dl>
+<p class="overview">A scalable series of hands-on cybersecurity workshops designed to engage technical audiences, demonstrate product capabilities, deepen customer adoption, and support pipeline acceleration.</p>
+<ul class="scope" aria-label="Focus areas">
+<li>Hands-on product demos</li><li>Customer adoption</li><li>Scalable regional delivery</li><li>Pipeline acceleration</li>
+</ul>
+<div class="card-actions"><span class="card-note mono muted">Full case study coming soon</span></div>
+</article>
+
+</div>
+</section>
+</main>
+
+<footer class="foot wrap" id="about">
+<div class="foot-in">
+<span class="brand">Daniel Sullivan</span>
+<nav aria-label="Footer">
+<ul class="nav">
+<li><a href="/">Home</a></li>
+<li><a href="mailto:daniel@danielsullivanportfolio.com">Email</a></li>
+<li><a href="https://www.linkedin.com/in/daniel---sullivan/" target="_blank" rel="noopener">LinkedIn</a></li>
+</ul>
+</nav>
+</div>
+</footer>
+</div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
