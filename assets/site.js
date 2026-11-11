@@ -31,6 +31,39 @@
     btn.addEventListener('click', function () { var d = btn.closest('dialog'); if (d) d.close(); });
   });
 
+  // Collapsible sections: any element with data-disclosure collapses to its
+  // [data-disclosure-head]; the [data-disclosure-toggle] button (or a click
+  // anywhere on the head) opens every [data-disclosure-panel] together.
+  var sections = document.querySelectorAll('[data-disclosure]');
+  sections.forEach(function (sec) {
+    var btn = sec.querySelector('[data-disclosure-toggle]');
+    var head = sec.querySelector('[data-disclosure-head]');
+    var panels = sec.querySelectorAll('[data-disclosure-panel]');
+    if (!btn) return;
+    function set(open) {
+      sec.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      panels.forEach(function (p) { if (open) p.removeAttribute('inert'); else p.setAttribute('inert', ''); });
+    }
+    // Arriving at, or clicking a link to, #<section id> opens it (e.g. the Leadership nav link)
+    set(!!sec.id && location.hash === '#' + sec.id);
+    if (sec.id) {
+      document.querySelectorAll('a[href$="#' + sec.id + '"]').forEach(function (a) {
+        a.addEventListener('click', function () { set(true); });
+      });
+      window.addEventListener('hashchange', function () { if (location.hash === '#' + sec.id) set(true); });
+    }
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      set(btn.getAttribute('aria-expanded') !== 'true');
+    });
+    if (head) head.addEventListener('click', function (e) {
+      if (e.target.closest('a, button')) return;
+      if (window.getSelection && String(window.getSelection())) return; // let people select text
+      btn.click();
+    });
+  });
+
   // Mobile menu toggle (pages that have one)
   var toggle = document.querySelector('[data-navtoggle]');
   if (toggle) {

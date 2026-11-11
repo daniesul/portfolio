@@ -16,6 +16,7 @@
 <meta property="og:image:height" content="1066">
 <meta property="og:image:alt" content="Portrait of Daniel Sullivan">
 <meta name="twitter:card" content="summary_large_image">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
@@ -79,8 +80,7 @@ a{color:#111111}a:hover{color:#565656}
 /* Leadership */
 .sec-head .copy p.lead-h{color:var(--ink)}
 .lead-h{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,2.3vw,32px);line-height:1.05;letter-spacing:-.02em;margin:0;color:var(--ink);text-transform:uppercase}
-.sec-head .copy p.lead-tag{font-family:'Inter Tight',sans-serif;font-weight:500;font-size:clamp(18px,1.5vw,21px);line-height:1.3;letter-spacing:-.01em;color:var(--ink);display:flex;gap:14px;margin-top:-4px}
-.lead-tag::before{content:"";flex:none;width:28px;height:1.5px;background:var(--ink);margin-top:.7em}
+.sec-head .copy p.lead-tag{font-family:'Inter Tight',sans-serif;font-weight:500;font-size:clamp(18px,1.5vw,21px);line-height:1.3;letter-spacing:-.01em;color:var(--ink);margin-top:-4px}
 .pillars{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:32px}
 .pillars li.venn{border:0;padding:0;align-self:center;align-items:center}
 .venn svg{display:block;width:clamp(150px,14vw,190px);height:auto}
@@ -98,6 +98,26 @@ a{color:#111111}a:hover{color:#565656}
 .outcome{margin-top:36px;background:var(--ink);color:#fff;border-radius:22px;padding:36px 32px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
 .outcome .mono{color:#CFCBC2}
 .outcome p{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,2.8vw,40px);line-height:1.05;letter-spacing:-.03em;margin:0;text-transform:uppercase;max-width:28ch}
+
+/* Progressive disclosure (reusable; see README "Collapsible sections").
+   Without JS everything stays open. Content always stays in the HTML. */
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.disc-btn{display:none}
+.disc-panel{display:grid;grid-template-rows:1fr;opacity:1;visibility:visible;transition:grid-template-rows .5s cubic-bezier(.2,.7,.2,1),opacity .4s ease .1s,margin .5s cubic-bezier(.2,.7,.2,1),visibility 0s linear 0s}
+.disc-inner{min-height:0;overflow:hidden}
+.js [data-disclosure] .sec-head{margin-bottom:0;cursor:pointer}
+.js [data-disclosure] .disc-body{margin-top:40px}
+.js [data-disclosure]:not(.is-open) .disc-panel{grid-template-rows:0fr;opacity:0;visibility:hidden;transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1),opacity .2s ease,margin .4s cubic-bezier(.4,0,.2,1),visibility 0s linear .4s}
+.js [data-disclosure]:not(.is-open) .disc-body{margin-top:0}
+.js .disc-btn{display:inline-flex;align-items:center;align-self:flex-start;min-height:44px;margin:0;padding:0;border:0;background:none;color:var(--ink);font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.disc-txt{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;text-decoration-color:var(--dash);transition:text-decoration-color .2s ease,text-underline-offset .2s ease}
+.disc-c,.is-open .disc-o{display:none}
+.is-open .disc-c{display:inline}
+@media (hover:hover){
+.js [data-disclosure] .sec-head:hover .lead-h{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:6px}
+.js [data-disclosure] .sec-head:hover .disc-txt{text-decoration-color:var(--ink);text-underline-offset:4px}
+}
+.disc-btn:focus-visible .disc-txt{text-decoration-color:var(--ink)}
 
 /* Work directory */
 .cats{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
@@ -236,15 +256,17 @@ html,body{overflow-x:clip}
 </ol>
 </section>
 
-<section class="wrap sec" id="leadership" aria-labelledby="ld-h">
-<div class="sec-head">
+<section class="wrap sec" id="leadership" aria-labelledby="ld-h" data-disclosure>
+<div class="sec-head" data-disclosure-head>
 <div class="lbl"><span class="mono muted">02</span><h2 class="sec-h" id="ld-h">How I lead</h2></div>
 <div class="copy">
 <p class="lead-h">A transformational servant leader.</p>
 <p class="lead-tag">Inspiring change. Empowering people to make it happen.</p>
 <p>I believe meaningful transformation starts with people. My leadership style combines a vision for challenging the status quo and inspiring innovation with a commitment to understanding each individual’s strengths, interests, and aspirations. I focus on bridging the gap between where people are today and where they have the potential to go—equipping them with the skills, confidence, and opportunities to grow, think differently, and drive meaningful change.</p>
+<button class="disc-btn" type="button" aria-expanded="false" aria-controls="ld-body" data-disclosure-toggle><span class="disc-txt"><span class="disc-o">Expand<span aria-hidden="true"> +</span></span><span class="disc-c">Collapse<span aria-hidden="true"> −</span></span><span class="vh"> how I lead section</span></span></button>
 </div>
 </div>
+<div class="disc-panel disc-body" id="ld-body" data-disclosure-panel><div class="disc-inner">
 <ul class="pillars">
 
 <li><span class="mono muted">01 / Transformational</span><h3>Inspire what’s next.</h3><p>Create the vision, challenge conventional thinking, and inspire teams to embrace new possibilities.</p><p class="focus"><span class="mono muted">Focus</span>Vision · Innovation · Change</p></li>
@@ -266,6 +288,7 @@ html,body{overflow-x:clip}
 <li><span class="mono muted">03 / Evolve</span><h4>Unlock potential</h4><p>Greater ownership, innovation, adaptability, and impact.</p></li>
 </ol>
 </div>
+</div></div>
 </section>
 
 <section class="wrap sec" id="work" aria-labelledby="work-h">
