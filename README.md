@@ -36,3 +36,10 @@ Keep new pages consistent with these. Each page carries its own copy of the CSS,
 - **Add a case study to Trade Shows & Conferences:** copy one `<article class="card">…</article>` and its matching `<dialog id="dlg-…">…</dialog>`. Give both the same new id: the button uses `data-dialog="dlg-<id>"`.
 - **Add a case study to Partner Marketing Strategy or Marketing Strategy & Innovation:** add a card on the section index page and create a new case-study page by copying an existing one (for example `global-planning-framework.html`).
 - **External links** (live demos) use `target="_blank" rel="noopener"` plus a visually hidden "(opens in a new tab)" label.
+- **Adding a new page:** in its `<head>`, update the block after the meta description: `rel="canonical"` and `og:url` must be `https://danielsullivanportfolio.com/<page-name>` (no `.html`, no `www`), and `og:title` / `og:description` should match the page's `<title>` and meta description. Then add the URL to `sitemap.xml`.
+
+## Search and link previews
+
+- `robots.txt` allows all crawlers and points to `sitemap.xml`.
+- `danielsullivanportfolio.com` (no www) is the primary domain. `www` redirects to it in Vercel, so canonical URLs always use the bare domain.
+- Link previews (LinkedIn, Slack, email) use `assets/daniel-sullivan-portrait.jpg`.
