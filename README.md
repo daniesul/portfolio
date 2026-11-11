@@ -17,7 +17,7 @@ Daniel Sullivan's marketing portfolio. Plain HTML and CSS with no build step. Ve
 | `/ai-innovation` | `ai-innovation.html` | Section index: AI & Innovation ("Projects & experiments"; empty "coming soon" state until the first card is added inside `.cases`) |
 | `/global-planning-framework` | `global-planning-framework.html` | Case study: Global Field & Partner Marketing Planning Framework |
 
-Shared files: `assets/site.js` (footer year, case-study drawers, mobile menu) and `assets/` (images).
+Shared files: `assets/site.js` (footer year, case-study drawers, collapsible sections, mobile menu) and `assets/` (images).
 `vercel.json` turns on clean URLs, so `/partner-marketing-strategy` serves `partner-marketing-strategy.html`.
 
 ## Design system
@@ -37,6 +37,16 @@ Keep new pages consistent with these. Each page carries its own copy of the CSS,
 - **Add a case study to Partner Marketing Strategy or Marketing Strategy & Innovation:** add a card on the section index page and create a new case-study page by copying an existing one (for example `global-planning-framework.html`).
 - **External links** (live demos) use `target="_blank" rel="noopener"` plus a visually hidden "(opens in a new tab)" label.
 - **Adding a new page:** in its `<head>`, update the block after the meta description: `rel="canonical"` and `og:url` must be `https://danielsullivanportfolio.com/<page-name>` (no `.html`, no `www`), and `og:title` / `og:description` should match the page's `<title>` and meta description. Then add the URL to `sitemap.xml`.
+
+## Collapsible sections (progressive disclosure)
+
+How I lead on the homepage collapses to its headline and tagline; a click or tap anywhere on the header opens the whole section. To reuse it on another section (e.g. My approach):
+
+1. Add `data-disclosure data-cue="plus"` to the `<section>` and `data-disclosure-head` to its `.sec-head`.
+2. Copy the `<button class="disc-btn" … data-disclosure-toggle>` from How I lead into the header; change its `aria-controls` and the hidden label text.
+3. Wrap whatever should be hidden in `<div class="disc-panel" id="…" data-disclosure-panel><div class="disc-inner">…</div></div>` (use `disc-intro` for a paragraph inside the header copy, `disc-body` for the content below). List every panel id in `aria-controls`.
+
+The content stays in the HTML (readable by search engines), stays open if JavaScript fails, and `assets/site.js` handles the toggle. `data-cue` is `plus`, `chevron` or `text`. On Vercel previews a small "Cue 1 2 3" switcher appears bottom-left (or add `?variant=1|2|3` to any URL); it never shows on the live domain.
 
 ## Search and link previews
 
