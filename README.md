@@ -6,7 +6,7 @@ Daniel Sullivan's marketing portfolio. Plain HTML and CSS with no build step. Ve
 
 | URL | File | What it is |
 |---|---|---|
-| `/` | `index.html` | Homepage: hero, My approach, Explore my work, Contact |
+| `/` | `index.html` | Homepage: hero, My approach, How I lead, Explore my work, Contact |
 | `/trade-shows-conferences` | `trade-shows-conferences.html` | Section: Trade Shows & Conferences (cards with a slide-in drawer for each case study) |
 | `/partner-marketing-strategy` | `partner-marketing-strategy.html` | Section index: Partner Marketing Strategy |
 | `/cisco-partner-marketing-maturity` | `cisco-partner-marketing-maturity.html` | Case study: Cisco Partner Marketing Maturity Model |
