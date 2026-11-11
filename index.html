@@ -89,6 +89,12 @@ a{color:#111111}a:hover{color:#565656}
 .pillars p{margin:0;color:var(--body);font-size:16px;max-width:46ch}
 .pillars .focus{max-width:none;margin-top:auto}
 .focus{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;padding-top:12px;margin-top:4px;border-top:1px solid var(--line);font-weight:500;font-size:15px;color:var(--ink)}
+.practice{margin-top:48px}
+.practice-h{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--ink);margin:0 0 14px}
+.stages{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.stages li{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.stages h4{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:18px;letter-spacing:-.01em;line-height:1.2;margin:2px 0 0}
+.stages p{margin:0;color:var(--body);font-size:15px;max-width:36ch}
 .outcome{margin-top:36px;background:var(--ink);color:#fff;border-radius:22px;padding:36px 32px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
 .outcome .mono{color:#CFCBC2}
 .outcome p{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,2.8vw,40px);line-height:1.05;letter-spacing:-.03em;margin:0;text-transform:uppercase;max-width:28ch}
@@ -153,6 +159,8 @@ a{color:#111111}a:hover{color:#565656}
 .steps{grid-template-columns:minmax(0,1fr)}
 .pillars{grid-template-columns:minmax(0,1fr);row-gap:28px}
 .venn svg{width:150px}
+.stages{grid-template-columns:minmax(0,1fr);gap:18px}
+.practice{margin-top:40px}
 .outcome{margin-top:28px}
 .outcome{padding:28px 20px;border-radius:18px}
 .cat a{grid-template-columns:minmax(0,1fr) 48px;gap:14px 16px;padding:24px 4px}
@@ -246,6 +254,14 @@ html,body{overflow-x:clip}
 <li><span class="mono muted">02 / Servant</span><h3>Empower people to get there.</h3><p>Understand individual strengths and aspirations, close capability gaps, and create opportunities for growth.</p><p class="focus"><span class="mono muted">Focus</span>Empathy · Coaching · Enablement</p></li>
 
 </ul>
+<div class="practice">
+<h3 class="practice-h">How I put it into practice</h3>
+<ol class="stages">
+<li><span class="mono muted">01 / Understand</span><h4>Where people are</h4><p>Strengths, interests, aspirations, and current capabilities.</p></li>
+<li><span class="mono muted">02 / Equip</span><h4>Bridge the gap</h4><p>Coaching, skill development, new perspectives, and opportunities.</p></li>
+<li><span class="mono muted">03 / Evolve</span><h4>Unlock potential</h4><p>Greater ownership, innovation, adaptability, and impact.</p></li>
+</ol>
+</div>
 <div class="outcome">
 <span class="mono">The shared outcome</span>
 <p>People grow. Teams evolve. Businesses transform.</p>
