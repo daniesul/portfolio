@@ -45,7 +45,14 @@
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       panels.forEach(function (p) { if (open) p.removeAttribute('inert'); else p.setAttribute('inert', ''); });
     }
-    set(false);
+    // Arriving at, or clicking a link to, #<section id> opens it (e.g. the Leadership nav link)
+    set(!!sec.id && location.hash === '#' + sec.id);
+    if (sec.id) {
+      document.querySelectorAll('a[href$="#' + sec.id + '"]').forEach(function (a) {
+        a.addEventListener('click', function () { set(true); });
+      });
+      window.addEventListener('hashchange', function () { if (location.hash === '#' + sec.id) set(true); });
+    }
     btn.addEventListener('click', function (e) {
       e.stopPropagation();
       set(btn.getAttribute('aria-expanded') !== 'true');

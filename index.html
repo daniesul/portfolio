@@ -109,14 +109,13 @@ a{color:#111111}a:hover{color:#565656}
 .js [data-disclosure] .sec-head{margin-bottom:0;position:relative;cursor:pointer}
 .js [data-disclosure] .disc-body{margin-top:40px}
 .js [data-disclosure]:not(.is-open) .disc-panel{grid-template-rows:0fr;opacity:0;visibility:hidden;transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1),opacity .2s ease,margin .4s cubic-bezier(.4,0,.2,1),visibility 0s linear .4s}
-.js [data-disclosure]:not(.is-open) .disc-intro{margin-top:-16px}
 .js [data-disclosure]:not(.is-open) .disc-body{margin-top:0}
 .js .disc-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin:0;padding:0;border:0;background:none;color:var(--ink);font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .disc-ico,.disc-txt,.disc-c{display:none}
 .disc-ico svg{display:block;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .disc-ico line,.disc-ico path{transition:transform .35s cubic-bezier(.2,.7,.2,1);transform-origin:9px 9px}
 /* Cue 1 + 2: circle button (same shape as the Explore my work arrows) */
-.js [data-cue="plus"] .disc-btn,.js [data-cue="chevron"] .disc-btn{position:absolute;top:14px;right:0;width:52px;height:52px;border-radius:50%;border:1.5px solid var(--ink);transition:background .25s ease,color .25s ease}
+.js [data-cue="plus"] .disc-btn,.js [data-cue="chevron"] .disc-btn{position:absolute;bottom:0;right:0;width:52px;height:52px;border-radius:50%;border:1.5px solid var(--ink);transition:background .25s ease,color .25s ease}
 .js [data-cue="plus"] .sec-head .copy,.js [data-cue="chevron"] .sec-head .copy{padding-right:76px}
 [data-cue="plus"] .disc-ico--plus,[data-cue="chevron"] .disc-ico--chev{display:block}
 [data-cue="plus"].is-open .disc-ico--plus .v{transform:rotate(90deg)}
@@ -142,7 +141,7 @@ a{color:#111111}a:hover{color:#565656}
 .cue-switch button[aria-pressed="true"]{background:#fff;color:var(--ink);border-color:#fff}
 @media (max-width:900px){
 .js [data-cue="plus"] .sec-head .copy,.js [data-cue="chevron"] .sec-head .copy{padding-right:0}
-.js [data-cue="plus"] .disc-btn,.js [data-cue="chevron"] .disc-btn{top:12px;width:44px;height:44px}
+.js [data-cue="plus"] .disc-btn,.js [data-cue="chevron"] .disc-btn{position:static;align-self:flex-start;width:44px;height:44px}
 }
 
 /* Work directory */
@@ -288,10 +287,8 @@ html,body{overflow-x:clip}
 <div class="copy">
 <p class="lead-h">A transformational servant leader.</p>
 <p class="lead-tag">Inspiring change. Empowering people to make it happen.</p>
-<button class="disc-btn" type="button" aria-expanded="false" aria-controls="ld-intro ld-body" data-disclosure-toggle><span class="vh disc-name">How I lead, full section</span><span class="disc-ico disc-ico--plus" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18"><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.8"/><line class="v" x1="9" y1="2" x2="9" y2="16" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="disc-ico disc-ico--chev" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M6.5 3.5l5.5 5.5-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="disc-txt"><span class="disc-o">Expand<span aria-hidden="true"> +</span></span><span class="disc-c">Collapse<span aria-hidden="true"> −</span></span><span class="vh"> how I lead section</span></span></button>
-<div class="disc-panel disc-intro" id="ld-intro" data-disclosure-panel><div class="disc-inner">
 <p>I believe meaningful transformation starts with people. My leadership style combines a vision for challenging the status quo and inspiring innovation with a commitment to understanding each individual’s strengths, interests, and aspirations. I focus on bridging the gap between where people are today and where they have the potential to go—equipping them with the skills, confidence, and opportunities to grow, think differently, and drive meaningful change.</p>
-</div></div>
+<button class="disc-btn" type="button" aria-expanded="false" aria-controls="ld-body" data-disclosure-toggle><span class="vh disc-name">How I lead, full section</span><span class="disc-ico disc-ico--plus" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18"><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.8"/><line class="v" x1="9" y1="2" x2="9" y2="16" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="disc-ico disc-ico--chev" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M6.5 3.5l5.5 5.5-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span class="disc-txt"><span class="disc-o">Expand<span aria-hidden="true"> +</span></span><span class="disc-c">Collapse<span aria-hidden="true"> −</span></span><span class="vh"> how I lead section</span></span></button>
 </div>
 </div>
 <div class="disc-panel disc-body" id="ld-body" data-disclosure-panel><div class="disc-inner">

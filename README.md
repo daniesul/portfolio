@@ -40,11 +40,11 @@ Keep new pages consistent with these. Each page carries its own copy of the CSS,
 
 ## Collapsible sections (progressive disclosure)
 
-How I lead on the homepage collapses to its headline and tagline; a click or tap anywhere on the header opens the whole section. To reuse it on another section (e.g. My approach):
+How I lead on the homepage collapses to its headline, tagline and intro paragraph; a click or tap anywhere on the header opens the whole section. To reuse it on another section (e.g. My approach):
 
 1. Add `data-disclosure data-cue="plus"` to the `<section>` and `data-disclosure-head` to its `.sec-head`.
 2. Copy the `<button class="disc-btn" … data-disclosure-toggle>` from How I lead into the header; change its `aria-controls` and the hidden label text.
-3. Wrap whatever should be hidden in `<div class="disc-panel" id="…" data-disclosure-panel><div class="disc-inner">…</div></div>` (use `disc-intro` for a paragraph inside the header copy, `disc-body` for the content below). List every panel id in `aria-controls`.
+3. Wrap whatever should be hidden in `<div class="disc-panel" id="…" data-disclosure-panel><div class="disc-inner">…</div></div>` (class `disc-body` for the content below the header). List every panel id in `aria-controls`.
 
 The content stays in the HTML (readable by search engines), stays open if JavaScript fails, and `assets/site.js` handles the toggle. `data-cue` is `plus`, `chevron` or `text`. On Vercel previews a small "Cue 1 2 3" switcher appears bottom-left (or add `?variant=1|2|3` to any URL); it never shows on the live domain.
 
