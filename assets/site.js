@@ -64,35 +64,6 @@
     });
   });
 
-  // Preview only: compare expand cues (?variant=1|2|3). Shown on Vercel previews or when ?variant is set.
-  if (sections.length) {
-    var cues = { '1': 'plus', '2': 'chevron', '3': 'text' };
-    var q = new URLSearchParams(location.search).get('variant');
-    var applyCue = function (n) { sections.forEach(function (s) { s.setAttribute('data-cue', cues[n]); }); };
-    if (cues[q]) applyCue(q);
-    if (q !== null || /\.vercel\.app$|^localhost$|^127\./.test(location.hostname)) {
-      var bar = document.createElement('div');
-      bar.className = 'cue-switch';
-      bar.setAttribute('role', 'group');
-      bar.setAttribute('aria-label', 'Preview: expand cue');
-      bar.innerHTML = '<span>Cue</span>';
-      var current = cues[q] ? q : Object.keys(cues).filter(function (k) { return cues[k] === sections[0].getAttribute('data-cue'); })[0];
-      Object.keys(cues).forEach(function (n) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.textContent = n;
-        b.setAttribute('aria-pressed', n === current ? 'true' : 'false');
-        b.addEventListener('click', function () {
-          applyCue(n);
-          bar.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-          var u = new URL(location.href); u.searchParams.set('variant', n); history.replaceState(null, '', u);
-        });
-        bar.appendChild(b);
-      });
-      document.body.appendChild(bar);
-    }
-  }
-
   // Mobile menu toggle (pages that have one)
   var toggle = document.querySelector('[data-navtoggle]');
   if (toggle) {
