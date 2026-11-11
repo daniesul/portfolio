@@ -77,13 +77,27 @@ a{color:#111111}a:hover{color:#565656}
 .steps p{margin:0;color:var(--body);font-size:15.5px;max-width:30ch}
 
 /* Leadership */
-.lead-h{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(22px,2vw,28px);line-height:1.15;letter-spacing:-.02em;margin:0;color:var(--ink)}
 .sec-head .copy p.lead-h{color:var(--ink)}
-.principles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
-.principles li{border-top:1px solid var(--line);padding-top:18px;display:flex;flex-direction:column;gap:10px}
-.principles h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(20px,1.7vw,24px);letter-spacing:-.02em;line-height:1;margin:4px 0 0;text-transform:uppercase}
-.principles .pr-s{margin:0;font-weight:600;font-size:15.5px;color:var(--ink)}
-.principles p{margin:0;color:var(--body);font-size:15.5px;max-width:32ch}
+.lead-h{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,2.3vw,32px);line-height:1.05;letter-spacing:-.02em;margin:0;color:var(--ink);text-transform:uppercase}
+.sec-head .copy p.lead-tag{font-family:'Inter Tight',sans-serif;font-weight:500;font-size:clamp(18px,1.5vw,21px);line-height:1.3;letter-spacing:-.01em;color:var(--ink);display:flex;gap:14px;margin-top:-4px}
+.lead-tag::before{content:"";flex:none;width:28px;height:1.5px;background:var(--ink);margin-top:.7em}
+.pillars{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:32px}
+.pillars li.venn{border:0;padding:0;align-self:center;align-items:center}
+.venn svg{display:block;width:clamp(150px,14vw,190px);height:auto}
+.pillars li{border-top:1.5px solid var(--ink);padding:18px 0 4px;display:flex;flex-direction:column;gap:12px}
+.pillars h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,2.2vw,32px);letter-spacing:-.02em;line-height:1;margin:4px 0 0;text-transform:uppercase}
+.pillars p{margin:0;color:var(--body);font-size:16px;max-width:46ch}
+.pillars .focus{max-width:none;margin-top:auto}
+.focus{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;padding-top:12px;margin-top:4px;border-top:1px solid var(--line);font-weight:500;font-size:15px;color:var(--ink)}
+.practice{margin-top:48px}
+.practice-h{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--ink);margin:0 0 14px}
+.stages{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.stages li{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.stages h4{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:18px;letter-spacing:-.01em;line-height:1.2;margin:2px 0 0}
+.stages p{margin:0;color:var(--body);font-size:15px;max-width:36ch}
+.outcome{margin-top:36px;background:var(--ink);color:#fff;border-radius:22px;padding:36px 32px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+.outcome .mono{color:#CFCBC2}
+.outcome p{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,2.8vw,40px);line-height:1.05;letter-spacing:-.03em;margin:0;text-transform:uppercase;max-width:28ch}
 
 /* Work directory */
 .cats{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
@@ -125,7 +139,6 @@ a{color:#111111}a:hover{color:#565656}
 .portrait{grid-column:8 / -1}
 .steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
 .steps::before{display:none}
-.principles{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:32px}
 .cat a{grid-template-columns:56px minmax(0,1fr) 52px}
 .cat-b{grid-column:2 / 3}
 .cat-go{grid-row:1;grid-column:3}
@@ -144,7 +157,12 @@ a{color:#111111}a:hover{color:#565656}
 .sec{padding-top:80px}
 .nav{gap:20px}
 .steps{grid-template-columns:minmax(0,1fr)}
-.principles{grid-template-columns:minmax(0,1fr);row-gap:24px}
+.pillars{grid-template-columns:minmax(0,1fr);row-gap:28px}
+.venn svg{width:150px}
+.stages{grid-template-columns:minmax(0,1fr);gap:18px}
+.practice{margin-top:40px}
+.outcome{margin-top:28px}
+.outcome{padding:28px 20px;border-radius:18px}
 .cat a{grid-template-columns:minmax(0,1fr) 48px;gap:14px 16px;padding:24px 4px}
 .cat-n{grid-column:1 / -1}
 .cat-t{grid-column:1;grid-row:2}
@@ -158,6 +176,7 @@ html{scroll-behavior:auto}
 }
 
 html,body{overflow-x:clip}
+@media (max-width:640px){.nav{gap:4px 14px}.nav a{font-size:14px}}
 </style>
 </head>
 <body>
@@ -170,6 +189,7 @@ html,body{overflow-x:clip}
 <ul class="nav">
 <li><a href="#top">Home</a></li>
 <li><a href="#approach">Approach</a></li>
+<li><a href="#leadership">Leadership</a></li>
 <li><a href="#work">Work</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
@@ -220,21 +240,32 @@ html,body{overflow-x:clip}
 <div class="sec-head">
 <div class="lbl"><span class="mono muted">02</span><h2 class="sec-h" id="ld-h">How I lead</h2></div>
 <div class="copy">
-<p class="lead-h">Transformational thinking. Servant leadership.</p>
-<p>I believe meaningful transformation starts with people. My leadership approach combines the ambition to challenge conventional thinking and drive change with a commitment to empowering those around me. I lead by creating clarity, removing barriers, encouraging ownership, and giving teams the trust and support to do their best work.</p>
+<p class="lead-h">A transformational servant leader.</p>
+<p class="lead-tag">Inspiring change. Empowering people to make it happen.</p>
+<p>I believe meaningful transformation starts with people. My leadership style combines a vision for challenging the status quo and inspiring innovation with a commitment to understanding each individual’s strengths, interests, and aspirations. I focus on bridging the gap between where people are today and where they have the potential to go—equipping them with the skills, confidence, and opportunities to grow, think differently, and drive meaningful change.</p>
 </div>
 </div>
-<ul class="principles">
+<ul class="pillars">
 
-<li><span class="mono muted">01</span><h3>Challenge</h3><p class="pr-s">Inspire new thinking.</p><p>Encourage curiosity, question conventional approaches, and create an environment where people feel confident exploring better ways of working.</p></li>
+<li><span class="mono muted">01 / Transformational</span><h3>Inspire what’s next.</h3><p>Create the vision, challenge conventional thinking, and inspire teams to embrace new possibilities.</p><p class="focus"><span class="mono muted">Focus</span>Vision · Innovation · Change</p></li>
 
-<li><span class="mono muted">02</span><h3>Empower</h3><p class="pr-s">Give people ownership.</p><p>Build trust, remove barriers, and provide the autonomy, clarity, and support teams need to succeed.</p></li>
+<li class="venn" aria-hidden="true"><svg viewBox="0 0 150 90"><circle cx="55" cy="45" r="38" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="95" cy="45" r="38" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M75 12.8A38 38 0 0 1 75 77.2A38 38 0 0 1 75 12.8Z" fill="currentColor"/><text x="27" y="49" font-family="IBM Plex Mono,monospace" font-size="10" fill="#565656">01</text><text x="111" y="49" font-family="IBM Plex Mono,monospace" font-size="10" fill="#565656">02</text></svg></li>
 
-<li><span class="mono muted">03</span><h3>Develop</h3><p class="pr-s">Invest in people’s growth.</p><p>Coach, mentor, and create opportunities for individuals to build confidence, expand their capabilities, and reach their potential.</p></li>
-
-<li><span class="mono muted">04</span><h3>Deliver</h3><p class="pr-s">Create shared accountability.</p><p>Unite teams around a clear vision, meaningful objectives, and collective responsibility for delivering measurable business impact.</p></li>
+<li><span class="mono muted">02 / Servant</span><h3>Empower people to get there.</h3><p>Understand individual strengths and aspirations, close capability gaps, and create opportunities for growth.</p><p class="focus"><span class="mono muted">Focus</span>Empathy · Coaching · Enablement</p></li>
 
 </ul>
+<div class="outcome">
+<span class="mono">The shared outcome</span>
+<p>People grow. Teams evolve. Businesses transform.</p>
+</div>
+<div class="practice">
+<h3 class="practice-h">How I put it into practice</h3>
+<ol class="stages">
+<li><span class="mono muted">01 / Understand</span><h4>Where people are</h4><p>Strengths, interests, aspirations, and current capabilities.</p></li>
+<li><span class="mono muted">02 / Equip</span><h4>Bridge the gap</h4><p>Coaching, skill development, new perspectives, and opportunities.</p></li>
+<li><span class="mono muted">03 / Evolve</span><h4>Unlock potential</h4><p>Greater ownership, innovation, adaptability, and impact.</p></li>
+</ol>
+</div>
 </section>
 
 <section class="wrap sec" id="work" aria-labelledby="work-h">
