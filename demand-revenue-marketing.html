@@ -82,11 +82,47 @@ a{color:#111111}a:hover{color:#565656}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.card:hover{transform:none}}
 
 html,body{overflow-x:clip}
-.cases:empty{display:none}
-.empty-state{display:none;flex-direction:column;gap:8px;padding:36px 0 8px;border-top:1px solid var(--line)}
-.cases:empty + .empty-state{display:flex}
-.empty-h{margin:0;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(22px,2vw,28px);letter-spacing:-.015em;line-height:1.15}
-.empty-p{margin:0;color:var(--muted);max-width:60ch}
+/* ABM approach */
+.abm{padding-top:104px}
+.abm-head{border-top:1.5px solid var(--ink);padding-top:18px}
+.abm-h{font-size:clamp(48px,7vw,108px);margin:20px 0 0}
+.abm-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;margin-top:44px;align-items:start}
+.abm-grid .sub{grid-column:1 / span 5}
+.abm-copy{grid-column:7 / -1;display:flex;flex-direction:column;gap:18px}
+.abm-copy p{margin:0;color:var(--body);max-width:62ch}
+.abm-sub{padding-top:104px}
+.abm-sh{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:end;margin-bottom:44px}
+.abm-sh h3{grid-column:1 / span 6;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,50px);letter-spacing:-.03em;line-height:1;margin:0}
+.abm-sh p{grid-column:7 / -1;margin:0;color:var(--body);max-width:56ch}
+.prin{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px 40px}
+.prin li{border-top:1.5px solid var(--ink);padding-top:18px;display:flex;flex-direction:column;gap:12px}
+.prin .n{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.prin .num{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(48px,4.6vw,72px);letter-spacing:-.04em;line-height:.9}
+.prin .nx{color:var(--muted)}
+.prin h4,.models h4{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(21px,1.8vw,25px);letter-spacing:-.015em;line-height:1.15;margin:8px 0 0}
+.prin p,.models p{margin:0;color:var(--body);max-width:44ch}
+.loop-note{margin:40px 0 0;padding-top:16px;border-top:1px solid var(--line);color:var(--muted)}
+.models{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1.5px solid var(--ink)}
+.models li{padding:26px 32px 8px;display:flex;flex-direction:column;gap:10px}
+.models li:first-child{padding-left:0}
+.models li + li{border-left:1px solid var(--line)}
+.models .ratio{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(56px,6.4vw,100px);letter-spacing:-.045em;line-height:.9}
+.models h4{margin:6px 0 0}
+.spectrum{margin-top:40px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:16px}
+.spectrum .bar{position:relative;height:1.5px;background:var(--ink)}
+.spectrum .bar::before,.spectrum .bar::after{content:"";position:absolute;top:-4.25px;border-top:5px solid transparent;border-bottom:5px solid transparent}
+.spectrum .bar::before{left:-1px;border-right:7px solid var(--ink)}
+.spectrum .bar::after{right:-1px;border-left:7px solid var(--ink)}
+.spectrum-note{margin:16px 0 0;color:var(--body);max-width:64ch}
+.abm-close{margin-top:120px;border-top:1.5px solid var(--ink);padding-top:18px}
+.abm-close-h{font-size:clamp(40px,6.6vw,104px);margin:24px 0 0}
+.abm-close .abm-grid{margin-top:40px}
+.abm-close .cyc{grid-column:1 / span 5;display:flex;align-items:center;gap:12px;color:var(--muted)}
+.abm-close .cyc b{font-family:'Inter Tight',sans-serif;font-size:34px;line-height:1;color:var(--ink);font-weight:600}
+@media (max-width:1000px){.prin{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.abm-grid .sub,.abm-copy,.abm-sh h3,.abm-sh p,.abm-close .cyc{grid-column:1 / -1}.abm-sh{gap:16px}
+.models{grid-template-columns:minmax(0,1fr);border-top:0}.models li,.models li:first-child{padding:22px 0 6px;border-top:1.5px solid var(--ink)}.models li + li{border-left:0;border-top-width:1px;border-top-color:var(--line)}}
+@media (max-width:640px){.abm,.abm-sub{padding-top:72px}.abm-close{margin-top:80px}.prin{grid-template-columns:minmax(0,1fr);gap:40px}.spectrum{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.spectrum .bar{order:-1;grid-column:1 / -1;margin:6px 0 2px}.spectrum span:last-child{text-align:right}}
 @media (max-width:640px){.nav{gap:4px 14px}}
 </style>
 </head>
@@ -129,14 +165,61 @@ html,body{overflow-x:clip}
 </div>
 </section>
 
-<section class="wrap sec" aria-labelledby="cs-h">
-<div class="sec-head"><h2 class="sec-h" id="cs-h">Selected work</h2></div>
-<!-- Add case-study cards inside .cases using the same <article class="card"> pattern as the other section pages.
-     Keep .cases completely empty (no spaces or comments) until then: the "coming soon" note shows only while it is empty. -->
-<div class="cases"></div>
-<div class="empty-state" role="note">
-<p class="empty-h">Case studies coming soon.</p>
-<p class="empty-p">Selected examples of demand generation, account-based marketing, and revenue-focused programs will be featured here.</p>
+<section class="wrap abm" aria-labelledby="abm-h">
+<div class="abm-head">
+<p class="mono muted">My approach / Account-based marketing</p>
+<h2 class="display abm-h" id="abm-h">Account-Based Marketing</h2>
+</div>
+<div class="abm-grid">
+<p class="sub">Smarter investment. Meaningful engagement. Measurable growth.</p>
+<div class="abm-copy">
+<p class="lede">I believe Account-Based Marketing is fundamentally about making smarter decisions about where to invest, how to create value, and how to align teams around the accounts and opportunities that matter most.</p>
+<p>My approach combines market intelligence, revenue potential, buyer behavior, and customer insights to prioritize investment and deliver differentiated engagement strategies.</p>
+<p>Effective ABM goes beyond identifying target accounts or personalizing campaigns. It’s about building preference before buying intent emerges, enabling entire buying groups, and orchestrating relevant experiences across marketing, sales, partners, and customer success.</p>
+<p>I see ABM as a dynamic growth strategy that continuously adapts to account readiness, revenue opportunity, and customer needs—connecting investment to measurable outcomes across acquisition, acceleration, and expansion.</p>
+</div>
+</div>
+
+<div class="abm-sub" aria-labelledby="prin-h">
+<div class="abm-sh">
+<h3 id="prin-h">The Six Principles Behind My Approach</h3>
+<p>A continuous operating framework for translating account intelligence into coordinated engagement and measurable revenue outcomes.</p>
+</div>
+<ol class="prin">
+<li><div class="n"><span class="num">01</span><span class="mono nx" aria-hidden="true">→ 02</span></div><h4>Understand the Opportunity</h4><p>Assess the market, ideal customer profile, whitespace, competitive landscape, customer needs, and account revenue potential.</p></li>
+<li><div class="n"><span class="num">02</span><span class="mono nx" aria-hidden="true">→ 03</span></div><h4>Prioritize Intelligently</h4><p>Combine account fit, intent, behavioral signals, and revenue potential to determine where to focus investment.</p></li>
+<li><div class="n"><span class="num">03</span><span class="mono nx" aria-hidden="true">→ 04</span></div><h4>Build Preference &amp; Create Demand</h4><p>Establish relevance, familiarity, and trust before buying intent emerges, while creating demand across priority accounts.</p></li>
+<li><div class="n"><span class="num">04</span><span class="mono nx" aria-hidden="true">→ 05</span></div><h4>Enable the Buying Group</h4><p>Identify and understand stakeholders, build consensus, address barriers, and support confident purchasing decisions.</p></li>
+<li><div class="n"><span class="num">05</span><span class="mono nx" aria-hidden="true">→ 06</span></div><h4>Activate &amp; Orchestrate</h4><p>Align marketing, sales, field, partners, and customer success around coordinated, personalized engagement strategies.</p></li>
+<li><div class="n"><span class="num">06</span><span class="mono nx" aria-hidden="true">↺ 01</span></div><h4>Measure, Learn &amp; Optimize</h4><p>Evaluate account progression, buying-group engagement, pipeline, revenue, and investment performance to continuously improve.</p></li>
+</ol>
+<p class="mono loop-note">A continuous cycle — what I learn in 06 informs how I understand the opportunity in 01.</p>
+</div>
+
+<div class="abm-sub" aria-labelledby="inv-h">
+<div class="abm-sh">
+<h3 id="inv-h">An Adaptive Approach to Investment</h3>
+<p>Not every account requires the same level of engagement or investment. I use differentiated 1:1, 1:few, and 1:many motions that align resources with account revenue potential, buying readiness, and growth opportunity.</p>
+</div>
+<ul class="models">
+<li><span class="ratio">1:1</span><h4>Strategic Engagement</h4><p>High-touch, highly personalized programs designed around individual accounts and their buying groups.</p></li>
+<li><span class="ratio">1:Few</span><h4>Segment-Based Engagement</h4><p>Tailored programs for clusters of accounts sharing similar needs, buying triggers, or industry priorities.</p></li>
+<li><span class="ratio">1:Many</span><h4>Scaled Engagement</h4><p>Data-informed, repeatable engagement that builds relevance and demand across broader priority-account segments.</p></li>
+</ul>
+<div class="spectrum" aria-hidden="true"><span class="mono muted">Deeper personalization</span><span class="bar"></span><span class="mono muted">Broader scale</span></div>
+<p class="spectrum-note">These aren’t fixed classifications. Accounts move between motions as signals, buying readiness, and revenue opportunity change, and investment moves with them.</p>
+</div>
+
+<div class="abm-close" aria-labelledby="close-h">
+<p class="mono muted">The operating principle</p>
+<h3 class="display abm-close-h" id="close-h"><span class="ln">Intelligence Informs.</span> <span class="ln">Performance Refines.</span></h3>
+<div class="abm-grid">
+<p class="mono cyc" aria-hidden="true"><b>↺</b>Continuous feedback loop</p>
+<div class="abm-copy">
+<p class="lede">ABM shouldn’t operate from a static annual account list. Account intelligence, engagement signals, buying-stage progression, and performance insights should continually inform which accounts receive investment, how engagement evolves, and where resources can deliver the greatest impact.</p>
+<p>This continuous feedback loop is what makes ABM an adaptive, measurable growth strategy rather than a collection of disconnected campaigns.</p>
+</div>
+</div>
 </div>
 </section>
 </main>
