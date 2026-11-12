@@ -81,4 +81,44 @@
       if (label) label.textContent = open ? 'Close' : 'Menu';
     });
   }
+
+  // Google Analytics: count on-page clicks that GA doesn't track by itself.
+  // Listens in the capture phase so it still sees clicks other handlers stop.
+  // Events: drawer_open, section_expand, menu_open, internal_link_click
+  // (link_location = nav | section_switcher | button | content).
+  function label(el) {
+    var c = el.cloneNode(true);
+    c.querySelectorAll('[aria-hidden="true"], .vh, [style*="position:absolute"]').forEach(function (n) { n.remove(); });
+    return c.textContent.replace(/\s+/g, ' ').trim().slice(0, 100);
+  }
+  function cardTitle(el) {
+    var card = el.closest('article[aria-labelledby]');
+    var t = card && document.getElementById(card.getAttribute('aria-labelledby'));
+    return t ? label(t) : undefined;
+  }
+  document.addEventListener('click', function (e) {
+    if (typeof window.gtag !== 'function') return;
+    var el = e.target.closest('a, button');
+    if (!el) return;
+    if (el.hasAttribute('data-dialog')) {
+      gtag('event', 'drawer_open', { item_name: cardTitle(el) || el.getAttribute('data-dialog') });
+    } else if (el.hasAttribute('data-disclosure-toggle')) {
+      if (el.getAttribute('aria-expanded') !== 'true') { // about to open
+        var sec = el.closest('[data-disclosure]');
+        gtag('event', 'section_expand', { section_name: sec && sec.id ? sec.id : label(el) });
+      }
+    } else if (el.hasAttribute('data-navtoggle')) {
+      if (el.getAttribute('aria-expanded') !== 'true') gtag('event', 'menu_open');
+    } else if (el.tagName === 'A' && el.host === location.host) {
+      var where = el.closest('.cats') ? 'section_switcher'
+        : el.closest('nav, .nav') ? 'nav'
+        : el.classList.contains('btn') ? 'button' : 'content';
+      gtag('event', 'internal_link_click', {
+        link_text: label(el),
+        link_url: el.pathname + el.hash,
+        link_location: where,
+        item_name: cardTitle(el)
+      });
+    }
+  }, true);
 })();
