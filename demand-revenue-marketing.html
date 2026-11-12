@@ -16,6 +16,7 @@
 <meta property="og:image:height" content="1066">
 <meta property="og:image:alt" content="Portrait of Daniel Sullivan">
 <meta name="twitter:card" content="summary_large_image">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
@@ -85,7 +86,7 @@ html,body{overflow-x:clip}
 /* ABM approach */
 .abm{padding-top:104px}
 .abm-head{border-top:1.5px solid var(--ink);padding-top:18px}
-.abm-h{font-size:clamp(48px,7vw,108px);margin:20px 0 0}
+.abm-h{font-size:clamp(36px,4.4vw,64px);letter-spacing:-.035em;line-height:.98;margin:16px 0 0}
 .abm-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;margin-top:44px;align-items:start}
 .abm-grid .sub{grid-column:1 / span 5}
 .abm-copy{grid-column:7 / -1;display:flex;flex-direction:column;gap:18px}
@@ -106,7 +107,7 @@ html,body{overflow-x:clip}
 .models li{padding:26px 32px 8px;display:flex;flex-direction:column;gap:10px}
 .models li:first-child{padding-left:0}
 .models li + li{border-left:1px solid var(--line)}
-.models .ratio{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(56px,6.4vw,100px);letter-spacing:-.045em;line-height:.9}
+.models .ratio{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(36px,3.6vw,54px);letter-spacing:-.035em;line-height:.95}
 .models h4{margin:6px 0 0}
 .spectrum{margin-top:40px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:16px}
 .spectrum .bar{position:relative;height:1.5px;background:var(--ink)}
@@ -115,10 +116,23 @@ html,body{overflow-x:clip}
 .spectrum .bar::after{right:-1px;border-left:7px solid var(--ink)}
 .spectrum-note{margin:16px 0 0;color:var(--body);max-width:64ch}
 .abm-close{margin-top:120px;border-top:1.5px solid var(--ink);padding-top:18px}
-.abm-close-h{font-size:clamp(40px,6.6vw,104px);margin:24px 0 0}
+.abm-close-h{font-size:clamp(32px,4vw,60px);letter-spacing:-.035em;line-height:1;margin:18px 0 0}
 .abm-close .abm-grid{margin-top:40px}
 .abm-close .cyc{grid-column:1 / span 5;display:flex;align-items:center;gap:12px;color:var(--muted)}
 .abm-close .cyc b{font-family:'Inter Tight',sans-serif;font-size:34px;line-height:1;color:var(--ink);font-weight:600}
+/* Progressive disclosure (same pattern as the homepage; see README "Collapsible sections"). Without JS everything stays open. */
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.disc-btn{display:none}
+.disc-panel{display:grid;grid-template-rows:1fr;opacity:1;visibility:visible;transition:grid-template-rows .5s cubic-bezier(.2,.7,.2,1),opacity .4s ease .1s,visibility 0s linear 0s}
+.disc-inner{min-height:0;overflow:hidden}
+.js [data-disclosure] [data-disclosure-head]{cursor:pointer}
+.js [data-disclosure]:not(.is-open) .disc-panel{grid-template-rows:0fr;opacity:0;visibility:hidden;transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1),opacity .2s ease,visibility 0s linear .4s}
+.js .disc-btn{display:inline-flex;align-items:center;align-self:flex-start;min-height:44px;margin:0;padding:0;border:0;background:none;color:var(--ink);font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.disc-txt{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;text-decoration-color:var(--dash);transition:text-decoration-color .2s ease,text-underline-offset .2s ease}
+.disc-c,.is-open .disc-o{display:none}
+.is-open .disc-c{display:inline}
+@media (hover:hover){.js [data-disclosure] [data-disclosure-head]:hover .abm-h{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:8px}.disc-btn:hover .disc-txt{text-decoration-color:var(--ink);text-underline-offset:4px}}
+.disc-btn:focus-visible .disc-txt{text-decoration-color:var(--ink)}
 @media (max-width:1000px){.prin{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:900px){.abm-grid .sub,.abm-copy,.abm-sh h3,.abm-sh p,.abm-close .cyc{grid-column:1 / -1}.abm-sh{gap:16px}
 .models{grid-template-columns:minmax(0,1fr);border-top:0}.models li,.models li:first-child{padding:22px 0 6px;border-top:1.5px solid var(--ink)}.models li + li{border-left:0;border-top-width:1px;border-top-color:var(--line)}}
@@ -165,8 +179,8 @@ html,body{overflow-x:clip}
 </div>
 </section>
 
-<section class="wrap abm" aria-labelledby="abm-h">
-<div class="abm-head">
+<section class="wrap abm" id="abm" aria-labelledby="abm-h" data-disclosure>
+<div class="abm-head" data-disclosure-head>
 <p class="mono muted">My approach / Account-based marketing</p>
 <h2 class="display abm-h" id="abm-h">Account-Based Marketing</h2>
 </div>
@@ -177,8 +191,10 @@ html,body{overflow-x:clip}
 <p>My approach combines market intelligence, revenue potential, buyer behavior, and customer insights to prioritize investment and deliver differentiated engagement strategies.</p>
 <p>Effective ABM goes beyond identifying target accounts or personalizing campaigns. It’s about building preference before buying intent emerges, enabling entire buying groups, and orchestrating relevant experiences across marketing, sales, partners, and customer success.</p>
 <p>I see ABM as a dynamic growth strategy that continuously adapts to account readiness, revenue opportunity, and customer needs—connecting investment to measurable outcomes across acquisition, acceleration, and expansion.</p>
+<button class="disc-btn" type="button" aria-expanded="false" aria-controls="abm-body" data-disclosure-toggle><span class="disc-txt"><span class="disc-o">Expand<span aria-hidden="true"> +</span></span><span class="disc-c">Collapse<span aria-hidden="true"> −</span></span><span class="vh"> my ABM framework</span></span></button>
 </div>
 </div>
+<div class="disc-panel" id="abm-body" data-disclosure-panel><div class="disc-inner">
 
 <div class="abm-sub" aria-labelledby="prin-h">
 <div class="abm-sh">
@@ -221,6 +237,7 @@ html,body{overflow-x:clip}
 </div>
 </div>
 </div>
+</div></div>
 </section>
 </main>
 
