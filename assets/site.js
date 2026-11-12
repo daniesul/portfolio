@@ -30,6 +30,11 @@
   document.querySelectorAll('[data-close]').forEach(function (btn) {
     btn.addEventListener('click', function () { var d = btn.closest('dialog'); if (d) d.close(); });
   });
+  // Deep link: /page#dlg-<id> opens that drawer on arrival (e.g. the estimator card on Marketing Strategy & Innovation)
+  if (/^#dlg-[\w-]+$/.test(location.hash)) {
+    var opener = document.querySelector('[data-dialog="' + location.hash.slice(1) + '"]');
+    if (opener) opener.click();
+  }
 
   // Collapsible sections: any element with data-disclosure collapses to its
   // [data-disclosure-head]; the [data-disclosure-toggle] button (or a click
