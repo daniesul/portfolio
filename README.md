@@ -16,6 +16,7 @@ Daniel Sullivan's marketing portfolio. Plain HTML and CSS with no build step. Ve
 | `/demand-revenue-marketing` | `demand-revenue-marketing.html` | Section index: Demand & Revenue Marketing (empty "coming soon" state until the first card is added inside `.cases`) |
 | `/ai-innovation` | `ai-innovation.html` | Section index: AI & Innovation ("Projects & experiments"; empty "coming soon" state until the first card is added inside `.cases`) |
 | `/global-planning-framework` | `global-planning-framework.html` | Case study: Global Field & Partner Marketing Planning Framework |
+| `/predictable-demand-engine` | `predictable-demand-engine.html` | Leadership framework: Building a Predictable Demand Engine (measurement scorecard, diagnostics, illustrative demand-forecast calculator with an inline script, operating cadence) |
 
 Shared files: `assets/site.js` (footer year, case-study drawers, collapsible sections, mobile menu) and `assets/` (images).
 `vercel.json` turns on clean URLs, so `/partner-marketing-strategy` serves `partner-marketing-strategy.html`.

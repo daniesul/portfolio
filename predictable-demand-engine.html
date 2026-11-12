@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building a Predictable Demand Engine</title>
+<meta name="description" content="My approach to measuring marketing performance, optimizing funnel conversion, and using data-driven insights to forecast future demand and inform investment decisions.">
+<link rel="canonical" href="https://danielsullivanportfolio.com/predictable-demand-engine">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Daniel Sullivan">
+<meta property="og:title" content="Building a Predictable Demand Engine">
+<meta property="og:description" content="My approach to measuring marketing performance, optimizing funnel conversion, and using data-driven insights to forecast future demand and inform investment decisions.">
+<meta property="og:url" content="https://danielsullivanportfolio.com/predictable-demand-engine">
+<meta property="og:image" content="https://danielsullivanportfolio.com/assets/daniel-sullivan-portrait.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1066">
+<meta property="og:image:alt" content="Portrait of Daniel Sullivan">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+:root{--ground:#F4F3EF;--paper:#FFFFFF;--ink:#111111;--body:#2B2B2B;--muted:#565656;--line:#D6D3CB;--dash:#7E7A72;--focus:#1F4FD8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:#111111}a:hover{color:#565656}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--ink);color:#fff;padding:12px 16px;border-radius:8px;z-index:100;text-decoration:none}
+.skip:focus{top:12px;color:#fff}
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.muted{color:var(--muted)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.site{position:sticky;top:0;z-index:30;background:rgba(244,243,239,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.site-in{display:flex;align-items:center;justify-content:space-between;gap:8px 16px;min-height:68px;flex-wrap:wrap}
+.brand{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.nav{display:flex;flex-wrap:wrap;gap:28px;list-style:none;margin:0;padding:0}
+.nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:15px;font-weight:500;color:var(--ink);border-bottom:2px solid transparent}
+.nav a:hover,.nav a[aria-current="page"]{border-bottom-color:var(--ink);color:var(--ink)}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px 10px;list-style:none;margin:0 0 32px;padding:0;font-size:14px;color:var(--muted)}
+.crumbs li{display:flex;align-items:center}
+.crumbs li+li::before{content:"/";margin-right:10px;color:var(--dash)}
+.crumbs a{color:var(--ink);text-underline-offset:3px;display:inline-block;padding:10px 0}
+.eyebrow{margin:0 0 20px}
+.display{font-family:'Inter Tight',sans-serif;font-weight:700;letter-spacing:-.04em;line-height:.94;margin:0}
+.lede{font-size:clamp(18px,1.5vw,20px);line-height:1.6;color:var(--body);margin:0;max-width:62ch}
+.intro{padding-top:40px}
+.sec{padding-top:104px}
+.sec-head{border-top:1.5px solid var(--ink);padding-top:18px;margin-bottom:36px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:start}
+.sec-head .lbl{grid-column:1 / span 4;display:flex;flex-direction:column;gap:14px}
+.sec-head .copy{grid-column:6 / -1;display:flex;flex-direction:column;gap:16px}
+.sec-head .copy p{margin:0;color:var(--body);max-width:62ch}
+.sec-h{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.025em;line-height:1.02;margin:0}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 22px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:#fff;font:600 15px 'Inter',sans-serif;text-decoration:none;transition:background .2s ease,color .2s ease;cursor:pointer}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:#fff}
+.tag{display:inline-flex;align-items:center;gap:8px;min-height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--ink);font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ink)}
+.foot{margin-top:104px;border-top:1.5px solid var(--ink)}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:22px;padding-bottom:22px}
+
+/* Hero */
+.hero-h{font-size:clamp(40px,6vw,92px);max-width:16ch}
+.hero-sub{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(22px,2.2vw,32px);line-height:1.15;letter-spacing:-.02em;margin:28px 0 0;max-width:30ch}
+.hero-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;margin-top:40px}
+.hero-grid .copy{grid-column:6 / -1;display:flex;flex-direction:column;gap:18px}
+
+/* Shared statement line */
+.pull{margin:36px 0 0;padding-left:20px;border-left:1.5px solid var(--ink);font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(20px,1.9vw,26px);line-height:1.25;letter-spacing:-.015em;max-width:44ch}
+.card-h{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.015em;line-height:1.15;margin:0}
+
+/* 01 Loop */
+.loop{background:var(--paper);border-radius:26px;padding:40px 40px 48px}
+.loop-h{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.loop ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.loop li{position:relative;border:1.5px solid var(--ink);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:8px;background:var(--paper)}
+.loop li + li::after{content:"";position:absolute;left:-17px;top:50%;width:16px;height:1.5px;background:var(--ink)}
+.loop li + li::before{content:"";position:absolute;left:-7px;top:calc(50% - 4px);border-top:4.75px solid transparent;border-bottom:4.75px solid transparent;border-left:6px solid var(--ink)}
+.loop strong{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(20px,1.8vw,26px);letter-spacing:-.02em;line-height:1}
+.loop li p{margin:0;font-size:15px;color:var(--body);line-height:1.45}
+.loop-back{position:relative;margin:0 12.5%;height:34px;border:1.5px solid var(--ink);border-top:0;border-radius:0 0 16px 16px}
+.loop-back::after{content:"";position:absolute;left:-6.75px;top:-1px;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:8px solid var(--ink)}
+.loop-back span{position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);background:var(--paper);padding:0 12px;white-space:nowrap}
+
+/* 02 Scorecard */
+.dims{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.dims > li{grid-column:span 2;background:var(--paper);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:14px}
+.dims > li:nth-child(-n+2){grid-column:span 3}
+.dims .hd{display:flex;align-items:baseline;gap:14px}
+.dims ul{list-style:none;margin:0;padding:0}
+.dims ul li{padding:10px 0;border-top:1px solid var(--line);font-weight:500;font-size:15.5px}
+.dims .split{columns:2;column-gap:24px}
+.dims .split li{break-inside:avoid}
+
+/* 03 Diagnostics */
+.diag{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.diag > li{background:var(--paper);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:18px}
+.diag dl{margin:0;display:grid;grid-template-columns:110px minmax(0,1fr);border-top:1px solid var(--line)}
+.diag dt,.diag dd{padding:12px 0;border-bottom:1px solid var(--line)}
+.diag dt{color:var(--muted);padding-top:15px}
+.diag dd{margin:0;font-size:15.5px;color:var(--body)}
+.diag dd.resp{color:var(--ink);font-weight:500}
+
+/* 04 Forecast */
+.flow{background:var(--ink);color:#fff;border-radius:26px;padding:40px}
+.flow .mono{color:#CFCBC2}
+.flow-h{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(26px,2.8vw,40px);letter-spacing:-.025em;line-height:1;margin:10px 0 28px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;counter-reset:s}
+.steps li{position:relative;border:1px solid #4A4A4A;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:19px;line-height:1.15}
+.steps li::before{counter-increment:s;content:"0" counter(s);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:#CFCBC2;font-weight:500}
+.steps li + li::after{content:"";position:absolute;left:-15px;top:50%;width:14px;height:1.5px;background:#fff}
+.steps .ex{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;color:#E6E3DC;letter-spacing:.02em;margin-top:auto;padding-top:10px;border-top:1px solid #4A4A4A}
+.flow-note{margin:24px 0 0;color:#E6E3DC;max-width:70ch}
+
+.model{margin-top:14px;background:var(--paper);border-radius:26px;padding:40px;display:flex;flex-direction:column;gap:36px}
+.model-h{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.model-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:start}
+.assume{grid-column:1 / span 5}
+.req{grid-column:7 / -1}
+.blk-h{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.015em;margin:0 0 14px}
+table{width:100%;border-collapse:collapse;font-size:15.5px}
+th,td{text-align:left;padding:12px 0;border-bottom:1px solid var(--line)}
+thead th{border-top:1.5px solid var(--ink);color:var(--muted)}
+td + td,th + th{text-align:right}
+td + td{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:12px}
+.req ol{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+.req li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.req .v{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(30px,3vw,44px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;grid-row:span 2;align-self:center}
+.req .k{font-weight:600}
+.req .f{color:var(--muted);font-size:11.5px}
+
+.cmp{border-top:1.5px solid var(--ink);padding-top:22px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:start}
+.cmp .l{grid-column:1 / span 5;display:flex;flex-direction:column;gap:12px}
+.cmp .l p{margin:0;color:var(--body)}
+.cmp .r{grid-column:7 / -1;display:flex;flex-direction:column;gap:20px}
+.bar-row{display:flex;flex-direction:column;gap:8px}
+.bar-lbl{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+.bar-lbl b{font-family:'Inter Tight',sans-serif;font-size:22px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.bar{height:14px;background:var(--ground);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ink)}
+.bar.base i{background:var(--dash)}
+.delta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.delta > div{padding:12px 12px 0 0}
+.delta dt{color:var(--muted);margin-bottom:4px}
+.delta dd{margin:0;font-weight:600;font-size:15px}
+
+.calc{margin-top:14px;border:1.5px solid var(--ink);border-radius:26px;padding:40px;background:var(--paper)}
+.calc-h{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.calc-h h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,2.4vw,34px);letter-spacing:-.025em;line-height:1.05;margin:6px 0 0}
+.calc-h p{margin:8px 0 0;color:var(--body);max-width:56ch}
+.fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;border:0;margin:0;padding:0}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label{color:var(--muted)}
+.inp{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);min-height:52px;padding:0 14px;gap:6px}
+.inp:focus-within{border-color:var(--ink)}
+.inp span{color:var(--muted);font-weight:500}
+.inp input{flex:1;min-width:0;border:0;background:transparent;font:600 20px 'Inter Tight',sans-serif;color:var(--ink);padding:12px 0;font-variant-numeric:tabular-nums}
+.inp input:focus{outline:none}
+.inp:has(input:focus-visible){outline:2px solid var(--focus);outline-offset:3px}
+.outs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+.outs > div{background:var(--ink);color:#fff;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.outs .mono{color:#CFCBC2}
+.outs output{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(30px,3vw,44px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.calc-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:22px}
+.calc-foot p{margin:0;color:var(--muted);font-size:15px;max-width:70ch}
+.calc-err{margin:14px 0 0;font-weight:500;font-size:15px}
+.caveat{margin:28px 0 0;padding:18px 20px;border:1.5px dashed var(--ink);border-radius:16px;max-width:none;color:var(--body);font-size:15.5px}
+.caveat strong{color:var(--ink)}
+
+/* 05 Cadence */
+.cad{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cad > li{background:var(--paper);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:14px}
+.cad > li:last-child{background:var(--ink);color:#fff}
+.cad > li:last-child .mono{color:#CFCBC2}
+.cad > li:last-child ul li{border-top-color:#4A4A4A}
+.cad ul{list-style:none;margin:0;padding:0}
+.cad ul li{padding:10px 0;border-top:1px solid var(--line);font-weight:500;font-size:15.5px}
+
+/* Close */
+.close{background:var(--ink);color:#fff;border-radius:26px;padding:56px 44px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:end}
+.close .l{grid-column:1 / span 7}
+.close .r{grid-column:8 / -1;display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.close .mono{color:#CFCBC2}
+.close h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(36px,5vw,72px);letter-spacing:-.04em;line-height:.96;margin:14px 0 0}
+.close p{margin:0;color:#E6E3DC}
+.close .btn{background:#fff;color:var(--ink);border-color:#fff}
+.close .btn:hover{background:transparent;color:#fff}
+.close .btn--ghost{background:transparent;color:#fff}
+.close .btn--ghost:hover{background:#fff;color:var(--ink)}
+.close a:focus-visible{outline-color:#fff}
+.end{display:flex;flex-wrap:wrap;gap:10px}
+
+@media (max-width:1100px){
+.steps{grid-template-columns:repeat(3,minmax(0,1fr))}.steps li + li::after{display:none}
+.dims{grid-template-columns:repeat(2,minmax(0,1fr))}.dims > li,.dims > li:nth-child(-n+2){grid-column:span 1}.dims > li:last-child{grid-column:1 / -1}
+.fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+.wrap{padding:0 24px}
+.hero-grid .copy,.sec-head .lbl,.sec-head .copy,.assume,.req,.cmp .l,.cmp .r,.close .l,.close .r{grid-column:1 / -1}
+.sec-head{gap:16px}
+.diag,.cad{grid-template-columns:minmax(0,1fr)}
+.loop ol{grid-template-columns:minmax(0,1fr);gap:16px}
+.loop li + li::after{left:28px;top:-17px;width:1.5px;height:16px}
+.loop li + li::before{left:24.6px;top:-7px;border-left:4.75px solid transparent;border-right:4.75px solid transparent;border-top:6px solid var(--ink);border-bottom:0}
+.loop-back{margin:16px 0 0;height:auto;border:0;border-radius:0}
+.loop-back::after{display:none}
+.loop-back span{position:static;transform:none;padding:0;display:block}
+.model-grid,.cmp{gap:28px}
+}
+@media (max-width:640px){
+.wrap{padding:0 16px}
+.sec{padding-top:72px}
+.nav{gap:18px}.nav a{font-size:14px}
+.steps,.dims,.fields,.outs{grid-template-columns:minmax(0,1fr)}
+.dims > li:last-child{grid-column:auto}
+.dims .split{columns:1}
+.loop,.flow,.model,.calc{padding:24px}
+.close{padding:32px 24px}
+.diag > li{padding:22px}
+.diag dl{grid-template-columns:minmax(0,1fr)}
+.diag dt{padding-bottom:0;border-bottom:0}
+.delta{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
+
+html,body{overflow-x:clip}
+@media (max-width:640px){.nav{gap:4px 14px}}
+</style>
+</head>
+<body>
+<div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+<div class="wrap site-in">
+<a class="brand" href="/" aria-label="Daniel Sullivan — home">Daniel Sullivan</a>
+<nav aria-label="Primary">
+<ul class="nav">
+<li><a href="/">Home</a></li>
+<li><a href="/#approach">Approach</a></li>
+<li><a href="/#leadership">Leadership</a></li>
+<li><a href="/#work" aria-current="page">Work</a></li>
+<li><a href="/#contact">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main id="main" tabindex="-1">
+<section class="wrap intro" aria-labelledby="page-title">
+<nav aria-label="Breadcrumb">
+<ol class="crumbs">
+<li><a href="/#work">Portfolio</a></li>
+<li><a href="/marketing-strategy-innovation">Marketing Strategy &amp; Innovation</a></li>
+<li><span aria-current="page">Predictable Demand Engine</span></li>
+</ol>
+</nav>
+<p class="mono eyebrow muted">Leadership framework 02 · Marketing strategy &amp; innovation</p>
+<h1 class="display hero-h" id="page-title">Building a Predictable Demand Engine</h1>
+<p class="hero-sub">Measuring what matters. Optimizing what works. Forecasting what’s next.</p>
+<div class="hero-grid">
+<div class="copy">
+<p class="lede">I believe the most effective marketing organizations don’t simply track activity or report on pipeline after the fact. They use performance intelligence to understand what drives results, identify opportunities to improve, and make more informed decisions about where to invest next.</p>
+<p class="lede">My approach to leading Demand Generation, Field Marketing, and Partner Marketing teams brings together three connected disciplines: measuring business impact, optimizing funnel performance, and forecasting future demand.</p>
+<p class="lede">By connecting revenue objectives with funnel conversion, pipeline velocity, program efficiency, and channel contribution, I build a more complete picture of marketing performance—one that helps teams understand what success looks like, diagnose where improvements are needed, and develop demand plans grounded in data rather than assumptions.</p>
+</div>
+</div>
+</section>
+
+<!-- 01 -->
+<section class="wrap sec" aria-labelledby="s1-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">01 — My measurement philosophy</span><h2 class="sec-h" id="s1-h">Connecting Marketing Performance to Business Outcomes</h2></div>
+<div class="copy">
+<p>Pipeline creation and revenue contribution are my north-star business outcomes. But measuring those results alone doesn’t tell us why performance is improving, where opportunities are slowing, or what actions will have the greatest impact.</p>
+<p>I believe in connecting lagging indicators, such as pipeline and closed-won revenue, with leading indicators, such as account engagement, funnel conversion, sales follow-up, and opportunity progression.</p>
+<p>This allows me to establish meaningful accountability while giving teams the information they need to continually improve.</p>
+</div>
+</div>
+<div class="loop">
+<div class="loop-h"><span class="mono muted">The operating loop</span><span class="mono muted">Continuous, not one-time</span></div>
+<ol aria-label="Continuous improvement loop: Measure, Diagnose, Optimize, Forecast, then back to Measure">
+<li><span class="mono muted">01</span><strong>Measure</strong><p>Business outcomes alongside leading indicators</p></li>
+<li><span class="mono muted">02</span><strong>Diagnose</strong><p>Where performance is strong and where friction exists</p></li>
+<li><span class="mono muted">03</span><strong>Optimize</strong><p>Intervene where marketing can improve outcomes</p></li>
+<li><span class="mono muted">04</span><strong>Forecast</strong><p>Model the demand required to reach the next target</p></li>
+</ol>
+<div class="loop-back" aria-hidden="true"><span class="mono">↺ Back to measure</span></div>
+</div>
+</section>
+
+<!-- 02 -->
+<section class="wrap sec" aria-labelledby="s2-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">02 — The five dimensions of marketing performance</span><h2 class="sec-h" id="s2-h">A Connected View of Marketing Performance</h2></div>
+</div>
+<ul class="dims">
+<li>
+<div class="hd"><span class="mono muted">01</span><h3 class="card-h">Business Impact</h3></div>
+<ul class="split"><li>New-logo pipeline</li><li>Expansion pipeline</li><li>Marketing-sourced pipeline</li><li>Marketing-influenced pipeline</li><li>Closed-won revenue</li><li>Pipeline coverage</li></ul>
+</li>
+<li>
+<div class="hd"><span class="mono muted">02</span><h3 class="card-h">Funnel Health &amp; Conversion</h3></div>
+<ul class="split"><li>Lead → MQL</li><li>MQL → S1</li><li>S1 → S2</li><li>S2 → S3</li><li>S3 → S5</li><li>S5 → S8 (Closed Won)</li><li>Pipeline velocity</li><li>Opportunity win rate</li></ul>
+</li>
+<li>
+<div class="hd"><span class="mono muted">03</span><h3 class="card-h">Marketing Efficiency &amp; ROI</h3></div>
+<ul><li>Pipeline-to-spend ratio</li><li>Cost per qualified opportunity</li><li>Program ROI</li><li>Average deal value</li><li>Marketing investment efficiency</li></ul>
+</li>
+<li>
+<div class="hd"><span class="mono muted">04</span><h3 class="card-h">Partner &amp; Channel Performance</h3></div>
+<ul><li>Partner-sourced pipeline</li><li>Partner-influenced pipeline</li><li>Deal registrations (volume and value)</li><li>Deal registration conversion</li><li>Partner-sourced win rate</li><li>Partner activation</li></ul>
+</li>
+<li>
+<div class="hd"><span class="mono muted">05</span><h3 class="card-h">Leading Indicators &amp; Execution</h3></div>
+<ul><li>Target-account engagement</li><li>MQL quality</li><li>SDR follow-up SLAs</li><li>Opportunity progression</li><li>Sales-cycle duration</li><li>Program execution against plan</li></ul>
+</li>
+</ul>
+<p class="pull">The objective isn’t to measure everything equally. It’s to establish a consistent view of business performance while identifying the metrics each team can directly influence.</p>
+</section>
+
+<!-- 03 -->
+<section class="wrap sec" aria-labelledby="s3-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">03 — Turning performance data into action</span><h2 class="sec-h" id="s3-h">From Reporting Results to Improving Them</h2></div>
+<div class="copy">
+<p>Measurement becomes valuable when it changes how we operate. I use conversion trends, pipeline movement, and investment efficiency to identify where performance is strong, where friction exists, and where marketing can intervene to improve outcomes.</p>
+</div>
+</div>
+<ul class="diag">
+<li>
+<span class="mono muted">Example 01</span>
+<h3 class="card-h">High MQL Volume. Low Sales Conversion.</h3>
+<dl><dt class="mono">Signal</dt><dd>Strong lead generation but declining MQL-to-S1 conversion.</dd><dt class="mono">Response</dt><dd class="resp">Reevaluate audience targeting, lead qualification, lead context, and SDR follow-up.</dd></dl>
+</li>
+<li>
+<span class="mono muted">Example 02</span>
+<h3 class="card-h">Strong Pipeline Creation. Slow Opportunity Progression.</h3>
+<dl><dt class="mono">Signal</dt><dd>Opportunities are entering the pipeline but stalling between S3 and S5.</dd><dt class="mono">Response</dt><dd class="resp">Deploy focused field and partner programs, executive engagement, and account-based acceleration activities.</dd></dl>
+</li>
+<li>
+<span class="mono muted">Example 03</span>
+<h3 class="card-h">High Event Engagement. Limited Pipeline Contribution.</h3>
+<dl><dt class="mono">Signal</dt><dd>Strong registrations or event attendance but weak opportunity creation.</dd><dt class="mono">Response</dt><dd class="resp">Reassess target-account selection, meeting quality, engagement strategy, follow-up, and program economics.</dd></dl>
+</li>
+<li>
+<span class="mono muted">Example 04</span>
+<h3 class="card-h">Strong Partner Registrations. Low Conversion.</h3>
+<dl><dt class="mono">Signal</dt><dd>High deal registration activity but weak conversion into qualified pipeline.</dd><dt class="mono">Response</dt><dd class="resp">Evaluate partner readiness, opportunity quality, co-selling alignment, and targeted enablement.</dd></dl>
+</li>
+</ul>
+<p class="pull">The goal is to create a culture where data drives action—not simply a dashboard that reports what happened.</p>
+</section>
+
+<!-- 04 -->
+<section class="wrap sec" aria-labelledby="s4-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">04 — Using performance intelligence to forecast demand</span><h2 class="sec-h" id="s4-h">Working Backward from Revenue to Required Demand</h2></div>
+<div class="copy">
+<p>I use historical conversion rates, average deal values, pipeline velocity, sales-cycle duration, and channel performance to translate revenue objectives into realistic demand requirements.</p>
+<p>Rather than beginning with arbitrary lead or activity targets, I work backward from the business outcome and model the pipeline, opportunities, and marketing programs required to support it.</p>
+</div>
+</div>
+
+<div class="flow">
+<span class="mono">The forecasting model</span>
+<p class="flow-h">Start with the outcome, then work backward</p>
+<ol class="steps">
+<li>Revenue target<span class="ex">$10M</span></li>
+<li>Required pipeline<span class="ex">÷ win rate</span></li>
+<li>Qualified opportunities<span class="ex">÷ avg. deal value</span></li>
+<li>MQL requirements<span class="ex">÷ MQL→opp rate</span></li>
+<li>Program investment<span class="ex">Programs to deliver it</span></li>
+</ol>
+<p class="flow-note">A simplified illustration of the underlying model. Each step uses historical performance to translate one stage’s target into the demand required at the next.</p>
+</div>
+
+<div class="model">
+<div class="model-h"><span class="mono muted">Illustrative example</span><span class="tag"><span class="dot"></span>Illustrative / Synthetic data</span></div>
+<div class="model-grid">
+<div class="assume">
+<h3 class="blk-h">Assumptions</h3>
+<table>
+<caption class="vh">Hypothetical forecasting assumptions</caption>
+<thead><tr><th scope="col" class="mono">Assumption</th><th scope="col" class="mono">Value</th></tr></thead>
+<tbody>
+<tr><td>Revenue target</td><td>$10 million</td></tr>
+<tr><td>Opportunity win rate</td><td>25%</td></tr>
+<tr><td>Average deal value</td><td>$100,000</td></tr>
+<tr><td>MQL-to-opportunity conversion</td><td>20%</td></tr>
+</tbody>
+</table>
+</div>
+<div class="req">
+<h3 class="blk-h">Calculated requirements</h3>
+<ol>
+<li><span class="k">Qualified pipeline required</span><span class="v">$40M</span><span class="f mono">$10M ÷ 25% win rate</span></li>
+<li><span class="k">Qualified opportunities required</span><span class="v">400</span><span class="f mono">$40M ÷ $100K avg. deal</span></li>
+<li><span class="k">MQLs required</span><span class="v">2,000</span><span class="f mono">400 ÷ 20% conversion</span></li>
+</ol>
+</div>
+</div>
+
+<div class="cmp">
+<div class="l">
+<span class="mono muted">The value of conversion improvement</span>
+<h3 class="blk-h" style="margin:0">If MQL-to-opportunity conversion increases from 20% to 25%</h3>
+<p>The revenue target remains unchanged, assuming other funnel metrics remain constant.</p>
+</div>
+<div class="r">
+<div class="bar-row">
+<div class="bar-lbl"><span>At 20% conversion</span><b>2,000 MQLs</b></div>
+<div class="bar base" role="img" aria-label="2,000 MQLs required at 20% conversion"><i style="width:100%"></i></div>
+</div>
+<div class="bar-row">
+<div class="bar-lbl"><span>At 25% conversion</span><b>1,600 MQLs</b></div>
+<div class="bar" role="img" aria-label="1,600 MQLs required at 25% conversion"><i style="width:80%"></i></div>
+</div>
+<dl class="delta">
+<div><dt class="mono">Required MQLs</dt><dd>2,000 → 1,600</dd></div>
+<div><dt class="mono">Lead volume</dt><dd>20% reduction</dd></div>
+<div><dt class="mono">Revenue target</dt><dd>$10M, unchanged</dd></div>
+</dl>
+</div>
+</div>
+</div>
+
+<form class="calc" id="calc" aria-labelledby="calc-h" novalidate>
+<div class="calc-h">
+<div><span class="mono muted">Try the model</span><h3 id="calc-h">Demand forecasting calculator</h3><p>Adjust the assumptions to see how revenue targets translate into pipeline, opportunity, and MQL requirements.</p></div>
+<span class="tag"><span class="dot"></span>Illustrative / Synthetic data</span>
+</div>
+<fieldset class="fields">
+<legend class="vh">Forecast assumptions</legend>
+<div class="field"><label class="mono" for="f-rev">Revenue target</label><div class="inp"><span aria-hidden="true">$</span><input id="f-rev" name="rev" type="number" inputmode="decimal" min="0.1" step="0.5" value="10" aria-describedby="u-rev"><span id="u-rev">M</span></div></div>
+<div class="field"><label class="mono" for="f-win">Win rate</label><div class="inp"><input id="f-win" name="win" type="number" inputmode="decimal" min="1" max="100" step="1" value="25" aria-describedby="u-win"><span id="u-win">%</span></div></div>
+<div class="field"><label class="mono" for="f-adv">Average deal value</label><div class="inp"><span aria-hidden="true">$</span><input id="f-adv" name="adv" type="number" inputmode="decimal" min="1" step="5" value="100" aria-describedby="u-adv"><span id="u-adv">K</span></div></div>
+<div class="field"><label class="mono" for="f-conv">MQL → opportunity</label><div class="inp"><input id="f-conv" name="conv" type="number" inputmode="decimal" min="1" max="100" step="1" value="20" aria-describedby="u-conv"><span id="u-conv">%</span></div></div>
+</fieldset>
+<div class="outs" aria-live="polite">
+<div><span class="mono">Pipeline required</span><output id="o-pipe" for="f-rev f-win">$40M</output></div>
+<div><span class="mono">Opportunities required</span><output id="o-opp" for="f-rev f-win f-adv">400</output></div>
+<div><span class="mono">MQLs required</span><output id="o-mql" for="f-rev f-win f-adv f-conv">2,000</output></div>
+</div>
+<p class="calc-err" id="calc-err" role="alert" hidden>Enter a revenue target and deal value above zero, and percentages between 1 and 100.</p>
+<div class="calc-foot">
+<p>Opportunities and MQLs are rounded up to whole numbers.</p>
+<button type="reset" class="btn btn--ghost">Reset to example</button>
+</div>
+</form>
+
+<p class="caveat"><strong>This model is simplified.</strong> Real forecasts should account for existing pipeline, deal timing, segmented funnel conversion, channel mix, attribution, and sales-cycle lag. All figures on this page are hypothetical and do not represent actual business results.</p>
+
+<p class="pull">Improving conversion efficiency can be as impactful as increasing lead volume. Understanding those relationships helps me make better decisions about marketing investments, team priorities, and future demand planning.</p>
+</section>
+
+<!-- 05 -->
+<section class="wrap sec" aria-labelledby="s5-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">05 — Building a performance-driven team</span><h2 class="sec-h" id="s5-h">Creating Accountability Through an Operating Rhythm</h2></div>
+<div class="copy">
+<p>A framework only creates value when it becomes part of how the team operates.</p>
+<p>I establish a consistent cadence for reviewing performance, understanding changes in funnel health, identifying opportunities, and making informed investment decisions.</p>
+<p>My objective is to give teams clear accountability for the outcomes they influence, while creating an environment where data supports better decisions, stronger collaboration, and continuous improvement.</p>
+</div>
+</div>
+<ul class="cad">
+<li>
+<span class="mono muted">Weekly</span><h3 class="card-h">Monitor &amp; Act</h3>
+<ul><li>Campaign and program performance</li><li>Lead quality and volume</li><li>SDR follow-up</li><li>Opportunity movement</li><li>Emerging risks and bottlenecks</li></ul>
+</li>
+<li>
+<span class="mono muted">Monthly</span><h3 class="card-h">Analyze &amp; Optimize</h3>
+<ul><li>Pipeline creation and influence</li><li>Funnel conversion</li><li>Channel efficiency</li><li>Program ROI</li><li>Forecast variance</li><li>Budget reallocation</li></ul>
+</li>
+<li>
+<span class="mono">Quarterly</span><h3 class="card-h">Evaluate &amp; Plan</h3>
+<ul><li>Revenue contribution</li><li>Marketing investment performance</li><li>Pipeline coverage and future requirements</li><li>Strategic priorities</li><li>Budget allocation</li><li>Demand forecasting assumptions</li></ul>
+</li>
+</ul>
+<p class="pull">High-performing marketing teams understand more than their targets. They understand how their work contributes to revenue, which levers influence performance, and how to adapt when conditions change.</p>
+</section>
+
+<section class="wrap sec" aria-labelledby="close-h">
+<div class="close">
+<div class="l"><span class="mono">In summary</span><h2 id="close-h">From measuring activity to building predictable growth.</h2></div>
+<div class="r">
+<p>My approach connects measurement, team leadership, and demand planning into a continuous operating model—helping marketing organizations become more accountable, efficient, and predictable in their contribution to revenue growth.</p>
+<div class="end">
+<a class="btn" href="/marketing-strategy-innovation"><span aria-hidden="true">←</span> Back to Marketing Strategy &amp; Innovation</a>
+<a class="btn btn--ghost" href="/global-planning-framework">Related: Global Planning Framework <span aria-hidden="true">→</span></a>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="foot wrap" id="about">
+<div class="foot-in">
+<span class="brand">Daniel Sullivan</span>
+<nav aria-label="Footer">
+<ul class="nav">
+<li><a href="/">Home</a></li>
+<li><a href="mailto:contact@danielsullivanportfolio.com">Email</a></li>
+<li><a href="https://www.linkedin.com/in/daniel---sullivan/" target="_blank" rel="noopener">LinkedIn</a></li>
+</ul>
+</nav>
+</div>
+</footer>
+</div>
+<script src="/assets/site.js" defer></script>
+<script>
+// Demand forecasting calculator (illustrative). Works backward:
+// pipeline = revenue ÷ win rate; opportunities = pipeline ÷ avg. deal value; MQLs = opportunities ÷ MQL→opp rate.
+(function () {
+  var f = document.getElementById('calc');
+  if (!f) return;
+  var o = { pipe: document.getElementById('o-pipe'), opp: document.getElementById('o-opp'), mql: document.getElementById('o-mql') };
+  var err = document.getElementById('calc-err');
+  function num(n) { return Math.round(n).toLocaleString('en-US'); }
+  function money(v) {
+    if (v >= 1e9) return '$' + +(v / 1e9).toFixed(2) + 'B';
+    if (v >= 1e6) return '$' + +(v / 1e6).toFixed(1) + 'M';
+    return '$' + num(v / 1e3) + 'K';
+  }
+  function run() {
+    var rev = parseFloat(f.rev.value) * 1e6, win = parseFloat(f.win.value) / 100,
+        adv = parseFloat(f.adv.value) * 1e3, conv = parseFloat(f.conv.value) / 100;
+    var ok = rev > 0 && adv > 0 && win > 0 && win <= 1 && conv > 0 && conv <= 1;
+    err.hidden = ok;
+    if (!ok) { o.pipe.value = o.opp.value = o.mql.value = '—'; return; }
+    var pipe = rev / win;
+    var opp = Math.ceil(pipe / adv - 1e-9);
+    var mql = Math.ceil(opp / conv - 1e-9);
+    o.pipe.value = money(pipe); o.opp.value = num(opp); o.mql.value = num(mql);
+  }
+  f.addEventListener('input', run);
+  f.addEventListener('reset', function () { setTimeout(run, 0); });
+  f.addEventListener('submit', function (e) { e.preventDefault(); });
+  run();
+})();
+</script>
+</body>
+</html>
