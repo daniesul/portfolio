@@ -82,7 +82,7 @@ a{color:#111111}a:hover{color:#565656}
 .hero-h{font-size:clamp(40px,6vw,92px);max-width:17ch}
 .hero-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;margin-top:40px}
 .hero-grid .lede{grid-column:1 / span 8}
-.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:48px 0 0;border-top:1px solid var(--line)}
+.facts{display:grid;grid-template-columns:.6fr .5fr 1.2fr 1.4fr;margin:48px 0 0;border-top:1px solid var(--line)}
 .facts > div{padding:14px 16px 14px 0;border-bottom:1px solid var(--line)}
 .facts dt{color:var(--muted);margin-bottom:4px}
 .facts dd{margin:0;font-weight:500;font-size:15px}
@@ -105,6 +105,9 @@ a{color:#111111}a:hover{color:#565656}
 .frag span:nth-child(2){transform:rotate(3deg) translate(14px,-6px)}
 .frag span:nth-child(3){transform:rotate(-2deg) translate(-4px,10px)}
 .frag span:nth-child(4){transform:rotate(5deg) translate(10px,-2px)}
+.frag span:nth-child(5){transform:rotate(-3deg) translate(6px,6px)}
+.frag span:nth-child(6){transform:rotate(4deg) translate(-6px,-4px)}
+.frag span:nth-child(7){transform:rotate(-5deg) translate(12px,4px)}
 .uni{display:flex;flex-direction:column;align-items:stretch;gap:0}
 .uni-top{align-self:center;background:#fff;color:var(--ink);border-radius:999px;padding:9px 18px;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:17px}
 .uni-line{align-self:center;width:1.5px;height:22px;background:#fff}
@@ -214,7 +217,7 @@ a{color:#111111}a:hover{color:#565656}
 .wrap{padding:0 24px}
 .hero-grid .lede,.sec-head .lbl,.sec-head .copy,.sec-head--c .lbl,.sec-head--c .copy{grid-column:1 / -1}
 .sec-head{gap:16px}
-.facts{grid-template-columns:minmax(0,1fr)}
+.facts{grid-template-columns:repeat(2,minmax(0,1fr))}
 .ba{grid-template-columns:minmax(0,1fr)}
 .mid{padding:14px 0}
 .mid-arrow{transform:rotate(90deg)}
@@ -232,6 +235,7 @@ a{color:#111111}a:hover{color:#565656}
 .wrap{padding:0 16px}
 .sec{padding-top:72px}
 .nav{gap:4px 14px}.nav a{font-size:14px}
+.facts{grid-template-columns:minmax(0,1fr)}
 .pane,.stk{padding:22px}
 .stk{border-radius:22px}
 .lay{padding:20px}
@@ -280,6 +284,7 @@ html,body{overflow-x:clip}
 </div>
 <dl class="facts">
 <div><dt class="mono">Company</dt><dd>Cisco</dd></div>
+<div><dt class="mono">Year</dt><dd>2023</dd></div>
 <div><dt class="mono">My role</dt><dd>Led the audience strategy evolution</dd></div>
 <div><dt class="mono">My team</dt><dd>Developed and operationalized the playbooks</dd></div>
 </dl>
@@ -297,7 +302,7 @@ html,body{overflow-x:clip}
 <article class="pane before" aria-labelledby="b-h">
 <div class="pane-top"><span class="mono muted">Before</span><span class="tag muted"><span class="dot dot--o"></span>Fragmented approach</span></div>
 <h3 class="pane-h" id="b-h">Many definitions, no common thread</h3>
-<div class="viz" aria-hidden="true"><div class="frag"><span>Persona set A</span><span>Persona set B</span><span>Persona set C</span><span>Persona set D</span></div></div>
+<div class="viz" aria-hidden="true"><div class="frag"><span>Persona set A</span><span>Persona set B</span><span>Persona set C</span><span>Persona set D</span><span>Persona set E</span><span>Persona set F</span><span>Persona set G</span></div></div>
 <ul class="checks">
 <li>Disconnected persona definitions</li>
 <li>Business-unit-specific audience strategies</li>
