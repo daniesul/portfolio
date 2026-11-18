@@ -454,7 +454,6 @@ html,body{overflow-x:clip}
 </ul>
 <div class="end">
 <a class="btn" id="back-main" href="/partner-marketing-strategy"><span aria-hidden="true">←</span> Back to Partner Marketing Strategy</a>
-<a class="btn btn--ghost" id="back-alt" href="/demand-revenue-marketing#case-studies">Also in Demand &amp; Revenue Marketing</a>
 </div>
 </section>
 </main>
@@ -479,10 +478,9 @@ html,body{overflow-x:clip}
   try{
     var r=new URL(document.referrer);
     if(r.origin===location.origin&&r.pathname.indexOf('/demand-revenue-marketing')===0){
-      var c=document.getElementById('crumb-sec'),m=document.getElementById('back-main'),a=document.getElementById('back-alt');
+      var c=document.getElementById('crumb-sec'),m=document.getElementById('back-main');
       c.href='/demand-revenue-marketing#case-studies';c.textContent='Demand & Revenue Marketing';
       m.href='/demand-revenue-marketing#case-studies';m.lastChild.textContent=' Back to Demand & Revenue Marketing';
-      a.href='/partner-marketing-strategy';a.textContent='Also in Partner Marketing Strategy';
     }
   }catch(e){}
   // Gentle reveal for the journey stages; everything shows without JS or with reduced motion.
