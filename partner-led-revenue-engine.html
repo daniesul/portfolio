@@ -83,13 +83,13 @@ a{color:#111111}a:hover{color:#565656}
 .hero-grid .lede{grid-column:6 / -1;display:flex;flex-direction:column;gap:16px}
 .hm{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 32px;margin-top:56px;border-top:1.5px solid var(--ink);padding-top:22px}
 .hm-main{grid-column:1 / span 6;display:flex;flex-direction:column;gap:12px}
-.hm-main strong{font-size:clamp(88px,13vw,200px);display:flex;align-items:baseline;gap:.1em}
+.hm-main strong{font-size:clamp(64px,8vw,120px);display:flex;align-items:baseline;gap:.1em}
 .hm-main strong small{font-size:.28em;letter-spacing:-.03em;font-weight:600}
 .hm-main p{margin:0}
 .hm-side{grid-column:8 / -1;display:flex;flex-direction:column;gap:12px}
 .hm-side ul{list-style:none;margin:0;padding:0}
 .hm-side li{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:14px 0;border-top:1px solid var(--line)}
-.hm-side strong{font-size:clamp(40px,5vw,68px);flex:none}
+.hm-side strong{font-size:clamp(32px,3.6vw,52px);flex:none}
 .hm-side span{text-align:right;max-width:20ch}
 
 /* Opportunity: before / after */
@@ -172,13 +172,13 @@ a{color:#111111}a:hover{color:#565656}
 .live .mono{color:#CFCBC2}
 
 /* Results */
-.res{background:var(--ink);color:#fff;border-radius:26px;padding:40px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.res{background:var(--ink);color:#fff;border-radius:22px;padding:28px 32px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
 .res .mono{color:#CFCBC2}
-.res > div{padding:8px 24px;display:flex;flex-direction:column;gap:10px}
+.res > div{padding:6px 20px;display:flex;flex-direction:column;gap:8px}
 .res > div:first-child{padding-left:0}
 .res > div + div{border-left:1px solid #4A4A4A}
-.res strong{font-size:clamp(48px,5.6vw,88px);line-height:.9}
-.res span.l{color:#E6E3DC;font-size:16px;line-height:1.4;max-width:22ch}
+.res strong{font-size:clamp(32px,3.3vw,48px);line-height:1;white-space:nowrap}
+.res span.l{color:#E6E3DC;font-size:15px;line-height:1.4;max-width:22ch}
 .read{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;border-top:1px solid var(--line)}
 .read li{padding:14px 0;font-size:14.5px;color:var(--muted);line-height:1.5}
 .end{display:flex;flex-wrap:wrap;gap:12px;margin-top:48px}
@@ -211,8 +211,8 @@ a{color:#111111}a:hover{color:#565656}
 .jr li:not(:last-child)::after,.jr li:nth-child(3)::after{display:block;top:54px;bottom:0;left:26px;right:auto;border-top:0;border-left:1.5px solid var(--ink)}
 .jr li:not(:last-child)::before,.jr li:nth-child(3)::before{display:none}
 .node{flex:none}
-.res{padding:24px;grid-template-columns:minmax(0,1fr)}
-.res > div,.res > div:first-child{padding:20px 0;border-left:0;margin-top:0}
+.res{padding:22px;grid-template-columns:minmax(0,1fr)}
+.res > div,.res > div:first-child{padding:16px 0;border-left:0;margin-top:0}
 .res > div + div{border-top:1px solid #4A4A4A}
 .tl{grid-template-columns:minmax(0,1fr)}
 .ba-c,.dt,.hub{padding:22px}
@@ -454,7 +454,6 @@ html,body{overflow-x:clip}
 </ul>
 <div class="end">
 <a class="btn" id="back-main" href="/partner-marketing-strategy"><span aria-hidden="true">←</span> Back to Partner Marketing Strategy</a>
-<a class="btn btn--ghost" id="back-alt" href="/demand-revenue-marketing#case-studies">Also in Demand &amp; Revenue Marketing</a>
 </div>
 </section>
 </main>
@@ -479,10 +478,9 @@ html,body{overflow-x:clip}
   try{
     var r=new URL(document.referrer);
     if(r.origin===location.origin&&r.pathname.indexOf('/demand-revenue-marketing')===0){
-      var c=document.getElementById('crumb-sec'),m=document.getElementById('back-main'),a=document.getElementById('back-alt');
+      var c=document.getElementById('crumb-sec'),m=document.getElementById('back-main');
       c.href='/demand-revenue-marketing#case-studies';c.textContent='Demand & Revenue Marketing';
       m.href='/demand-revenue-marketing#case-studies';m.lastChild.textContent=' Back to Demand & Revenue Marketing';
-      a.href='/partner-marketing-strategy';a.textContent='Also in Partner Marketing Strategy';
     }
   }catch(e){}
   // Gentle reveal for the journey stages; everything shows without JS or with reduced motion.

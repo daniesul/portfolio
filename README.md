@@ -71,7 +71,7 @@ The content stays in the HTML (readable by search engines), stays open if JavaSc
 
 ## Content-type labels
 
-Cards (and the ABM approach section) carry a small muted mono line, `<p class="ctype">…</p>`, naming one of three content types: **Perspectives & Approaches** (strategic thinking, methodologies), **Frameworks & Systems** (planning models, operating frameworks, tools) or **Case Studies & Execution** (real programs with challenge, execution and outcomes). On a card, place it directly above the `.card-title`. The `.ctype` rule lives in each page's `<style>` block. There is no filtering and no extra navigation.
+Cards (and the ABM approach section) carry a small muted mono line, `<p class="ctype">…</p>`, naming a content type: **Perspectives & Approaches** (strategic thinking, methodologies) or **Frameworks & Systems** (planning models, operating frameworks, tools). Case study cards carry no content-type line (the "Case Studies & Execution" label was removed Nov 2026 because it repeated the "Case study NN" label above it). On a card, place it directly above the `.card-title`. The `.ctype` rule lives in each page's `<style>` block. There is no filtering and no extra navigation.
 
 ## Protected playbooks (Cisco case study)
 
