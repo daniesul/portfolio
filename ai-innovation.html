@@ -98,6 +98,11 @@ a{color:#111111}a:hover{color:#565656}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.card:hover{transform:none}}
 
 html,body{overflow-x:clip}
+.ctype{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--muted);margin:0}.card .ctype{margin:-6px 0 -8px}
+.kpi-row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.kpi-row li{border-top:1.5px solid var(--ink);padding-top:12px;display:flex;flex-direction:column;gap:4px}
+.kpi-row strong{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(34px,3.4vw,48px);letter-spacing:-.04em;line-height:1}
+.kpi-row span{font-size:14.5px;font-weight:500;color:var(--body)}
 .cases:empty{display:none}
 .empty-state{display:none;flex-direction:column;gap:8px;padding:36px 0 8px;border-top:1px solid var(--line)}
 .cases:empty + .empty-state{display:flex}
@@ -149,8 +154,18 @@ html,body{overflow-x:clip}
 <div class="sec-head"><h2 class="sec-h" id="cs-h">Projects &amp; experiments</h2></div>
 <!-- Add project cards inside .cases using the same <article class="card"> pattern as the other section pages
      (fields are optional: type tag, personal/professional context, description, tools, optional demo/detail link).
-     Keep .cases completely empty (no spaces or comments) until then: the "coming soon" note shows only while it is empty. -->
-<div class="cases"></div>
+     The "coming soon" note only shows while .cases is completely empty (no spaces or comments inside it). -->
+<div class="cases"><article class="card" aria-labelledby="t-lead-qualification">
+<div class="card-top"><span class="mono muted">AI project 01</span><span class="tag"><span class="dot"></span>AI-powered marketing workflow</span></div>
+<p class="ctype">Case Studies &amp; Execution</p>
+<h3 class="card-title" id="t-lead-qualification">Transforming Event Lead Qualification with AI</h3>
+<p class="overview">Built and scaled an AI-powered workflow that streamlined event lead processing and improved marketing-to-sales conversion.</p>
+<ul class="kpi-row" aria-label="Featured metrics">
+<li><strong>+71%</strong><span>conversion improvement</span></li>
+<li><strong>~113 hrs</strong><span>estimated hours saved annually</span></li>
+</ul>
+<div class="card-actions"><a class="btn" href="/ai-event-lead-qualification">Explore Case Study <span aria-hidden="true">→</span></a></div>
+</article></div>
 <div class="empty-state" role="note">
 <p class="empty-h">Projects coming soon.</p>
 <p class="empty-p">A collection of AI-powered tools, workflows, and experiments will be featured here.</p>
