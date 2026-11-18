@@ -6,7 +6,7 @@ Daniel Sullivan's marketing portfolio. Plain HTML and CSS with no build step. Ve
 
 | URL | File | What it is |
 |---|---|---|
-| `/` | `index.html` | Homepage: hero, My approach, How I lead, Explore my work, Contact |
+| `/` | `index.html` | Homepage: hero, My approach, How I lead, What I build, Contact |
 | `/trade-shows-conferences` | `trade-shows-conferences.html` | Section: Trade Shows & Conferences (cards with a slide-in drawer for each case study) |
 | `/partner-marketing-strategy` | `partner-marketing-strategy.html` | Section index: Partner Marketing Strategy |
 | `/cisco-partner-marketing-maturity` | `cisco-partner-marketing-maturity.html` | Case study: Cisco Partner Marketing Maturity Model |
@@ -33,7 +33,7 @@ Keep new pages consistent with these. Each page carries its own copy of the CSS,
 
 ## Common edits
 
-- **Add a section to the homepage:** in `index.html`, copy one `<li class="cat">…</li>` in the "Explore my work" list, update the number, title, description, featured example and link. Then add the section to the `.cats` switcher on each section page.
+- **Add a section to the homepage:** in `index.html`, copy one `<li class="cat">…</li>` in the "What I build" list, update the number, title, description, featured example and link. Then add the section to the `.cats` switcher on each section page.
 - **Add a case study to Trade Shows & Conferences:** copy one `<article class="card">…</article>` and its matching `<dialog id="dlg-…">…</dialog>`. Give both the same new id: the button uses `data-dialog="dlg-<id>"`.
 - **Add a case study to Partner Marketing Strategy or Marketing Strategy & Innovation:** add a card on the section index page and create a new case-study page by copying an existing one (for example `global-planning-framework.html`).
 - **External links** (live demos) use `target="_blank" rel="noopener"` plus a visually hidden "(opens in a new tab)" label.
@@ -54,3 +54,7 @@ The content stays in the HTML (readable by search engines), stays open if JavaSc
 - `robots.txt` allows all crawlers and points to `sitemap.xml`.
 - `danielsullivanportfolio.com` (no www) is the primary domain. `www` redirects to it in Vercel, so canonical URLs always use the bare domain.
 - Link previews (LinkedIn, Slack, email) use `assets/daniel-sullivan-portrait.jpg`.
+
+## Content-type labels
+
+Cards (and the ABM approach section) carry a small muted mono line, `<p class="ctype">…</p>`, naming one of three content types: **Perspectives & Approaches** (strategic thinking, methodologies), **Frameworks & Systems** (planning models, operating frameworks, tools) or **Case Studies & Execution** (real programs with challenge, execution and outcomes). On a card, place it directly above the `.card-title`. The `.ctype` rule lives in each page's `<style>` block. There is no filtering and no extra navigation.
