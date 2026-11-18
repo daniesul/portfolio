@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KCXLV5WGRE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KCXLV5WGRE');
+</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "zcnxaf3eut");
+</script>
+<title>Turning Stalled Pipeline Into Revenue Opportunity</title>
+<meta name="description" content="How I combined Salesforce pipeline intelligence, third-party buying intent, and persona-led marketing at Sumo Logic to re-engage 400+ stalled opportunities and advance approximately 40 to proof-of-value.">
+<link rel="canonical" href="https://danielsullivanportfolio.com/sumo-logic-pipeline-acceleration">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Daniel Sullivan">
+<meta property="og:title" content="Turning Stalled Pipeline Into Revenue Opportunity">
+<meta property="og:description" content="How I combined Salesforce pipeline intelligence, third-party buying intent, and persona-led marketing at Sumo Logic to re-engage 400+ stalled opportunities and advance approximately 40 to proof-of-value.">
+<meta property="og:url" content="https://danielsullivanportfolio.com/sumo-logic-pipeline-acceleration">
+<meta property="og:image" content="https://danielsullivanportfolio.com/assets/daniel-sullivan-portrait.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1066">
+<meta property="og:image:alt" content="Portrait of Daniel Sullivan">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+:root{--ground:#F4F3EF;--paper:#FFFFFF;--ink:#111111;--body:#2B2B2B;--muted:#565656;--line:#D6D3CB;--dash:#7E7A72;--focus:#1F4FD8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:#111111}a:hover{color:#565656}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--ink);color:#fff;padding:12px 16px;border-radius:8px;z-index:100;text-decoration:none}
+.skip:focus{top:12px;color:#fff}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.muted{color:var(--muted)}
+.site{position:sticky;top:0;z-index:30;background:rgba(244,243,239,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.site-in{display:flex;align-items:center;justify-content:space-between;gap:8px 16px;min-height:68px;flex-wrap:wrap}
+.brand{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.nav{display:flex;flex-wrap:wrap;gap:28px;list-style:none;margin:0;padding:0}
+.nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:15px;font-weight:500;color:var(--ink);border-bottom:2px solid transparent}
+.nav a:hover,.nav a[aria-current="page"]{border-bottom-color:var(--ink);color:var(--ink)}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px 10px;list-style:none;margin:0 0 32px;padding:0;font-size:14px;color:var(--muted)}
+.crumbs li{display:flex;align-items:center}
+.crumbs li+li::before{content:"/";margin-right:10px;color:var(--dash)}
+.crumbs a{color:var(--ink);text-underline-offset:3px;display:inline-block;padding:10px 0}
+.eyebrow{margin:0 0 20px}
+.display{font-family:'Inter Tight',sans-serif;font-weight:700;letter-spacing:-.04em;line-height:.94;margin:0}
+.lede{font-size:clamp(18px,1.5vw,20px);line-height:1.6;color:var(--body);margin:0;max-width:62ch}
+.intro{padding-top:40px}
+.sec{padding-top:104px}
+.sec-head{border-top:1.5px solid var(--ink);padding-top:18px;margin-bottom:36px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:start}
+.sec-head .lbl{grid-column:1 / span 5;display:flex;flex-direction:column;gap:14px}
+.sec-head .copy{grid-column:7 / -1;display:flex;flex-direction:column;gap:16px}
+.sec-head .copy p{margin:0;color:var(--body);max-width:62ch}
+.sec-h{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.025em;line-height:1.02;margin:0}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 22px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:#fff;font:600 15px 'Inter',sans-serif;text-decoration:none;transition:background .2s ease,color .2s ease}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.foot{margin-top:104px;border-top:1.5px solid var(--ink)}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:22px;padding-bottom:22px}
+
+/* Hero */
+.hero-h{font-size:clamp(40px,6vw,92px);max-width:16ch}
+.hero-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;margin-top:40px}
+.hero-grid .lede{grid-column:6 / -1}
+.hm{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1.5px solid var(--ink)}
+.hm li{padding:22px 28px 8px;display:flex;flex-direction:column;gap:12px}
+.hm li:first-child{padding-left:0}
+.hm li + li{border-left:1px solid var(--line)}
+.hm strong{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(56px,7.4vw,112px);letter-spacing:-.045em;line-height:.9;display:flex;align-items:baseline;gap:.12em}
+.hm strong small{font-size:.38em;letter-spacing:-.02em;font-weight:600}
+.hm span{color:var(--muted)}
+
+/* At a glance (dark band, same family as the planning-framework flow) */
+.flow{background:var(--ink);color:#fff;border-radius:26px;padding:40px}
+.flow .mono{color:#CFCBC2}
+.flow-h{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(26px,2.8vw,40px);letter-spacing:-.025em;line-height:1;margin:10px 0 28px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:s}
+.steps li{position:relative;border:1px solid #4A4A4A;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.steps li::before{counter-increment:s;content:"0" counter(s);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:#CFCBC2;font-weight:500}
+.steps li + li::after{content:"";position:absolute;left:-13px;top:50%;width:12px;height:1.5px;background:#fff}
+.steps b{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:19px;line-height:1.15}
+.steps p{margin:0;font-size:15px;line-height:1.5;color:#E6E3DC}
+.glance{padding-top:64px}
+
+/* Challenge: pipeline progression */
+.pp{margin:0}
+.pp-cap{margin:0 0 16px}
+.pp-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px}
+.pp-s{position:relative;border:1px solid var(--line);background:var(--paper);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px;min-height:132px}
+.pp-s b{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(21px,1.9vw,26px);letter-spacing:-.02em;line-height:1.1}
+.pp-s small{font-size:14px;color:var(--muted);line-height:1.4}
+.pp-s + .pp-s::before{content:"→";position:absolute;left:-26px;top:50%;transform:translateY(-50%);font-family:'Inter Tight',sans-serif;font-size:20px;line-height:1;color:var(--ink)}
+.pp-s.is-stalled{background:transparent;border:1.5px dashed var(--ink)}
+.pp-bench{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line);align-items:start}
+.pp-bench .call{grid-column:1 / span 6;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.pp-bench .call strong{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(44px,5vw,72px);letter-spacing:-.045em;line-height:.9}
+.pp-bench .note{grid-column:7 / -1;margin:0;color:var(--muted);font-size:15px;max-width:58ch}
+
+/* Strategy: two intelligence sources -> prioritization */
+.intel-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.ic{background:var(--paper);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.ic h3{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(21px,1.8vw,25px);letter-spacing:-.015em;line-height:1.15;margin:0}
+.ic ul{list-style:none;margin:0;padding:0}
+.ic li{padding:11px 0;border-top:1px solid var(--line);font-weight:500;font-size:15.5px}
+.intel-join{position:relative;height:60px}
+.intel-join::before{content:"";position:absolute;left:25%;right:25%;top:0;height:30px;border:1.5px solid var(--ink);border-top:0}
+.intel-join::after{content:"";position:absolute;left:50%;top:30px;height:30px;border-left:1.5px solid var(--ink)}
+.intel-join span{position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-family:'Inter Tight',sans-serif;font-size:18px;line-height:1;background:var(--ground);padding:0 4px}
+.intel-out{background:var(--ink);color:#fff;border-radius:20px;padding:28px 30px;display:flex;justify-content:space-between;align-items:center;gap:12px 32px;flex-wrap:wrap}
+.intel-out h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,2.6vw,36px);letter-spacing:-.025em;line-height:1.05;margin:0}
+.intel-out .mono{color:#CFCBC2}
+.narr{margin:32px 0 0;max-width:70ch;color:var(--body)}
+.narr + .narr{margin-top:14px}
+.fine{margin:14px 0 0;color:var(--muted);font-size:15px;max-width:70ch}
+
+/* Activation: 2x2 plays */
+.act{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.act li{background:var(--paper);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:14px}
+.viz{position:relative;background:var(--ground);border-radius:12px;padding:14px 16px 12px;color:var(--ink)}
+.viz svg{display:block;width:100%;height:auto;max-height:118px}
+.viz .ill{position:absolute;top:10px;right:12px;font-size:10.5px;color:var(--muted)}
+.act .n{color:var(--muted)}
+.act h3{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(21px,1.8vw,25px);letter-spacing:-.015em;line-height:1.15;margin:0}
+.act p{margin:0;font-size:15.5px;color:var(--body);line-height:1.55}
+.obj-join{position:relative;height:40px}
+.obj-join::before{content:"";position:absolute;left:50%;top:0;height:40px;border-left:1.5px solid var(--ink)}
+.obj-join span{position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-family:'Inter Tight',sans-serif;font-size:18px;line-height:1;background:var(--ground);padding:0 4px}
+.obj{background:var(--ink);color:#fff;border-radius:20px;padding:28px 30px;display:flex;flex-direction:column;gap:10px}
+.obj .mono{color:#CFCBC2}
+.obj b{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,2.8vw,40px);letter-spacing:-.025em;line-height:1.05}
+
+/* Results */
+.res{background:var(--ink);color:#fff;border-radius:26px;padding:40px}
+.res .mono{color:#CFCBC2}
+.res ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.res li{padding:8px 28px;display:flex;flex-direction:column;gap:12px}
+.res li:first-child{padding-left:0}
+.res li + li{border-left:1px solid #4A4A4A}
+.res strong{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(56px,7vw,104px);letter-spacing:-.045em;line-height:.9}
+.res span{color:#E6E3DC;font-size:16px;line-height:1.4;max-width:24ch}
+.read{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 32px;border-top:1px solid var(--line)}
+.read li{padding:14px 0;font-size:14.5px;color:var(--muted);line-height:1.5}
+.end{display:flex;flex-wrap:wrap;gap:12px;margin-top:48px}
+
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.steps li + li::after{display:none}.pp-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}.pp-s:nth-child(3)::before{display:none}}
+@media (max-width:900px){
+.wrap{padding:0 24px}
+.hero-grid .lede,.sec-head .lbl,.sec-head .copy,.pp-bench .call,.pp-bench .note{grid-column:1 / -1}
+.sec-head,.pp-bench{gap:16px}
+.hm{grid-template-columns:minmax(0,1fr);border-top:0}
+.hm li,.hm li:first-child{padding:20px 0 8px;border-top:1.5px solid var(--ink)}
+.hm li + li{border-left:0;border-top:1px solid var(--line)}
+.intel-cards,.act{grid-template-columns:minmax(0,1fr)}
+.intel-join::before{display:none}
+.intel-join{height:44px}.intel-join::after{top:0;height:44px}
+.res ul{grid-template-columns:minmax(0,1fr)}
+.res li,.res li:first-child{padding:20px 0}
+.res li + li{border-left:0;border-top:1px solid #4A4A4A}
+.read{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+.wrap{padding:0 16px}
+.sec{padding-top:72px}
+.glance{padding-top:48px}
+.nav{gap:4px 14px}.nav a{font-size:14px}
+.flow,.res{padding:24px}
+.steps{grid-template-columns:minmax(0,1fr)}
+.steps li + li::after{display:block;left:50%;top:-13px;width:1.5px;height:12px}
+.pp-steps{grid-template-columns:minmax(0,1fr);gap:30px}
+.pp-s{min-height:0}
+.pp-s + .pp-s::before,.pp-s:nth-child(3)::before{display:block;content:"↓";left:24px;top:-27px;transform:none}
+.ic,.act li{padding:22px}
+.intel-out,.obj{padding:24px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
+html,body{overflow-x:clip}
+</style>
+</head>
+<body>
+<div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+<div class="wrap site-in">
+<a class="brand" href="/" aria-label="Daniel Sullivan — home">Daniel Sullivan</a>
+<nav aria-label="Primary">
+<ul class="nav">
+<li><a href="/">Home</a></li>
+<li><a href="/#approach">Approach</a></li>
+<li><a href="/#leadership">Leadership</a></li>
+<li><a href="/#work" aria-current="page">Work</a></li>
+<li><a href="/#contact">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main id="main" tabindex="-1">
+<section class="wrap intro" aria-labelledby="page-title">
+<nav aria-label="Breadcrumb">
+<ol class="crumbs">
+<li><a href="/#work">Portfolio</a></li>
+<li><a href="/demand-revenue-marketing">Demand &amp; Revenue Marketing</a></li>
+<li><span aria-current="page">Turning Stalled Pipeline Into Revenue Opportunity</span></li>
+</ol>
+</nav>
+<p class="mono eyebrow muted">Sumo Logic | Pipeline Acceleration &amp; Intent-Based Marketing</p>
+<h1 class="display hero-h" id="page-title">Turning Stalled Pipeline Into Revenue Opportunity</h1>
+<div class="hero-grid">
+<p class="lede">I led an intent-informed pipeline acceleration initiative that combined Salesforce opportunity intelligence, third-party buying signals, and persona-specific marketing to reignite engagement and move stalled opportunities toward proof-of-value (POV).</p>
+</div>
+<ul class="hm" aria-label="Key figures">
+<li><strong>400+</strong><span class="mono">Stalled Opportunities Identified</span></li>
+<li><strong>90+<small>Days</small></strong><span class="mono">In the Same Sales Stage</span></li>
+<li><strong>40</strong><span class="mono">Opportunities Advanced to POV</span></li>
+</ul>
+</section>
+
+<section class="wrap glance" aria-labelledby="glance-h">
+<div class="flow">
+<p class="mono">The initiative at a glance</p>
+<h2 class="flow-h" id="glance-h">How the initiative worked</h2>
+<ol class="steps">
+<li><b>CRM Intelligence + Third-Party Intent</b><p>Salesforce opportunity data and account-level buying signals.</p></li>
+<li><b>Prioritized Opportunities</b><p>Buying stage, persona, use case, and intent.</p></li>
+<li><b>Persona-Led Activation</b><p>Email, LinkedIn, executive and peer engagement, and Sales-aligned field activation.</p></li>
+<li><b>POV Progression</b><p>Stalled opportunities re-engaged and moved toward proof-of-value.</p></li>
+</ol>
+</div>
+</section>
+
+<section class="wrap sec" aria-labelledby="ch-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">01</span><h2 class="sec-h" id="ch-h">The Challenge: Pipeline Without Progression</h2></div>
+<div class="copy">
+<p>More than 400 opportunities had remained in the same sales stage for <strong>90+ days</strong>, particularly between demo and proof-of-value (POV).</p>
+<p>With opportunities reaching POV historically achieving an <strong>80%+ close rate</strong>, advancing qualified stalled deals into this stage represented a significant revenue opportunity.</p>
+<p>The challenge wasn’t generating more leads. It was identifying where buying interest remained active and deploying targeted engagement to help opportunities move forward.</p>
+</div>
+</div>
+<figure class="pp" aria-labelledby="pp-cap">
+<figcaption class="mono muted pp-cap" id="pp-cap">Pipeline progression</figcaption>
+<ol class="pp-steps">
+<li class="pp-s"><span class="mono muted">01</span><b>Demo</b></li>
+<li class="pp-s is-stalled"><span class="mono">02 · Stalled</span><b>Stalled 90+ Days</b><small>In the same sales stage</small></li>
+<li class="pp-s"><span class="mono muted">03</span><b>Proof-of-Value</b></li>
+<li class="pp-s"><span class="mono muted">04</span><b>Closed Won</b></li>
+</ol>
+<div class="pp-bench">
+<div class="call"><strong>80%+</strong><span class="mono muted">Historical Close Rate After Reaching POV</span></div>
+<p class="note">A historical benchmark for opportunities that reach POV, not a result of this initiative. “90+ days” is the time an opportunity stayed in its current sales stage, not the age of the deal or an absence of Sales engagement.</p>
+</div>
+</figure>
+</section>
+
+<section class="wrap sec" aria-labelledby="st-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">02</span><h2 class="sec-h" id="st-h">Combining Pipeline Intelligence With Buying Intent</h2></div>
+<div class="copy">
+<p>I partnered with regional Sales leaders to identify and prioritize stalled opportunities, combining Salesforce opportunity data with third-party digital intent signals to understand which accounts continued to demonstrate active buying interest.</p>
+<p>This gave us a more informed way to prioritize re-engagement and tailor marketing interventions around each opportunity’s buying context.</p>
+</div>
+</div>
+<div class="intel-cards">
+<article class="ic" aria-labelledby="ic1">
+<span class="mono muted">Source 01</span>
+<h3 id="ic1">Salesforce Pipeline Intelligence</h3>
+<ul>
+<li>90+ days in the current sales stage</li>
+<li>Opportunity value and stage</li>
+<li>Sales engagement history</li>
+<li>Account and opportunity context</li>
+</ul>
+</article>
+<article class="ic" aria-labelledby="ic2">
+<span class="mono muted">Source 02</span>
+<h3 id="ic2">Third-Party Intent Intelligence</h3>
+<ul>
+<li>Continued solution research</li>
+<li>Relevant use-case interests</li>
+<li>Competitor research activity</li>
+<li>Broader account-level buying signals</li>
+</ul>
+</article>
+</div>
+<div class="intel-join" aria-hidden="true"><span>↓</span></div>
+<div class="intel-out">
+<h3>Prioritized Opportunity Re-engagement</h3>
+<p class="mono">Buying Stage + Persona + Use Case + Intent</p>
+</div>
+<p class="narr">This initiative went beyond identifying aging opportunities in Salesforce. We combined pipeline intelligence with digital buying behavior to better understand where interest remained active and how to engage buyers with more relevant messaging and experiences.</p>
+<p class="fine">Third-party intent represents account-level buying indicators, not the actions of specific individuals.</p>
+</section>
+
+<section class="wrap sec" aria-labelledby="ac-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">03</span><h2 class="sec-h" id="ac-h">Persona-Led, Multichannel Re-engagement</h2></div>
+<div class="copy">
+<p>We translated pipeline and intent insights into coordinated marketing plays tailored to each opportunity’s buying stage, identified use case, and key stakeholders.</p>
+</div>
+</div>
+<ul class="act">
+<li>
+<div class="viz"><span class="mono ill">Illustrative</span>
+<svg viewBox="0 0 280 90" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M38 45H84M112 45H158M186 45H232" stroke-dasharray="3 4"/><g fill="#fff"><rect x="10" y="35" width="28" height="20" rx="3"/><rect x="84" y="35" width="28" height="20" rx="3"/><rect x="158" y="35" width="28" height="20" rx="3"/><rect x="232" y="35" width="28" height="20" rx="3"/></g><path d="M10 38l14 10 14-10M84 38l14 10 14-10M158 38l14 10 14-10M232 38l14 10 14-10"/></svg></div>
+<span class="mono n">Play 01</span>
+<h3>Persona-Specific Email Nurture</h3>
+<p>Developed dedicated email nurture journeys with tailored messaging and relevant content to address buying barriers, reinforce solution value, and encourage renewed engagement.</p>
+</li>
+<li>
+<div class="viz"><span class="mono ill">Illustrative</span>
+<svg viewBox="0 0 280 110" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><rect x="4" y="4" width="272" height="102" rx="8" fill="#fff" stroke="#D6D3CB"/><circle cx="26" cy="26" r="10"/><path d="M46 22h104M46 32h66" stroke="#D6D3CB" stroke-width="4" stroke-linecap="round"/><rect x="16" y="50" width="96" height="46" rx="4" fill="#F4F3EF" stroke="none"/><rect x="126" y="52" width="66" height="20" rx="10"/><rect x="198" y="52" width="66" height="20" rx="10"/><g font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing=".6" fill="currentColor" stroke="none"><text x="134" y="66">PERSONA</text><text x="204" y="66">USE CASE</text></g><rect x="126" y="80" width="138" height="16" rx="8" fill="currentColor" stroke="none"/></svg></div>
+<span class="mono n">Play 02</span>
+<h3>Targeted LinkedIn Advertising</h3>
+<p>Activated account- and persona-targeted LinkedIn campaigns, aligning messaging and creative to buying roles, identified use cases, solution interests, and relevant competitive signals.</p>
+</li>
+<li>
+<div class="viz"><span class="mono ill">Illustrative</span>
+<svg viewBox="0 0 280 110" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><ellipse cx="140" cy="56" rx="40" ry="20" fill="#fff"/><g fill="#fff"><circle cx="140" cy="16" r="9"/><circle cx="196" cy="30" r="9"/><circle cx="196" cy="82" r="9"/><circle cx="140" cy="96" r="9"/><circle cx="84" cy="82" r="9"/><circle cx="84" cy="30" r="9"/></g></svg></div>
+<span class="mono n">Play 03</span>
+<h3>Executive &amp; Peer Engagement</h3>
+<p>Leveraged executive dinners, customer advocacy, and peer-to-peer conversations to build confidence, address concerns, and reconnect decision makers with Sales.</p>
+</li>
+<li>
+<div class="viz"><span class="mono ill">Illustrative</span>
+<svg viewBox="0 0 280 110" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><rect x="10" y="18" width="88" height="30" rx="15" fill="#fff"/><rect x="10" y="62" width="88" height="30" rx="15" fill="#fff"/><rect x="190" y="38" width="80" height="34" rx="8" fill="#111" stroke="#111"/><path d="M98 33L184 52M98 77L184 58"/><path d="M178 48l7 4-8 3M178 62l7-4-8-3" fill="none"/><g font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing=".6" stroke="none"><text x="26" y="37" fill="currentColor">SALES</text><text x="20" y="81" fill="currentColor">MARKETING</text><text x="206" y="59" fill="#fff">ACCOUNT</text></g></svg></div>
+<span class="mono n">Play 04</span>
+<h3>Sales-Aligned Field Activation</h3>
+<p>Coordinated account-specific outreach and regional field marketing programs with Sales owners to create relevant engagement opportunities and support movement toward POV.</p>
+</li>
+</ul>
+<div class="obj-join" aria-hidden="true"><span>↓</span></div>
+<div class="obj">
+<span class="mono">The common objective</span>
+<b>Reignite Buyer Engagement → Advance to POV</b>
+</div>
+<p class="narr">These were not four disconnected marketing tactics. They formed a coordinated, account-level re-engagement strategy informed by what Sales knew about each opportunity and what digital buying behavior suggested about ongoing interest.</p>
+</section>
+
+<section class="wrap sec" aria-labelledby="rs-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">04</span><h2 class="sec-h" id="rs-h">Turning Re-engagement Into Pipeline Progression</h2></div>
+<div class="copy">
+<p>The initiative helped move approximately 40 previously stalled opportunities into proof-of-value, representing approximately $4M in associated pipeline.</p>
+<p>By combining pipeline intelligence, third-party intent, personalized digital engagement, and Sales-aligned activation, we established a more targeted approach to opportunity acceleration.</p>
+</div>
+</div>
+<div class="res">
+<ul aria-label="Results">
+<li><strong>40</strong><span>Stalled Opportunities Advanced to POV</span></li>
+<li><strong>~$4M</strong><span>Associated Opportunity Pipeline</span></li>
+<li><strong>~10%</strong><span>Of Identified Stalled Opportunities Advanced</span></li>
+</ul>
+</div>
+<ul class="read" aria-label="How to read these figures">
+<li>Advanced to POV means progression to proof-of-value, not closed-won.</li>
+<li>Associated pipeline is opportunity value, not realized revenue.</li>
+<li>~10% is approximate, measured against the 400+ opportunities identified.</li>
+</ul>
+<div class="end"><a class="btn" href="/demand-revenue-marketing#case-studies"><span aria-hidden="true">←</span> Back to Demand &amp; Revenue Marketing</a></div>
+</section>
+</main>
+
+<footer class="foot wrap" id="about">
+<div class="foot-in">
+<span class="brand">Daniel Sullivan</span>
+<nav aria-label="Footer">
+<ul class="nav">
+<li><a href="/">Home</a></li>
+<li><a href="mailto:contact@danielsullivanportfolio.com">Email</a></li>
+<li><a href="https://www.linkedin.com/in/daniel---sullivan/" target="_blank" rel="noopener">LinkedIn<span class="vh"> (opens in a new tab)</span></a></li>
+</ul>
+</nav>
+</div>
+</footer>
+</div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KCXLV5WGRE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KCXLV5WGRE');
+</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "zcnxaf3eut");
+</script>
+<title>Building a Partner-Led Revenue Engine From the Ground Up</title>
+<meta name="description" content="How I identified an untapped partner revenue opportunity at Sumo Logic and built a partner trial program from concept to launch in 30 days. The program later scaled to 100+ partners and 5,000+ product trials.">
+<link rel="canonical" href="https://danielsullivanportfolio.com/partner-led-revenue-engine">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Daniel Sullivan">
+<meta property="og:title" content="Building a Partner-Led Revenue Engine From the Ground Up">
+<meta property="og:description" content="How I identified an untapped partner revenue opportunity at Sumo Logic and built a partner trial program from concept to launch in 30 days. The program later scaled to 100+ partners and 5,000+ product trials.">
+<meta property="og:url" content="https://danielsullivanportfolio.com/partner-led-revenue-engine">
+<meta property="og:image" content="https://danielsullivanportfolio.com/assets/daniel-sullivan-portrait.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1066">
+<meta property="og:image:alt" content="Portrait of Daniel Sullivan">
+<meta name="twitter:card" content="summary_large_image">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+:root{--ground:#F4F3EF;--paper:#FFFFFF;--ink:#111111;--body:#2B2B2B;--muted:#565656;--line:#D6D3CB;--dash:#7E7A72;--focus:#1F4FD8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:#111111}a:hover{color:#565656}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--ink);color:#fff;padding:12px 16px;border-radius:8px;z-index:100;text-decoration:none}
+.skip:focus{top:12px;color:#fff}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.muted{color:var(--muted)}
+.site{position:sticky;top:0;z-index:30;background:rgba(244,243,239,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.site-in{display:flex;align-items:center;justify-content:space-between;gap:8px 16px;min-height:68px;flex-wrap:wrap}
+.brand{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.nav{display:flex;flex-wrap:wrap;gap:28px;list-style:none;margin:0;padding:0}
+.nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:15px;font-weight:500;color:var(--ink);border-bottom:2px solid transparent}
+.nav a:hover,.nav a[aria-current="page"]{border-bottom-color:var(--ink);color:var(--ink)}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px 10px;list-style:none;margin:0 0 32px;padding:0;font-size:14px;color:var(--muted)}
+.crumbs li{display:flex;align-items:center}
+.crumbs li+li::before{content:"/";margin-right:10px;color:var(--dash)}
+.crumbs a{color:var(--ink);text-underline-offset:3px;display:inline-block;padding:10px 0}
+.eyebrow{margin:0 0 20px}
+.display{font-family:'Inter Tight',sans-serif;font-weight:700;letter-spacing:-.04em;line-height:.94;margin:0}
+.lede{font-size:clamp(18px,1.5vw,20px);line-height:1.6;color:var(--body);margin:0;max-width:62ch}
+.intro{padding-top:40px}
+.sec{padding-top:104px}
+.sec-head{border-top:1.5px solid var(--ink);padding-top:18px;margin-bottom:36px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:start}
+.sec-head .lbl{grid-column:1 / span 5;display:flex;flex-direction:column;gap:14px}
+.sec-head .copy{grid-column:7 / -1;display:flex;flex-direction:column;gap:16px}
+.sec-head .copy p{margin:0;color:var(--body);max-width:62ch}
+.sec-h{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.025em;line-height:1.02;margin:0}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 22px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:#fff;font:600 15px 'Inter',sans-serif;text-decoration:none;transition:background .2s ease,color .2s ease}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:#fff}
+.foot{margin-top:104px;border-top:1.5px solid var(--ink)}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:22px;padding-bottom:22px}
+.fine{margin:14px 0 0;color:var(--muted);font-size:15px;max-width:72ch}
+.disp{font-family:'Inter Tight',sans-serif;font-weight:700;letter-spacing:-.045em;line-height:.9}
+
+/* Hero */
+.hero-h{font-size:clamp(40px,6vw,92px);max-width:18ch}
+.hero-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;margin-top:40px}
+.hero-grid .lede{grid-column:6 / -1;display:flex;flex-direction:column;gap:16px}
+.hm{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 32px;margin-top:56px;border-top:1.5px solid var(--ink);padding-top:22px}
+.hm-main{grid-column:1 / span 6;display:flex;flex-direction:column;gap:12px}
+.hm-main strong{font-size:clamp(88px,13vw,200px);display:flex;align-items:baseline;gap:.1em}
+.hm-main strong small{font-size:.28em;letter-spacing:-.03em;font-weight:600}
+.hm-main p{margin:0}
+.hm-side{grid-column:8 / -1;display:flex;flex-direction:column;gap:12px}
+.hm-side ul{list-style:none;margin:0;padding:0}
+.hm-side li{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:14px 0;border-top:1px solid var(--line)}
+.hm-side strong{font-size:clamp(40px,5vw,68px);flex:none}
+.hm-side span{text-align:right;max-width:20ch}
+
+/* Opportunity: before / after */
+.ba{display:grid;grid-template-columns:minmax(0,1fr) 120px minmax(0,1fr);align-items:stretch}
+.ba-c{border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;background:var(--paper)}
+.ba-c h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(22px,2vw,28px);letter-spacing:-.02em;line-height:1.1;margin:0}
+.ba-c ul{list-style:none;margin:0;padding:0}
+.ba-c li{padding:11px 0;border-top:1px solid var(--line);font-weight:500;font-size:15.5px}
+.ba-new{background:var(--ink);color:#fff}
+.ba-new .mono{color:#CFCBC2}
+.ba-new li{border-top-color:#4A4A4A}
+.ba-x{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:0 10px}
+.ba-x .mono{font-size:10.5px;color:var(--muted);line-height:1.3}
+.ba-x i{font-style:normal;font-family:'Inter Tight',sans-serif;font-size:30px;line-height:1}
+
+/* Leadership: hub and workstreams */
+.orch{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:16px;align-items:center}
+.hub{position:relative;background:var(--ink);color:#fff;border-radius:22px;padding:32px;display:flex;flex-direction:column;gap:12px}
+.hub .mono{color:#CFCBC2}
+.hub h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(26px,2.6vw,38px);letter-spacing:-.03em;line-height:1.02;margin:0}
+.hub p{margin:0;color:#E6E3DC;font-size:15.5px}
+.hub::after{content:"";position:absolute;top:50%;right:-30px;width:30px;border-top:1.5px solid var(--ink)}
+.ws{list-style:none;margin:0;padding:0}
+.ws li{position:relative;padding:0 0 12px 44px}
+.ws li:last-child{padding-bottom:0}
+.ws li::before{content:"";position:absolute;left:14px;top:30px;width:30px;border-top:1.5px solid var(--ink)}
+.ws li::after{content:"";position:absolute;left:14px;top:0;bottom:0;border-left:1.5px solid var(--ink)}
+.ws li:first-child::after{top:30px}
+.ws li:last-child::after{bottom:auto;height:31px}
+.w{background:var(--paper);border-radius:18px;padding:20px 22px;display:flex;flex-direction:column;gap:6px}
+.w h4{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(19px,1.7vw,22px);letter-spacing:-.015em;line-height:1.15;margin:0}
+.w p{margin:0;font-size:15.5px;color:var(--body)}
+.strip-h{margin:56px 0 18px}
+.strip{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0 20px}
+.strip li{border-top:1.5px solid var(--ink);padding-top:14px;display:flex;flex-direction:column;gap:8px}
+.strip .top{display:flex;justify-content:space-between;align-items:baseline}
+.strip b{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(22px,2vw,28px);letter-spacing:-.025em;line-height:1}
+.strip p{margin:0;font-size:14.5px;line-height:1.5;color:var(--body)}
+
+/* What we built: journey */
+.jr{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 12px}
+.jr li{position:relative;display:flex;flex-direction:column;gap:12px;padding-right:12px}
+.jr li:not(:last-child)::after{content:"";position:absolute;top:27px;left:64px;right:-6px;border-top:1.5px solid var(--ink)}
+.jr li:not(:last-child)::before{content:"";position:absolute;top:22px;right:-6px;width:7px;height:7px;border-top:1.5px solid var(--ink);border-right:1.5px solid var(--ink);transform:rotate(45deg)}
+.node{width:54px;height:54px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+.node svg{width:24px;height:24px;fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.jr li:nth-child(4) .node{background:var(--ink)}
+.jr li:nth-child(4) .node svg{stroke:#fff}
+.jr b{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(19px,1.7vw,23px);letter-spacing:-.02em;line-height:1.1}
+.stg{list-style:none;margin:56px 0 0;padding:0}
+.stg > li{border-top:1px solid var(--line);padding:30px 0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:start}
+.stg .l{grid-column:1 / span 5;display:flex;flex-direction:column;gap:10px}
+.stg .r{grid-column:7 / -1;display:flex;flex-direction:column;gap:12px}
+.stg h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,2.4vw,34px);letter-spacing:-.025em;line-height:1.05;margin:0}
+.stg p{margin:0;color:var(--body);max-width:60ch}
+.stg ul{margin:0;padding:0;list-style:none;max-width:60ch}
+.stg ul li{padding:9px 0;border-top:1px solid var(--line);font-weight:500;font-size:15.5px}
+.stg .tagline{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:19px;letter-spacing:-.01em;color:var(--ink)}
+.rv{transition:opacity .6s ease,transform .6s ease}
+.js .rv:not(.in){opacity:0;transform:translateY(10px)}
+
+/* AI: data to action */
+.dta{display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr) 56px minmax(0,1fr);align-items:stretch}
+.dt{border-radius:20px;padding:26px;background:var(--paper);display:flex;flex-direction:column;gap:10px}
+.dt h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(21px,1.9vw,26px);letter-spacing:-.02em;line-height:1.1;margin:0}
+.dt p{margin:0;font-size:15.5px;color:var(--body)}
+.dt.mid{background:var(--ink);color:#fff}
+.dt.mid .mono{color:#CFCBC2}
+.dt.mid p{color:#E6E3DC}
+.dta-x{display:flex;align-items:center;justify-content:center;font-family:'Inter Tight',sans-serif;font-size:28px}
+
+/* Speed: timeline of workstreams */
+.tl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 20px;position:relative}
+.tl li{position:relative;border-top:1.5px solid var(--ink);padding-top:22px;display:flex;flex-direction:column;gap:8px}
+.tl li::before{content:"";position:absolute;left:0;top:-6px;width:11px;height:11px;border-radius:50%;background:var(--ink)}
+.tl b{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(20px,1.9vw,26px);letter-spacing:-.02em;line-height:1.1}
+.tl p{margin:0;font-size:15.5px;color:var(--body)}
+.live{margin-top:28px;background:var(--ink);color:#fff;border-radius:20px;padding:26px 30px;display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap}
+.live b{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,36px);letter-spacing:-.025em;line-height:1.05}
+.live .mono{color:#CFCBC2}
+
+/* Results */
+.res{background:var(--ink);color:#fff;border-radius:26px;padding:40px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.res .mono{color:#CFCBC2}
+.res > div{padding:8px 24px;display:flex;flex-direction:column;gap:10px}
+.res > div:first-child{padding-left:0}
+.res > div + div{border-left:1px solid #4A4A4A}
+.res strong{font-size:clamp(48px,5.6vw,88px);line-height:.9}
+.res span.l{color:#E6E3DC;font-size:16px;line-height:1.4;max-width:22ch}
+.read{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;border-top:1px solid var(--line)}
+.read li{padding:14px 0;font-size:14.5px;color:var(--muted);line-height:1.5}
+.end{display:flex;flex-wrap:wrap;gap:12px;margin-top:48px}
+
+@media (max-width:1100px){.strip{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}.jr{grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 12px}.jr li:nth-child(3)::after,.jr li:nth-child(3)::before{display:none}.res{grid-template-columns:repeat(2,minmax(0,1fr))}.res > div:nth-child(3){padding-left:0;border-left:0}.res > div:nth-child(n+3){border-top:1px solid #4A4A4A;margin-top:16px;padding-top:24px}.tl{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 20px}}
+@media (max-width:900px){
+.wrap{padding:0 24px}
+.hero-grid .lede,.sec-head .lbl,.sec-head .copy,.stg .l,.stg .r{grid-column:1 / -1}
+.sec-head,.stg > li{gap:16px}
+.hm-main,.hm-side{grid-column:1 / -1}
+.hm{row-gap:32px}
+.hm-side span{max-width:none}
+.ba{grid-template-columns:minmax(0,1fr)}
+.ba-x{flex-direction:row;padding:14px 0;gap:12px}
+.ba-x i{transform:rotate(90deg)}
+.orch{grid-template-columns:minmax(0,1fr);gap:24px;align-items:stretch}
+.hub::after{top:100%;right:auto;left:14px;width:0;height:24px;border-top:0;border-left:1.5px solid var(--ink)}
+.dta{grid-template-columns:minmax(0,1fr)}
+.dta-x{padding:10px 0;transform:rotate(90deg);height:48px}
+.read{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+.wrap{padding:0 16px}
+.sec{padding-top:72px}
+.nav{gap:4px 14px}.nav a{font-size:14px}
+.strip{grid-template-columns:minmax(0,1fr);gap:24px}
+.jr{grid-template-columns:minmax(0,1fr);gap:0}
+.jr li{flex-direction:row;align-items:center;gap:16px;padding:0 0 28px 0}
+.jr li:last-child{padding-bottom:0}
+.jr li:not(:last-child)::after,.jr li:nth-child(3)::after{display:block;top:54px;bottom:0;left:26px;right:auto;border-top:0;border-left:1.5px solid var(--ink)}
+.jr li:not(:last-child)::before,.jr li:nth-child(3)::before{display:none}
+.node{flex:none}
+.res{padding:24px;grid-template-columns:minmax(0,1fr)}
+.res > div,.res > div:first-child{padding:20px 0;border-left:0;margin-top:0}
+.res > div + div{border-top:1px solid #4A4A4A}
+.tl{grid-template-columns:minmax(0,1fr)}
+.ba-c,.dt,.hub{padding:22px}
+.live{padding:22px}
+.hm-side li{flex-wrap:wrap;gap:6px 16px}
+.hm-side span{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.js .rv:not(.in){opacity:1;transform:none}}
+html,body{overflow-x:clip}
+</style>
+</head>
+<body>
+<div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+<div class="wrap site-in">
+<a class="brand" href="/" aria-label="Daniel Sullivan — home">Daniel Sullivan</a>
+<nav aria-label="Primary">
+<ul class="nav">
+<li><a href="/">Home</a></li>
+<li><a href="/#approach">Approach</a></li>
+<li><a href="/#leadership">Leadership</a></li>
+<li><a href="/#work" aria-current="page">Work</a></li>
+<li><a href="/#contact">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main id="main" tabindex="-1">
+<section class="wrap intro" aria-labelledby="page-title">
+<nav aria-label="Breadcrumb">
+<ol class="crumbs">
+<li><a href="/#work">Portfolio</a></li>
+<li><a id="crumb-sec" href="/partner-marketing-strategy">Partner Marketing Strategy</a></li>
+<li><span aria-current="page">Building a Partner-Led Revenue Engine</span></li>
+</ol>
+</nav>
+<p class="mono eyebrow muted">Sumo Logic | Partner GTM Innovation &amp; Product-Led Demand</p>
+<h1 class="display hero-h" id="page-title">Building a Partner-Led Revenue Engine From the Ground Up</h1>
+<div class="hero-grid">
+<div class="lede">
+<p style="margin:0">I identified an untapped opportunity to extend Sumo Logic’s AI product trial into our partner ecosystem and led the creation of an entirely new go-to-market motion.</p>
+<p style="margin:0">With no dedicated resources or established operating model, I developed the blueprint, aligned cross-functional teams, and brought the program from concept to launch in just 30 days.</p>
+</div>
+</div>
+<div class="hm">
+<div class="hm-main">
+<p class="mono muted">At launch</p>
+<strong class="disp">30<small>Days</small></strong>
+<p class="mono">Concept to Launch</p>
+</div>
+<div class="hm-side">
+<p class="mono muted">As the program scaled</p>
+<ul aria-label="Program scale metrics">
+<li><strong class="disp">100+</strong><span class="mono">Partners Activated</span></li>
+<li><strong class="disp">5,000+</strong><span class="mono">Product Trials Generated</span></li>
+<li><strong class="disp">20%</strong><span class="mono">Sales-Accepted Opportunity Conversion</span></li>
+</ul>
+</div>
+</div>
+<p class="fine">The 30 days covers concept to initial launch. Partner, trial, and conversion figures reflect the program after it scaled; the 20% is a reported conversion rate.</p>
+</section>
+
+<section class="wrap sec" aria-labelledby="op-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">01</span><h2 class="sec-h" id="op-h">I Saw an Opportunity. The Partner Motion Didn’t Exist.</h2></div>
+<div class="copy">
+<p>Sumo Logic had an established direct product trial experience, but no defined motion for partners to introduce prospects, track engagement, or translate trial activity into qualified Sales conversations.</p>
+<p>I recognized an opportunity to extend an existing product experience into a new partner-enabled demand generation channel.</p>
+<p>However, there was no dedicated owner, operating model, or allocated team to build it.</p>
+</div>
+</div>
+<div class="ba">
+<article class="ba-c" aria-labelledby="ba1">
+<span class="mono muted">Before</span>
+<h3 id="ba1">Existing Direct Motion</h3>
+<ul>
+<li>Established product trial experience</li>
+<li>Direct-to-prospect acquisition</li>
+<li>No standardized partner referral workflow</li>
+<li>Limited partner-specific engagement visibility</li>
+</ul>
+</article>
+<div class="ba-x" aria-hidden="true"><span class="mono">Extended through partners</span><i>→</i></div>
+<article class="ba-c ba-new" aria-labelledby="ba2">
+<span class="mono">After</span>
+<h3 id="ba2">Partner-Enabled Demand Engine</h3>
+<ul>
+<li>Trackable partner acquisition</li>
+<li>Partner-specific referral attribution</li>
+<li>Product engagement reporting</li>
+<li>Informed partner and Sales follow-up</li>
+<li>Structured progression to sales-accepted opportunities</li>
+</ul>
+</article>
+</div>
+<p class="fine">An existing product experience, extended into a new route to market.</p>
+</section>
+
+<section class="wrap sec" aria-labelledby="ld-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">02</span><h2 class="sec-h" id="ld-h">Building the Motion Without a Dedicated Team</h2></div>
+<div class="copy">
+<p>The challenge wasn’t simply launching a new marketing campaign.</p>
+<p>It required aligning Product, Engineering, Digital Marketing, Marketing Operations, Sales, and Partner teams—none of whom reported directly to me.</p>
+<p>I personally developed the end-to-end program blueprint, mapped the required capabilities, built the business case, secured cross-functional commitment, defined ownership, and coordinated execution.</p>
+</div>
+</div>
+<div class="orch">
+<div class="hub">
+<span class="mono">My role</span>
+<h3>Program Strategy &amp; GTM Leadership</h3>
+<p>Blueprint, business case, ownership, and coordinated execution across five workstreams.</p>
+</div>
+<ul class="ws" aria-label="Five functional workstreams">
+<li><div class="w"><h4>Product &amp; Engineering</h4><p>Adapted the trial experience, supported new user flows, and implemented required interface changes.</p></div></li>
+<li><div class="w"><h4>Digital Marketing</h4><p>Developed partner-specific URLs, tagging, and referral attribution.</p></div></li>
+<li><div class="w"><h4>Marketing Operations &amp; Data</h4><p>Connected trial engagement data to reporting structures and activation workflows.</p></div></li>
+<li><div class="w"><h4>Sales &amp; Partner Teams</h4><p>Established seller enablement, partner outreach, and qualified opportunity follow-up.</p></div></li>
+<li><div class="w"><h4>Program Management &amp; Enablement</h4><p>Defined execution milestones, success measures, responsibilities, dependencies, and partner activation guidance.</p></div></li>
+</ul>
+</div>
+<p class="mono muted strip-h">How I influenced teams without direct reporting authority</p>
+<ol class="strip">
+<li><div class="top"><span class="mono muted">01</span><span class="mono muted" aria-hidden="true">→</span></div><b>Understand</b><p>Identify what each team cared about and what resources were required.</p></li>
+<li><div class="top"><span class="mono muted">02</span><span class="mono muted" aria-hidden="true">→</span></div><b>Frame</b><p>Position the initiative around revenue opportunity rather than a standalone marketing program.</p></li>
+<li><div class="top"><span class="mono muted">03</span><span class="mono muted" aria-hidden="true">→</span></div><b>Align</b><p>Secure stakeholder support through individual conversations, clear ownership, and shared success measures.</p></li>
+<li><div class="top"><span class="mono muted">04</span><span class="mono muted" aria-hidden="true">→</span></div><b>Build</b><p>Coordinate the product, digital, data, and partner enablement capabilities.</p></li>
+<li><div class="top"><span class="mono muted">05</span><span class="mono muted" aria-hidden="true">→</span></div><b>Pilot</b><p>Validate the motion with an initial partner group.</p></li>
+<li><div class="top"><span class="mono muted">06</span><span class="mono muted" aria-hidden="true">↺</span></div><b>Scale</b><p>Incorporate feedback and expand the program.</p></li>
+</ol>
+</section>
+
+<section class="wrap sec" aria-labelledby="wb-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">03</span><h2 class="sec-h" id="wb-h">Blueprinting an End-to-End Partner Trial Engine</h2></div>
+<div class="copy">
+<p>I designed the operating model connecting partner referral, product trial activation, behavioral engagement intelligence, and coordinated Sales follow-up.</p>
+<p>This was more than a trial registration campaign. It connected multiple systems, teams, and processes into a repeatable partner-led demand generation motion.</p>
+</div>
+</div>
+<ol class="jr" aria-label="Five-stage partner journey">
+<li class="rv"><span class="node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 1 0-6l3-3a4 4 0 0 1 6 6l-1.5 1.5M14 10a4 4 0 0 1 0 6l-3 3a4 4 0 0 1-6-6l1.5-1.5"/></svg></span><div><span class="mono muted">Stage 01</span><br><b>Partner Referral</b></div></li>
+<li class="rv" style="transition-delay:.08s"><span class="node"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M10 12.5l4 2.5-4 2.5z"/></svg></span><div><span class="mono muted">Stage 02</span><br><b>Trial Activation</b></div></li>
+<li class="rv" style="transition-delay:.16s"><span class="node"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span><div><span class="mono muted">Stage 03</span><br><b>Partner Reporting</b></div></li>
+<li class="rv" style="transition-delay:.24s"><span class="node"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5M8 12.5v-2M10.5 12.5v-4M13 12.5v-3"/></svg></span><div><span class="mono muted">Stage 04</span><br><b>AI-Assisted Usage Intelligence</b></div></li>
+<li class="rv" style="transition-delay:.32s"><span class="node"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/></svg></span><div><span class="mono muted">Stage 05</span><br><b>Sales Opportunity Conversion</b></div></li>
+</ol>
+<ol class="stg">
+<li>
+<div class="l"><span class="mono muted">Stage 01 · Partner Referral</span><h3>Unique, Trackable Partner URLs</h3></div>
+<div class="r"><p>Worked with the Digital Marketing team to develop partner-specific trial links and tagging.</p><p>These unique URLs allowed us to attribute trial activations to the referring partner and connect that information to underlying reporting.</p><p>This established the foundation for partner-level acquisition visibility and follow-up.</p></div>
+</li>
+<li>
+<div class="l"><span class="mono muted">Stage 02 · Product Trial Activation</span><h3>14-Day Agentic AI Product Trial</h3></div>
+<div class="r"><p>Coordinated with Product and Engineering to adapt the existing trial experience for partner-led acquisition.</p><p>This included creating the necessary user experience, updating the interface, and supporting a guided trial experience.</p><p>The 14-day trial gave prospects an opportunity to explore Sumo Logic’s Agentic AI capabilities.</p></div>
+</li>
+<li>
+<div class="l"><span class="mono muted">Stage 03 · Partner Activation Visibility</span><h3>Partner-Specific Trial Reporting</h3></div>
+<div class="r"><p>Developed a process that informed partner sellers which prospects had activated trials using their unique referral links.</p><p>This gave partners visibility into trial activation rather than leaving them dependent on generic lead reporting.</p></div>
+</li>
+<li>
+<div class="l"><span class="mono muted">Stage 04 · AI-Assisted Usage Intelligence</span><h3>Day-Six Product Engagement Reports</h3></div>
+<div class="r"><p>Using Claude, I helped design and build a reporting process that transformed product usage data into actionable partner insights.</p><p>Six days after trial activation, partners received an updated engagement report. The reporting included:</p>
+<ul>
+<li>Which referred prospects were actively using their trials</li>
+<li>High-level product engagement patterns</li>
+<li>Data sources being explored</li>
+<li>Indicators of potential customer interests and use cases</li>
+</ul>
+<p>These insights helped partner sellers tailor their conversations to the prospect’s demonstrated product interests.</p></div>
+</li>
+<li>
+<div class="l"><span class="mono muted">Stage 05 · Sales Qualification &amp; Opportunity Creation</span><h3>From Product Interest to Sales-Accepted Opportunity</h3></div>
+<div class="r"><p>Enabled partner sellers to use trial activation and product engagement intelligence to prioritize follow-up, tailor outreach, and coordinate with Sales.</p><p>The objective was to move engaged trial participants into qualified conversations, product demonstrations, and ultimately sales-accepted opportunities.</p></div>
+</li>
+</ol>
+</section>
+
+<section class="wrap sec" aria-labelledby="ai-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">04</span><h2 class="sec-h" id="ai-h">Turning Product Usage Into Actionable Partner Intelligence</h2></div>
+<div class="copy">
+<p>I wanted partners to have more than a list of trial registrations.</p>
+<p>I wanted to equip them with insights into what their prospects were actually exploring, so they could have more relevant follow-up conversations.</p>
+<p>Using Claude, I helped develop an AI-assisted reporting and automation process that transformed product usage data into structured engagement summaries.</p>
+<p>These reports highlighted trial activity and data-source interests, helping partner sellers understand potential use cases and identify opportunities for deeper Sales engagement.</p>
+</div>
+</div>
+<div class="dta">
+<article class="dt" aria-labelledby="dt1"><span class="mono muted">01</span><h3 id="dt1">Product Usage Data</h3><p>Trial activation, usage activity, and explored data sources.</p></article>
+<div class="dta-x" aria-hidden="true">→</div>
+<article class="dt mid" aria-labelledby="dt2"><span class="mono">02</span><h3 id="dt2">Claude-Assisted Reporting</h3><p>Data structuring, usage summaries, and partner-ready insights.</p></article>
+<div class="dta-x" aria-hidden="true">→</div>
+<article class="dt" aria-labelledby="dt3"><span class="mono muted">03</span><h3 id="dt3">Partner Sales Intelligence</h3><p>Who activated, what they explored, and how to tailor follow-up.</p></article>
+</div>
+<p class="fine">Claude helped me develop the reporting and automation process. The reports summarize trial activity and the data sources prospects explored. They give partner sellers context for follow-up conversations, not a measure of purchasing intent.</p>
+</section>
+
+<section class="wrap sec" aria-labelledby="sp-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">05</span><h2 class="sec-h" id="sp-h">From Concept to Launch in 30 Days</h2></div>
+<div class="copy">
+<p>With no dedicated implementation team, I worked across functions to establish the business case, build the required capabilities, enable partners, and launch the initial program in just 30 days.</p>
+<p>We used a pilot-first approach, incorporating feedback from participating partners, Product, and Sales before expanding the motion.</p>
+</div>
+</div>
+<p class="mono muted" style="margin:0 0 18px">Four workstreams, summarized</p>
+<ol class="tl">
+<li><b>Opportunity &amp; Alignment</b><p>Business case, stakeholder engagement, and success measures.</p></li>
+<li><b>Experience &amp; Infrastructure</b><p>Product adaptations, partner-specific links, and attribution.</p></li>
+<li><b>Reporting &amp; Enablement</b><p>Partner reporting, trial usage intelligence, and seller guidance.</p></li>
+<li><b>Pilot &amp; Launch</b><p>Initial partner activation, testing, and feedback.</p></li>
+</ol>
+<div class="live"><b>Day 30 — Partner Trial Program Live</b><span class="mono">Initial operational launch</span></div>
+<p class="fine">This timeline summarizes the workstreams behind the initial launch. It is not a week-by-week plan, and the later partner rollout came after Day 30.</p>
+</section>
+
+<section class="wrap sec" aria-labelledby="rs-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">06</span><h2 class="sec-h" id="rs-h">From an Untapped Opportunity to a Scalable Partner Demand Engine</h2></div>
+<div class="copy">
+<p>What began as an identified gap in our partner go-to-market strategy became a scalable demand generation engine connecting product trials, partner attribution, AI-assisted engagement intelligence, and coordinated Sales activation.</p>
+<p>Launched in just 30 days, the program subsequently scaled to more than 100 partners, generated over 5,000 product trials, and achieved a reported 20% sales-accepted opportunity conversion rate, contributing to significant closed new-logo revenue.</p>
+</div>
+</div>
+<div class="res" role="group" aria-label="Results">
+<div><span class="mono">At launch</span><strong class="disp">30 Days</strong><span class="l">Initial Program Launch</span></div>
+<div><span class="mono">As the program scaled</span><strong class="disp">100+</strong><span class="l">Partners Activated</span></div>
+<div><span class="mono">As the program scaled</span><strong class="disp">5,000+</strong><span class="l">Product Trials Generated</span></div>
+<div><span class="mono">As the program scaled</span><strong class="disp">20%</strong><span class="l">Sales-Accepted Opportunity Conversion</span></div>
+</div>
+<ul class="read" aria-label="How to read these figures">
+<li>30 days is concept to initial launch, not the full ecosystem rollout.</li>
+<li>100+ partners reflects the program’s later scale.</li>
+<li>5,000+ is the total reported trial volume.</li>
+<li>20% is the reported conversion rate to sales-accepted opportunities, not closed-won deals.</li>
+</ul>
+<div class="end">
+<a class="btn" id="back-main" href="/partner-marketing-strategy"><span aria-hidden="true">←</span> Back to Partner Marketing Strategy</a>
+<a class="btn btn--ghost" id="back-alt" href="/demand-revenue-marketing#case-studies">Also in Demand &amp; Revenue Marketing</a>
+</div>
+</section>
+</main>
+
+<footer class="foot wrap" id="about">
+<div class="foot-in">
+<span class="brand">Daniel Sullivan</span>
+<nav aria-label="Footer">
+<ul class="nav">
+<li><a href="/">Home</a></li>
+<li><a href="mailto:contact@danielsullivanportfolio.com">Email</a></li>
+<li><a href="https://www.linkedin.com/in/daniel---sullivan/" target="_blank" rel="noopener">LinkedIn<span class="vh"> (opens in a new tab)</span></a></li>
+</ul>
+</nav>
+</div>
+</footer>
+</div>
+<script src="/assets/site.js" defer></script>
+<script>
+// Back links follow the section the visitor came from (Partner Marketing Strategy by default).
+(function(){
+  try{
+    var r=new URL(document.referrer);
+    if(r.origin===location.origin&&r.pathname.indexOf('/demand-revenue-marketing')===0){
+      var c=document.getElementById('crumb-sec'),m=document.getElementById('back-main'),a=document.getElementById('back-alt');
+      c.href='/demand-revenue-marketing#case-studies';c.textContent='Demand & Revenue Marketing';
+      m.href='/demand-revenue-marketing#case-studies';m.lastChild.textContent=' Back to Demand & Revenue Marketing';
+      a.href='/partner-marketing-strategy';a.textContent='Also in Partner Marketing Strategy';
+    }
+  }catch(e){}
+  // Gentle reveal for the journey stages; everything shows without JS or with reduced motion.
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.2});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
