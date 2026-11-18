@@ -247,6 +247,30 @@ a{color:#111111}a:hover{color:#565656}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.pcard:hover,.cap:hover,.pdf:hover{transform:none}}
 @media print{.stk.is-prep .lay,.stk.is-prep .cn{opacity:1;transform:none}}
+
+/* Protected playbook viewer */
+.pb-open{display:none;align-self:flex-start;margin-top:2px}
+.js .pb-open{display:inline-flex}
+dialog.pbd{width:min(1100px,94vw);height:min(90vh,940px);max-width:none;max-height:none;padding:0;border:0;border-radius:22px;background:var(--paper);color:var(--ink);overflow:hidden}
+dialog.pbd[open]{display:flex;flex-direction:column}
+dialog.pbd::backdrop{background:rgba(17,17,17,.6)}
+.pbd-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid var(--line)}
+.pbd-bar h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.02em;line-height:1.1;margin:4px 0 0}
+.pbd-act{display:flex;gap:8px;flex-wrap:wrap}
+.pbd-act .btn{min-height:44px}
+.pbd-act [hidden]{display:none}
+.pbd-body{flex:1;min-height:0;display:flex;background:var(--ground)}
+.pbd-gate{margin:auto;width:min(420px,100%);padding:28px 24px;display:flex;flex-direction:column;gap:14px}
+.pbd-gate[hidden],.pbd-frame[hidden]{display:none}
+.pbd-gate .lk{width:52px;height:52px;border-radius:14px;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center}
+.pbd-gate .lk .ico{width:24px;height:24px}
+.pbd-gate p{margin:0;color:var(--body)}
+.pbd-gate label{font-weight:600;font-size:15px}
+.pbd-gate input{width:100%;min-height:48px;padding:0 16px;border-radius:12px;border:1.5px solid var(--ink);background:var(--paper);font:500 16px 'Inter',sans-serif;color:var(--ink)}
+.pbd-err{color:#8A1C1C;font-weight:500;font-size:15px}
+.pbd-small{font-size:14px;color:var(--muted)}
+.pbd-frame{flex:1;width:100%;border:0;background:#fff}
+@media (max-width:640px){dialog.pbd{width:100vw;height:100dvh;border-radius:0}}
 html,body{overflow-x:clip}
 </style>
 </head>
@@ -398,15 +422,15 @@ html,body{overflow-x:clip}
 <ul class="lib">
 <li class="pdf" aria-labelledby="pb-dm" data-playbook="decision-makers">
 <div class="cover-w"><div class="cover cover--1" aria-hidden="true"><span class="k">Persona Activation Playbook</span><span class="t">Decision Makers</span><span class="ln"></span><span class="ln s"></span><span class="ln"></span><span class="grow"></span><span class="tri"><i class="on"></i><i></i><i></i></span></div><span class="lockb"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span></div>
-<div class="txt"><h3 id="pb-dm">Decision Maker Playbook</h3><span class="mono restr"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Restricted Access</span></div>
+<div class="txt"><h3 id="pb-dm">Decision Maker Playbook</h3><span class="mono restr"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Restricted Access</span><button type="button" class="btn btn--ghost pb-open" data-pb="decision-maker">Open playbook <span aria-hidden="true">→</span></button></div>
 </li>
 <li class="pdf" aria-labelledby="pb-rec" data-playbook="recommenders">
 <div class="cover-w"><div class="cover cover--2" aria-hidden="true"><span class="k">Persona Activation Playbook</span><span class="t">Recommenders</span><span class="ln"></span><span class="ln s"></span><span class="ln"></span><span class="grow"></span><span class="tri"><i></i><i class="on"></i><i></i></span></div><span class="lockb"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span></div>
-<div class="txt"><h3 id="pb-rec">Recommender Playbook</h3><span class="mono restr"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Restricted Access</span></div>
+<div class="txt"><h3 id="pb-rec">Recommender Playbook</h3><span class="mono restr"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Restricted Access</span><button type="button" class="btn btn--ghost pb-open" data-pb="recommender">Open playbook <span aria-hidden="true">→</span></button></div>
 </li>
 <li class="pdf" aria-labelledby="pb-prac" data-playbook="practitioners">
 <div class="cover-w"><div class="cover cover--3" aria-hidden="true"><span class="k">Persona Activation Playbook</span><span class="t">Practitioners</span><span class="ln"></span><span class="ln s"></span><span class="ln"></span><span class="grow"></span><span class="tri"><i></i><i></i><i class="on"></i></span></div><span class="lockb"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span></div>
-<div class="txt"><h3 id="pb-prac">Practitioner Playbook</h3><span class="mono restr"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Restricted Access</span></div>
+<div class="txt"><h3 id="pb-prac">Practitioner Playbook</h3><span class="mono restr"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Restricted Access</span><button type="button" class="btn btn--ghost pb-open" data-pb="practitioner">Open playbook <span aria-hidden="true">→</span></button></div>
 </li>
 </ul>
 <div class="access">
@@ -421,6 +445,28 @@ html,body{overflow-x:clip}
 </div>
 </section>
 </main>
+
+<dialog class="pbd" id="pb-dialog" aria-labelledby="pb-title">
+<div class="pbd-bar">
+<div><span class="mono muted">Restricted access</span><h3 id="pb-title">Playbook</h3></div>
+<div class="pbd-act">
+<a class="btn btn--ghost" id="pb-newtab" href="/api/playbook" target="_blank" rel="noopener" hidden>Open in new tab <span aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></a>
+<button type="button" class="btn btn--ghost" data-close>Close</button>
+</div>
+</div>
+<div class="pbd-body">
+<form class="pbd-gate" id="pb-form" novalidate>
+<span class="lk"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+<p><strong>Enter the password to view this playbook.</strong></p>
+<label for="pb-pass">Password</label>
+<input id="pb-pass" type="password" autocomplete="current-password" maxlength="200" required>
+<p class="pbd-err" id="pb-err" role="alert" hidden></p>
+<button type="submit" class="btn" id="pb-submit">View playbook <span aria-hidden="true">→</span></button>
+<p class="pbd-small">Don’t have the password? <a href="mailto:contact@danielsullivanportfolio.com?subject=Cisco%20Persona%20Playbook%20Access%20Request">Request access</a>.</p>
+</form>
+<iframe class="pbd-frame" id="pb-frame" title="Playbook viewer" hidden></iframe>
+</div>
+</dialog>
 
 <footer class="foot wrap" id="about">
 <div class="foot-in">
@@ -449,6 +495,78 @@ html,body{overflow-x:clip}
     });
   }, { threshold: 0.25 });
   items.forEach(function (el) { io.observe(el); });
+})();
+</script>
+<script>
+// Protected playbook viewer. The password is checked on the server (/api/playbook-login);
+// the PDF is only delivered by /api/playbook with a valid signed session cookie.
+(function () {
+  var dlg = document.getElementById('pb-dialog');
+  if (!dlg || typeof dlg.showModal !== 'function') return;
+  var root = document.documentElement;
+  root.classList.add('js');
+  var form = document.getElementById('pb-form'), pass = document.getElementById('pb-pass');
+  var err = document.getElementById('pb-err'), submit = document.getElementById('pb-submit');
+  var frame = document.getElementById('pb-frame'), newtab = document.getElementById('pb-newtab');
+  var title = document.getElementById('pb-title');
+  var titles = { 'decision-maker': 'Decision Maker Playbook', 'recommender': 'Recommender Playbook', 'practitioner': 'Practitioner Playbook' };
+  var current = null;
+
+  function show(mode) {
+    form.hidden = mode !== 'form';
+    frame.hidden = mode !== 'frame';
+    newtab.hidden = mode !== 'frame';
+  }
+  function load() {
+    var url = '/api/playbook?name=' + encodeURIComponent(current);
+    frame.src = url;
+    newtab.href = url;
+    show('frame');
+  }
+  function message(text) { err.textContent = text; err.hidden = !text; }
+
+  document.querySelectorAll('.pb-open').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      current = btn.getAttribute('data-pb');
+      title.textContent = titles[current] || 'Playbook';
+      message('');
+      pass.value = '';
+      frame.removeAttribute('src');
+      show('form');
+      dlg.showModal();
+      root.style.overflow = 'hidden';
+      if (typeof gtag === 'function') gtag('event', 'playbook_open', { item_name: titles[current] });
+      fetch('/api/playbook-login', { credentials: 'same-origin' })
+        .then(function (r) { return r.ok ? r.json() : { authed: false }; })
+        .then(function (j) { if (!dlg.open) return; if (j.authed) load(); else pass.focus(); })
+        .catch(function () { if (dlg.open) pass.focus(); });
+    });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!pass.value) { message('Enter the password.'); pass.focus(); return; }
+    submit.disabled = true; message('');
+    fetch('/api/playbook-login', {
+      method: 'POST', credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: pass.value })
+    }).then(function (r) {
+      if (r.ok) { pass.value = ''; load(); return; }
+      if (r.status === 401) message('That password didn’t work. Check it and try again, or request access below.');
+      else if (r.status === 503) message('Playbook viewing isn’t available right now. Please request access by email.');
+      else message('Something went wrong. Please try again.');
+      pass.focus();
+    }).catch(function () {
+      message('Couldn’t reach the server. Please try again.');
+    }).then(function () { submit.disabled = false; });
+  });
+
+  dlg.addEventListener('close', function () {
+    frame.removeAttribute('src');
+    pass.value = '';
+    root.style.overflow = '';
+  });
 })();
 </script>
 </body>
