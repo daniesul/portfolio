@@ -60,3 +60,18 @@ The content stays in the HTML (readable by search engines), stays open if JavaSc
 ## Content-type labels
 
 Cards (and the ABM approach section) carry a small muted mono line, `<p class="ctype">…</p>`, naming one of three content types: **Perspectives & Approaches** (strategic thinking, methodologies), **Frameworks & Systems** (planning models, operating frameworks, tools) or **Case Studies & Execution** (real programs with challenge, execution and outcomes). On a card, place it directly above the `.card-title`. The `.ctype` rule lives in each page's `<style>` block. There is no filtering and no extra navigation.
+
+## Protected playbooks (Cisco case study)
+
+The three playbook PDFs live ONLY in a **private Vercel Blob store**, never in this repo or a public folder. The site is otherwise static; two small Vercel Functions guard access:
+
+| Route | File | What it does |
+|---|---|---|
+| `GET/POST /api/playbook-login` | `api/playbook-login.js` | `POST {password}` checks the password on the server and sets a signed, HttpOnly, Secure, SameSite=Strict session cookie (2 hours). `GET` reports whether the visitor has a valid session. Failed attempts are delayed ~1s. |
+| `GET /api/playbook?name=…` | `api/playbook.js` | With a valid cookie, streams the PDF from the private store. `name` must be `decision-maker`, `recommender` or `practitioner` (allowlist in `api/_lib/session.js`); visitors never supply a file path. |
+
+- **Secrets (Vercel → Settings → Environment Variables, Production + Preview, sensitive):** `PLAYBOOK_PASSWORD`, `PLAYBOOK_SESSION_SECRET` (random, e.g. `openssl rand -hex 32`). Never commit them. If either is missing the viewer reports "not available" and no PDF is served.
+- **Blob store:** private, connected to this project. Files: `playbook-decision-maker.pdf`, `playbook-recommender.pdf`, `playbook-practitioner.pdf`.
+- **Change the password:** edit `PLAYBOOK_PASSWORD`, redeploy. **Log everyone out:** change `PLAYBOOK_SESSION_SECRET`, redeploy. **Remove a playbook:** delete it from the Blob store.
+- **Dependencies:** `package.json` only exists for `@vercel/blob` (used by `api/playbook.js`). There is still no build step for the pages.
+- Anyone with the password can save the PDF; the password controls who gets in, not what they do next.
