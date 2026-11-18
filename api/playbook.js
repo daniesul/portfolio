@@ -36,7 +36,8 @@ async function handle(request) {
     const type = (err && err.name) || 'Error';
     const hint = /token|auth|unauthor|forbidden|store|oidc|credential/i.test(String(err && err.message))
       ? 'blob-auth' : /Cannot find|Module|import/i.test(String(err && err.message)) ? 'blob-package' : 'blob-other';
-    return json({ error: 'Unavailable', type, hint }, 502);
+    // TEMPORARY diagnostic: shows the SDK's message (no secrets) to logged-in visitors only. Remove once working.
+    return json({ error: 'Unavailable', type, hint, message: String((err && err.message) || '').slice(0, 300) }, 502);
   }
 }
 
