@@ -24,5 +24,18 @@
       "value": "20%",
       "label": "Sales-Accepted Opportunity Conversion"
     }
+  },
+  {
+    "id": "competitive-displacement-abm",
+    "company": "Sumo Logic",
+    "category": "Competitive Displacement & ABM",
+    "title": "Winning Competitive Accounts Through Precision ABM",
+    "description": "Turned SIEM market disruption into a targeted acquisition strategy, using competitive intelligence, buying intent, and tiered ABM to engage high-potential accounts.",
+    "href": "/competitive-displacement-abm",
+    "cta": "View Case Study",
+    "result": {
+      "value": "20",
+      "label": "New-Logo Opportunities Created"
+    }
   }
 ]
