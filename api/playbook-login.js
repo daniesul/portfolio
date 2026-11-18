@@ -4,7 +4,7 @@ import { configured, passwordMatches, makeSessionCookie, hasValidSession, json }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-export default async function handler(request) {
+async function handle(request) {
   if (request.method === 'GET') {
     return json({ authed: hasValidSession(request) });
   }
@@ -27,3 +27,6 @@ export default async function handler(request) {
   }
   return json({ ok: true }, 200, { 'Set-Cookie': makeSessionCookie() });
 }
+
+// Vercel Web Standard export: handles every HTTP method.
+export default { fetch: handle };

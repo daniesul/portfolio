@@ -2,7 +2,7 @@
 // Streams the PDF from the PRIVATE Blob store, but only with a valid session cookie.
 import { PLAYBOOKS, hasValidSession, json } from './_lib/session.js';
 
-export default async function handler(request) {
+async function handle(request) {
   if (request.method !== 'GET') {
     return json({ error: 'Method not allowed' }, 405, { Allow: 'GET' });
   }
@@ -34,3 +34,6 @@ export default async function handler(request) {
     return json({ error: 'Unavailable' }, 502);
   }
 }
+
+// Vercel Web Standard export: handles every HTTP method.
+export default { fetch: handle };
