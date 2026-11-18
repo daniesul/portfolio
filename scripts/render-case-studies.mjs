@@ -21,7 +21,6 @@ const card = (c, i) => {
     : `\n<ul class="kpi-row" aria-label="Featured outcome">\n<li><span>${esc(r.text)}</span></li>\n</ul>`;
   return `<article class="card" aria-labelledby="${tid}">
 <div class="card-top"><span class="mono muted">Case study ${String(i + 1).padStart(2, '0')}</span><span class="tag"><span class="dot"></span>${esc(c.tag || SECTION_TAG)}</span></div>
-<p class="ctype">Case Studies &amp; Execution</p>
 <h3 class="card-title" id="${tid}">${esc(c.title)}</h3>
 <dl class="meta">
 <div><dt class="mono">Company</dt><dd>${esc(c.company)}</dd></div>
