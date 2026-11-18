@@ -96,6 +96,10 @@ a{color:#111111}a:hover{color:#565656}
 html,body{overflow-x:clip}
 @media (max-width:640px){.nav{gap:4px 14px}}
 .ctype{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--muted);margin:0}.card .ctype{margin:-6px 0 -8px}
+.kpi-row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.kpi-row li{border-top:1.5px solid var(--ink);padding-top:12px;display:flex;flex-direction:column;gap:4px}
+.kpi-row strong{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(34px,3.4vw,48px);letter-spacing:-.04em;line-height:1}
+.kpi-row span{font-size:14.5px;font-weight:500;color:var(--body)}
 </style>
 </head>
 <body>
@@ -136,7 +140,7 @@ html,body{overflow-x:clip}
 </section>
 
 <section class="wrap sec" aria-labelledby="cs-h">
-<div class="sec-head"><h2 class="sec-h" id="cs-h">Case studies</h2><span class="mono muted">1 case study</span></div>
+<div class="sec-head"><h2 class="sec-h" id="cs-h">Case studies</h2><span class="mono muted">2 case studies</span></div>
 <div class="cases">
 
 <article class="card" aria-labelledby="t-cisco-maturity">
@@ -152,6 +156,22 @@ html,body{overflow-x:clip}
 <li>Partner segmentation</li><li>Marketing maturity</li><li>Partner coverage strategy</li><li>Scalable marketing programs</li>
 </ul>
 <div><a class="btn" href="/cisco-partner-marketing-maturity">Explore Case Study <span aria-hidden="true">→</span></a></div>
+</article>
+
+
+<article class="card" aria-labelledby="t-partner-revenue-engine">
+<div class="card-top"><span class="mono muted">Case study 02</span><span class="tag"><span class="dot"></span>Partner GTM Innovation</span></div>
+<p class="ctype">Case Studies &amp; Execution</p>
+<h3 class="card-title" id="t-partner-revenue-engine">Building a Partner-Led Revenue Engine From the Ground Up</h3>
+<dl class="meta">
+<div><dt class="mono">Company</dt><dd>Sumo Logic</dd></div>
+<div><dt class="mono">Category</dt><dd>Partner GTM Innovation</dd></div>
+</dl>
+<p class="overview">Identified an untapped partner revenue opportunity and orchestrated Product, Engineering, Digital, Operations, and Sales to launch an entirely new partner trial motion in just 30 days.</p>
+<ul class="kpi-row" aria-label="Featured metric">
+<li><strong>30 Days</strong><span>From Concept to Launch</span></li>
+</ul>
+<div><a class="btn" href="/partner-led-revenue-engine">View Case Study <span aria-hidden="true">→</span></a></div>
 </article>
 
 </div>

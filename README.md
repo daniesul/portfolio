@@ -13,7 +13,9 @@ Daniel Sullivan's marketing portfolio. Plain HTML and CSS with no build step. Ve
 | `/sample-partner-maturity-assessment` | `sample-partner-maturity-assessment.html` | Supporting page: fictional Northstar assessment |
 | `/marketing-strategy-innovation` | `marketing-strategy-innovation.html` | Section index: Marketing Strategy & Innovation (now also lists the Cisco audience strategy case study) |
 | `/events-experiences` | `events-experiences.html` | Section index: Events & Experiences (Sumo Slam Jam, Global Sales Kickoff, Threat Hunting Workshops; detail pages to come) |
-| `/demand-revenue-marketing` | `demand-revenue-marketing.html` | Section index: Demand & Revenue Marketing, with the "My approach: Account-Based Marketing" section (intro, six principles, 1:1 / 1:Few / 1:Many models, closing statement), collapsed behind a full-width "Explore the framework" bar (`.disc-bar`, same `data-disclosure` JS as the homepage) (`/demand-revenue-marketing#abm` opens it). No case studies yet; if added later, put a card section after the ABM section using the `.cases` / `<article class="card">` pattern (card CSS is still in the page) |
+| `/demand-revenue-marketing` | `demand-revenue-marketing.html` | Section index: Demand & Revenue Marketing, with the "My approach: Account-Based Marketing" section (intro, six principles, 1:1 / 1:Few / 1:Many models, closing statement), collapsed behind a full-width "Explore the framework" bar (`.disc-bar`, same `data-disclosure` JS as the homepage) (`/demand-revenue-marketing#abm` opens it). Two content areas: **Perspectives & Approaches** (ABM) and **Case Studies & Initiatives** (gallery generated from `data/case-studies.json`, see "Adding a case study to Demand & Revenue Marketing") |
+| `/sumo-logic-pipeline-acceleration` | `sumo-logic-pipeline-acceleration.html` | Case study: Turning Stalled Pipeline Into Revenue Opportunity (Sumo Logic; hero metrics, pipeline progression, Salesforce + intent diagram, four activation plays, results with attribution notes) |
+| `/partner-led-revenue-engine` | `partner-led-revenue-engine.html` | Case study: Building a Partner-Led Revenue Engine From the Ground Up (Sumo Logic). One canonical page with two cards: Partner Marketing Strategy (hand-written `.card`, leadership/30-day framing) and Demand & Revenue Marketing (entry `partner-trial-demand` in `data/case-studies.json`, conversion framing). A small inline script points the breadcrumb and back button at whichever section the visitor came from (default: Partner Marketing Strategy). Scroll reveal on the journey only |
 | `/ai-innovation` | `ai-innovation.html` | Section index: AI & Innovation ("Projects & experiments"; first card: the event lead qualification case study; the "coming soon" state returns only if `.cases` is emptied) |
 | `/cisco-unified-audience-strategy` | `cisco-unified-audience-strategy.html` | Case study: Cisco unified audience strategy (before/after, three persona cards, playbook capabilities, strategy-to-activation diagram, qualitative impact, restricted playbook gallery with placeholder covers and a mailto access request; no Cisco files are in the repo) |
 | `/ai-event-lead-qualification` | `ai-event-lead-qualification.html` | Case study: Transforming Event Lead Qualification with AI (illustrative Before / After demo with a German → English toggle, six-step workflow, estimated-vs-reported results, Automate → Augment → Elevate). Inline script for the demo animation; everything shows its final state without JS or with reduced motion |
@@ -22,6 +24,16 @@ Daniel Sullivan's marketing portfolio. Plain HTML and CSS with no build step. Ve
 
 Shared files: `assets/site.js` (footer year, case-study drawers, collapsible sections, mobile menu) and `assets/` (images).
 `vercel.json` turns on clean URLs, so `/partner-marketing-strategy` serves `partner-marketing-strategy.html`.
+
+## Adding a case study to Demand & Revenue Marketing
+
+The gallery on `/demand-revenue-marketing` is rendered from `data/case-studies.json` into static HTML (so it stays crawlable and there is still no build step for deploys).
+
+1. Build the detail page by copying `sumo-logic-pipeline-acceleration.html` (change canonical, `og:*`, title and description) and add it to `sitemap.xml`.
+2. Add an entry to `data/case-studies.json`: `id`, `company`, `category`, `title`, `description`, `href`, optional `cta`, and an optional `result`: `{ "value": "40", "label": "…" }` for a metric or `{ "text": "…" }` for a qualitative outcome (leave `result` out if there is none).
+3. Run `node scripts/render-case-studies.mjs` and commit the updated page. Only published studies get a card; there are no placeholder cards.
+
+New approaches go in the "Perspectives & Approaches" area (`#perspectives`), after the ABM section, using the same `.abm` heading and rule pattern.
 
 ## Design system
 
