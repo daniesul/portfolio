@@ -31,13 +31,9 @@ async function handle(request) {
       }
     });
   } catch (err) {
-    // Only reachable after a valid login, so reporting the error type here is safe.
+    // Details go to the function logs only; visitors just see a generic message.
     console.error('playbook fetch failed:', err && err.name, err && err.message);
-    const type = (err && err.name) || 'Error';
-    const hint = /token|auth|unauthor|forbidden|store|oidc|credential/i.test(String(err && err.message))
-      ? 'blob-auth' : /Cannot find|Module|import/i.test(String(err && err.message)) ? 'blob-package' : 'blob-other';
-    // TEMPORARY diagnostic: shows the SDK's message (no secrets) to logged-in visitors only. Remove once working.
-    return json({ error: 'Unavailable', type, hint, message: String((err && err.message) || '').slice(0, 300) }, 502);
+    return json({ error: 'Unavailable' }, 502);
   }
 }
 
