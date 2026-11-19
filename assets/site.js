@@ -164,16 +164,16 @@
 
   // Google Analytics: count on-page clicks that GA doesn't track by itself.
   // Listens in the capture phase so it still sees clicks other handlers stop.
-  // Events: drawer_open, section_expand, menu_open, internal_link_click
+  // Events: drawer_open, section_expand, menu_open, internal_link_click, case_study_open
   // (link_location = nav | section_switcher | button | content),
   // email_click (link_location = footer | contact_section | button | content).
   // track() also passes each event to the outreach alerts above (no-op for
-  // ordinary visitors). Internal link clicks stay GA-only: the next page view
+  // ordinary visitors). Drawer opens reach it as case_study_open. Internal link clicks stay GA-only: the next page view
   // already shows the outreach log where they went. Outbound links go to
   // outreach only: GA counts them itself.
   function track(name, params) {
     if (typeof window.gtag === 'function') gtag('event', name, params);
-    if (name !== 'internal_link_click') outreach(name, params);
+    if (name !== 'internal_link_click' && name !== 'drawer_open') outreach(name, params);
   }
   function label(el) {
     var c = el.cloneNode(true);
@@ -187,9 +187,27 @@
     var t = card && document.getElementById(card.getAttribute('aria-labelledby'));
     return t ? label(t) : undefined;
   }
+  // case_study_open: one event for every "go deeper" click on a section page
+  // (pages with the section switcher): a card's Explore / View case study /
+  // Explore framework button that opens a page on this site, or an Explore
+  // program button that opens a drawer. item_name = the card's title,
+  // section_name = the section page. Links to the demo apps are left out:
+  // GA counts those as outbound clicks. Sent alongside the existing events.
+  function caseStudyOpen(el) {
+    if (!document.querySelector('.cats')) return;
+    var card = el.closest('article[aria-labelledby]');
+    if (!card) return;
+    var opensPage = el.tagName === 'A' && el.classList.contains('btn') && el.host === location.host && el.pathname !== location.pathname;
+    if (!opensPage && !el.hasAttribute('data-dialog')) return;
+    track('case_study_open', {
+      item_name: cardTitle(el) || label(el),
+      section_name: location.pathname.replace(/^\/|\/$/g, '') || 'home'
+    });
+  }
   document.addEventListener('click', function (e) {
     var el = e.target.closest('a, button');
     if (!el) return;
+    caseStudyOpen(el);
     if (el.hasAttribute('data-dialog')) {
       track('drawer_open', { item_name: cardTitle(el) || el.getAttribute('data-dialog') });
     } else if (el.hasAttribute('data-disclosure-toggle')) {
