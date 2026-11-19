@@ -82,11 +82,76 @@
     });
   }
 
+  // Outreach alerts. Only for visitors who arrived on a link tagged
+  // utm_medium=outreach (Daniel's personal outreach links). Remembers the
+  // campaign in this browser for 90 days so return visits count, and sends a
+  // short message per page view and tracked click to Daniel's Google Apps
+  // Script, which logs it in his Sheet and emails him. Sends only: campaign,
+  // role tag, source, page path, event name, short label, a random visit id,
+  // visit number and device type. No cookies, no names, nothing for other visitors.
+  var outreach = (function () {
+    var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwLhK6nIz1CdeQ29we-Oz0sSbVp3EQD4uchY_9UlGWwgmvZTFYt_HBQNsx5gUOpdDU3aw/exec';
+    var PROD_HOST = 'danielsullivanportfolio.com';
+    var KEY = 'ds_outreach', VISIT_GAP = 30 * 60 * 1000, KEEP = 90 * 24 * 60 * 60 * 1000;
+    var noop = function () {};
+    var rec, now = Date.now();
+    try {
+      var q = new URLSearchParams(location.search);
+      var tag = function (v) { v = (v || '').trim().toLowerCase(); return /^[a-z0-9][a-z0-9._-]{0,79}$/.test(v) ? v : ''; };
+      rec = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (rec && now - rec.last > KEEP) rec = null;
+      if (tag(q.get('utm_medium')) === 'outreach' && tag(q.get('utm_campaign'))) {
+        var c = tag(q.get('utm_campaign')), r = tag(q.get('utm_content'));
+        if (!rec || rec.campaign !== c || rec.content !== r) {
+          rec = { campaign: c, content: r, source: tag(q.get('utm_source')), visits: 0, last: 0 };
+        }
+      }
+      if (!rec) return noop;
+      if (!rec.visitId || now - rec.last > VISIT_GAP) {
+        rec.visits = (rec.visits || 0) + 1;
+        rec.visitId = Math.random().toString(36).slice(2, 10) + now.toString(36);
+      }
+      rec.last = now;
+      localStorage.setItem(KEY, JSON.stringify(rec));
+    } catch (err) { return noop; } // storage blocked or unreadable: send nothing
+
+    var coarse = window.matchMedia && matchMedia('(pointer: coarse)').matches;
+    var device = !coarse ? 'desktop' : (Math.min(screen.width, screen.height) >= 600 ? 'tablet' : 'mobile');
+
+    function send(event, detail) {
+      try {
+        var stored = JSON.parse(localStorage.getItem(KEY) || 'null');
+        if (stored) { stored.last = Date.now(); localStorage.setItem(KEY, JSON.stringify(stored)); }
+      } catch (err) {}
+      var body = JSON.stringify({
+        medium: 'outreach', campaign: rec.campaign, content: rec.content, source: rec.source,
+        visit_id: rec.visitId, visit_number: rec.visits, event: event,
+        host: PROD_HOST, path: location.pathname,
+        detail: detail || '', device: device,
+        test: location.hostname !== PROD_HOST // preview deployments send marked test messages
+      });
+      if (!(navigator.sendBeacon && navigator.sendBeacon(ENDPOINT, body))) {
+        fetch(ENDPOINT, { method: 'POST', body: body, mode: 'no-cors', keepalive: true }).catch(noop);
+      }
+    }
+    send('page_view');
+    return function (event, params) {
+      params = params || {};
+      send(event, params.item_name || params.section_name || params.link_text || '');
+    };
+  })();
+
   // Google Analytics: count on-page clicks that GA doesn't track by itself.
   // Listens in the capture phase so it still sees clicks other handlers stop.
   // Events: drawer_open, section_expand, menu_open, internal_link_click
   // (link_location = nav | section_switcher | button | content),
   // email_click (link_location = footer | contact_section | button | content).
+  // track() also passes each event to the outreach alerts above (no-op for
+  // ordinary visitors). Outbound links go to outreach only: GA counts them itself.
+  function track(name, params) {
+    if (typeof window.gtag === 'function') gtag('event', name, params);
+    outreach(name, params);
+  }
   function label(el) {
     var c = el.cloneNode(true);
     c.querySelectorAll('[aria-hidden="true"], .vh, [style*="position:absolute"]').forEach(function (n) { n.remove(); });
@@ -100,20 +165,19 @@
     return t ? label(t) : undefined;
   }
   document.addEventListener('click', function (e) {
-    if (typeof window.gtag !== 'function') return;
     var el = e.target.closest('a, button');
     if (!el) return;
     if (el.hasAttribute('data-dialog')) {
-      gtag('event', 'drawer_open', { item_name: cardTitle(el) || el.getAttribute('data-dialog') });
+      track('drawer_open', { item_name: cardTitle(el) || el.getAttribute('data-dialog') });
     } else if (el.hasAttribute('data-disclosure-toggle')) {
       if (el.getAttribute('aria-expanded') !== 'true') { // about to open
         var sec = el.closest('[data-disclosure]');
-        gtag('event', 'section_expand', { section_name: sec && sec.id ? sec.id : label(el) });
+        track('section_expand', { section_name: sec && sec.id ? sec.id : label(el) });
       }
     } else if (el.hasAttribute('data-navtoggle')) {
-      if (el.getAttribute('aria-expanded') !== 'true') gtag('event', 'menu_open');
+      if (el.getAttribute('aria-expanded') !== 'true') track('menu_open');
     } else if (el.tagName === 'A' && el.protocol === 'mailto:') {
-      gtag('event', 'email_click', {
+      track('email_click', {
         link_text: label(el),
         link_location: el.closest('footer') ? 'footer'
           : el.closest('#contact') ? 'contact_section'
@@ -124,12 +188,14 @@
       var where = el.closest('.cats') ? 'section_switcher'
         : el.closest('nav, .nav') ? 'nav'
         : el.classList.contains('btn') ? 'button' : 'content';
-      gtag('event', 'internal_link_click', {
+      track('internal_link_click', {
         link_text: label(el),
         link_url: el.pathname + el.hash,
         link_location: where,
         item_name: cardTitle(el)
       });
+    } else if (el.tagName === 'A' && /^https?:$/.test(el.protocol)) {
+      outreach('outbound_click', { item_name: el.hostname.replace(/^www\./, '') });
     }
   }, true);
 })();
