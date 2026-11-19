@@ -85,11 +85,14 @@
   // Google Analytics: count on-page clicks that GA doesn't track by itself.
   // Listens in the capture phase so it still sees clicks other handlers stop.
   // Events: drawer_open, section_expand, menu_open, internal_link_click
-  // (link_location = nav | section_switcher | button | content).
+  // (link_location = nav | section_switcher | button | content),
+  // email_click (link_location = footer | contact_section | button | content).
   function label(el) {
     var c = el.cloneNode(true);
     c.querySelectorAll('[aria-hidden="true"], .vh, [style*="position:absolute"]').forEach(function (n) { n.remove(); });
-    return c.textContent.replace(/\s+/g, ' ').trim().slice(0, 100);
+    var parts = [], w = document.createTreeWalker(c, NodeFilter.SHOW_TEXT), n;
+    while ((n = w.nextNode())) parts.push(n.nodeValue);
+    return parts.join(' ').replace(/\s+/g, ' ').trim().slice(0, 100);
   }
   function cardTitle(el) {
     var card = el.closest('article[aria-labelledby]');
@@ -109,6 +112,14 @@
       }
     } else if (el.hasAttribute('data-navtoggle')) {
       if (el.getAttribute('aria-expanded') !== 'true') gtag('event', 'menu_open');
+    } else if (el.tagName === 'A' && el.protocol === 'mailto:') {
+      gtag('event', 'email_click', {
+        link_text: label(el),
+        link_location: el.closest('footer') ? 'footer'
+          : el.closest('#contact') ? 'contact_section'
+          : el.classList.contains('btn') ? 'button' : 'content',
+        item_name: cardTitle(el)
+      });
     } else if (el.tagName === 'A' && el.host === location.host) {
       var where = el.closest('.cats') ? 'section_switcher'
         : el.closest('nav, .nav') ? 'nav'
