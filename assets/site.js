@@ -147,10 +147,12 @@
   // (link_location = nav | section_switcher | button | content),
   // email_click (link_location = footer | contact_section | button | content).
   // track() also passes each event to the outreach alerts above (no-op for
-  // ordinary visitors). Outbound links go to outreach only: GA counts them itself.
+  // ordinary visitors). Internal link clicks stay GA-only: the next page view
+  // already shows the outreach log where they went. Outbound links go to
+  // outreach only: GA counts them itself.
   function track(name, params) {
     if (typeof window.gtag === 'function') gtag('event', name, params);
-    outreach(name, params);
+    if (name !== 'internal_link_click') outreach(name, params);
   }
   function label(el) {
     var c = el.cloneNode(true);
