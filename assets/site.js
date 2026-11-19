@@ -82,8 +82,8 @@
     });
   }
 
-  // Outreach alerts. Only for visitors who arrived on a link tagged
-  // utm_medium=outreach (Daniel's personal outreach links). Remembers the
+  // Outreach alerts. Only for visitors who arrived on one of Daniel's personal
+  // outreach links: utm_campaign starting "job-search", or utm_medium=outreach. Remembers the
   // campaign in this browser for 90 days so return visits count, and sends a
   // short message per page view and tracked click to Daniel's Google Apps
   // Script, which logs it in his Sheet and emails him. Sends only: campaign,
@@ -100,11 +100,17 @@
       var tag = function (v) { v = (v || '').trim().toLowerCase(); return /^[a-z0-9][a-z0-9._-]{0,79}$/.test(v) ? v : ''; };
       rec = JSON.parse(localStorage.getItem(KEY) || 'null');
       if (rec && now - rec.last > KEEP) rec = null;
-      if (tag(q.get('utm_medium')) === 'outreach' && tag(q.get('utm_campaign'))) {
-        var c = tag(q.get('utm_campaign')), r = tag(q.get('utm_content'));
-        if (!rec || rec.campaign !== c || rec.content !== r) {
-          rec = { campaign: c, content: r, source: tag(q.get('utm_source')), visits: 0, last: 0 };
-        }
+      // Two link styles count as outreach. "account" is who the link was for,
+      // "channel" how it was shared; the alert Sheet and emails use both.
+      //  - job search links: utm_campaign=job-search-… , utm_source=<company>,
+      //    utm_medium=<email|resume|…>  → account = source, channel = medium
+      //  - utm_medium=outreach links: account = campaign, channel = content
+      var med = tag(q.get('utm_medium')), cmp = tag(q.get('utm_campaign')), src = tag(q.get('utm_source'));
+      var hit = null;
+      if (/^job-search/.test(cmp) && src) hit = { account: src, channel: med, from: cmp };
+      else if (med === 'outreach' && cmp) hit = { account: cmp, channel: tag(q.get('utm_content')), from: src };
+      if (hit && (!rec || rec.campaign !== hit.account || rec.content !== hit.channel)) {
+        rec = { campaign: hit.account, content: hit.channel, source: hit.from, visits: 0, last: 0 };
       }
       if (!rec) return noop;
       if (!rec.visitId || now - rec.last > VISIT_GAP) {
