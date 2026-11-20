@@ -381,17 +381,17 @@ html,body{overflow-x:clip}
 </div>
 <div class="proof">
 <figure class="fig fig--main">
-<button type="button" class="shot" data-shot="o" aria-label="Enlarge: Global investment and pipeline overview"><img src="/assets/planning-demo-overview.webp" width="1600" height="1000" loading="lazy" decoding="async" alt="Planning demo overview: planned initiatives, pending and approved investment, forecasted pipeline against target, and pipeline coverage, with regional segmentation for North America, EMEA, and APJ."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button>
+<button type="button" class="shot" data-shot="o" aria-label="Enlarge: Global investment and pipeline overview"><img src="/assets/planning-demo-overview.webp" width="2102" height="1274" loading="lazy" decoding="async" alt="Planning demo overview: planned initiatives, pending and approved investment, executed and remaining budget, forecasted pipeline, target and coverage, with regional segmentation for North America, EMEA, and APJ."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button>
 <div class="callout"><span class="mono">What AI helped build</span><p><strong>Consolidated planning visibility.</strong> The cross-region structure and roll-up calculations behind one global view.</p></div>
 </figure>
 <div class="side">
 <figure class="fig">
-<button type="button" class="shot" data-shot="i" aria-label="Enlarge: Initiative register"><img src="/assets/planning-demo-initiatives.webp" width="1600" height="1000" loading="lazy" decoding="async" alt="Planning demo initiative register: every initiative listed with region, category, budget source, and status in one standard format."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button>
+<button type="button" class="shot" data-shot="i" aria-label="Enlarge: Initiative register"><img src="/assets/planning-demo-initiatives.webp" width="2098" height="754" loading="lazy" decoding="async" alt="Planning demo initiative register: every initiative listed in one standard format with approval and execution status, category, quarter, region, requested and approved amounts, and expected MQLs and pipeline."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button>
 <div class="callout"><span class="mono">What AI helped build</span><p><strong>Standardized data capture.</strong> Consistent inputs, investment categories, and prioritization logic.</p></div>
 </figure>
 <figure class="fig">
-<button type="button" class="shot" data-shot="b" aria-label="Enlarge: Budget reconciliation"><img src="/assets/planning-demo-budget.webp" width="1600" height="1000" loading="lazy" decoding="async" alt="Planning demo budget view: approved plans reconciled to purchase orders and actual spend, with remaining budget by region and budget source."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button>
-<div class="callout"><span class="mono">What AI helped build</span><p><strong>Automated calculations.</strong> Formulas that connect data across planning worksheets.</p></div>
+<button type="button" class="shot" data-shot="b" aria-label="Enlarge: Investment mix and pipeline vs. target"><img src="/assets/planning-demo-budget.webp" width="2118" height="1000" loading="lazy" decoding="async" alt="Planning demo investment mix and pipeline view: approved investment by category and region, and new pipeline by quarter against target."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button>
+<div class="callout"><span class="mono">What AI helped build</span><p><strong>Automated calculations.</strong> Roll-ups by category and region, and pipeline measured against target.</p></div>
 </figure>
 </div>
 </div>
@@ -478,9 +478,9 @@ html,body{overflow-x:clip}
   var dlg = document.getElementById('lb');
   if (!dlg || typeof dlg.showModal !== 'function') return;
   var S = {
-    o: { img: '/assets/planning-demo-overview.webp', title: 'Global investment & pipeline overview', alt: 'Planning demo overview: planned initiatives, pending and approved investment, forecasted pipeline against target, and pipeline coverage, with regional segmentation.' },
-    i: { img: '/assets/planning-demo-initiatives.webp', title: 'Initiative register', alt: 'Planning demo initiative register: every initiative listed with region, category, budget source, and status in one standard format.' },
-    b: { img: '/assets/planning-demo-budget.webp', title: 'Budget reconciliation', alt: 'Planning demo budget view: approved plans reconciled to purchase orders and actual spend, with remaining budget by region and budget source.' }
+    o: { img: '/assets/planning-demo-overview.webp', title: 'Global investment & pipeline overview', alt: 'Planning demo overview: planned initiatives, pending and approved investment, executed and remaining budget, forecasted pipeline, target and coverage, with regional segmentation for North America, EMEA, and APJ.' },
+    i: { img: '/assets/planning-demo-initiatives.webp', title: 'Initiative register', alt: 'Planning demo initiative register: every initiative listed in one standard format with approval and execution status, category, quarter, region, requested and approved amounts, and expected MQLs and pipeline.' },
+    b: { img: '/assets/planning-demo-budget.webp', title: 'Investment mix and pipeline vs. target', alt: 'Planning demo investment mix and pipeline view: approved investment by category and region, and new pipeline by quarter against target.' }
   };
   var cap = document.getElementById('lb-cap'), img = document.getElementById('lb-img'), ttl = document.getElementById('lb-title');
   var opener = null;
