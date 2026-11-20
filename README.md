@@ -48,6 +48,8 @@ Every page uses the same tokens, defined at the top of its `<style>` block:
 - Type: Inter Tight (display, 600–700), Inter (body), IBM Plex Mono (small uppercase labels)
 - Components: `.btn` / `.btn--ghost`, `.card`, `.tag`, `.sec-head`, the `.cats` section switcher, and `.crumbs` breadcrumbs
 
+- **Card grids:** within a section page, every `.cases` card matches the height of all the others on that page (`align-items:stretch` plus `grid-auto-rows:1fr`, description grows, button pinned to the bottom). Different pages can use different sizes. Keep the equal-height rule block (`/* Equal-height cards … */`) on any new section page.
+
 Keep new pages consistent with these. Each page carries its own copy of the CSS, so if you change a token, change it on every page.
 
 ## Common edits
