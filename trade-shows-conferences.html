@@ -148,7 +148,9 @@ details[open] > summary .plus{transform:rotate(45deg)}
 .wf-body .ap-list{grid-column:5 / -1}
 
 /* Case study cards */
-.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:stretch}
+/* Equal-height cards: every card in a .cases grid matches its row; text grows, button pins to the bottom */
+.cases{align-items:stretch;grid-auto-rows:1fr}.cases>.card{height:100%}.card .overview{flex:1 1 auto}.card .card-actions{margin-top:auto}
 .card{background:var(--paper);border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:20px;transition:transform .3s ease, box-shadow .3s ease}
 .card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(17,17,17,.07)}
 .card--open{grid-column:1 / -1}

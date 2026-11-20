@@ -74,7 +74,9 @@ a{color:#111111}a:hover{color:#565656}
 .ps-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;margin-top:48px;align-items:start}
 .ps-grid .sub{grid-column:1 / span 5}
 .ps-grid .lede{grid-column:7 / -1}
-.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:stretch}
+/* Equal-height cards: every card in a .cases grid matches its row; text grows, button pins to the bottom */
+.cases{align-items:stretch;grid-auto-rows:1fr}.cases>.card{height:100%}.card .overview{flex:1 1 auto}.card .card-actions{margin-top:auto}
 .card{background:var(--paper);border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:20px;transition:transform .3s ease,box-shadow .3s ease}
 .card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(17,17,17,.07)}
 .card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}

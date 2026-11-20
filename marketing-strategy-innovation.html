@@ -79,6 +79,8 @@ a{color:#111111}a:hover{color:#565656}
 .ms-grid .sub{grid-column:1 / span 5}
 .ms-copy{grid-column:7 / -1;display:flex;flex-direction:column;gap:18px}
 .cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:stretch}
+/* Equal-height cards: every card in a .cases grid matches its row; text grows, button pins to the bottom */
+.cases{align-items:stretch;grid-auto-rows:1fr}.cases>.card{height:100%}.card .overview{flex:1 1 auto}.card .card-actions{margin-top:auto}
 .card .card-actions{margin-top:auto}
 .card{background:var(--paper);border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:20px;transition:transform .3s ease,box-shadow .3s ease}
 .card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(17,17,17,.07)}
