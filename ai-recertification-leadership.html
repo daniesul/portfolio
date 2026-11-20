@@ -91,11 +91,6 @@ a{color:#111111}a:hover{color:#565656}
 .kpi--fact .kpi-s{color:#CFCBC2}
 .kpi-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .kpi:not(.kpi--fact) .kpi-top{color:var(--muted)}
-.legend{display:flex;flex-wrap:wrap;gap:8px 24px;margin:18px 0 0;color:var(--muted);font-size:14px}
-.legend span{display:inline-flex;align-items:center;gap:8px}
-.key{display:inline-block;width:22px;height:12px;border-radius:4px}
-.key--s{background:var(--ink)}
-.key--d{border:1.5px dashed var(--dash)}
 
 /* Challenge */
 .scope{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
@@ -135,12 +130,6 @@ a{color:#111111}a:hover{color:#565656}
 .shot img{display:block;width:100%;height:auto}
 .shot-z{position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;opacity:.92}
 .shot-z svg{width:16px;height:16px}
-.gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.gal figure{margin:0;display:flex;flex-direction:column;gap:12px}
-.gal figure.wide{grid-column:1 / -1}
-.gal figcaption{display:flex;flex-direction:column;gap:4px;font-size:15.5px;color:var(--body);max-width:62ch}
-.gal figcaption .mono{color:var(--muted)}
-.gal-note{margin:24px 0 0;color:var(--muted);font-size:14px;max-width:96ch}
 
 /* Lightbox */
 dialog.lb{width:min(1500px,96vw);max-width:none;max-height:94vh;padding:0;border:0;border-radius:22px;background:var(--paper);color:var(--ink);overflow:hidden}
@@ -170,7 +159,6 @@ dialog.lb::backdrop{background:rgba(17,17,17,.72)}
 .sec-head{gap:16px}
 .kpis{grid-template-columns:minmax(0,1fr)}
 .kpi{min-height:0;gap:20px}
-.gal{grid-template-columns:minmax(0,1fr)}
 .close .mono,.close p,.guard .mono,.guard p{grid-column:1 / -1}
 .close,.guard{gap:12px}
 }
@@ -226,9 +214,9 @@ html,body{overflow-x:clip}
 <p class="lede">Applying AI across technical research, contractor evaluation, financial analysis, and stakeholder communications.</p>
 </div>
 <ul class="kpis" aria-label="Key figures">
-<li class="kpi">
-<div class="kpi-top"><span class="tag"><span class="dot dot--o"></span>Estimate</span></div>
-<div><div class="kpi-n">~$300K</div><p class="kpi-l">Proposed project budget<span class="kpi-s">An estimate, not actual spend</span></p></div>
+<li class="kpi kpi--fact">
+<div class="kpi-top"><span class="tag"><span class="dot"></span>Approved</span></div>
+<div><div class="kpi-n">$296K</div><p class="kpi-l">Approved project budget<span class="kpi-s">Budget figure, not actual expenditure</span></p></div>
 </li>
 <li class="kpi kpi--fact">
 <div class="kpi-top"><span class="tag"><span class="dot"></span>Documented</span></div>
@@ -239,7 +227,6 @@ html,body{overflow-x:clip}
 <div><div class="kpi-n">20</div><p class="kpi-l">Slide stakeholder presentation<span class="kpi-s">Presented November 13, 2025</span></p></div>
 </li>
 </ul>
-<p class="legend" aria-label="Legend"><span><i class="key key--s" aria-hidden="true"></i>Solid: documented project fact</span><span><i class="key key--d" aria-hidden="true"></i>Dashed: estimate, not actual expenditure</span></p>
 </section>
 
 <!-- 2. Challenge -->
@@ -293,11 +280,11 @@ html,body{overflow-x:clip}
 <summary><span class="mono acc-n">03</span><h3 class="acc-t">Financial analysis and presentation development<span class="acc-s">Budget, payment options, and a homeowner presentation.</span></h3><span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span></summary>
 <div class="acc-body">
 <dl class="rows">
-<div><dt class="mono">The challenge</dt><dd>An estimated project budget of roughly $300K, three possible financing and payment structures, and homeowners who needed to understand the trade-offs.</dd></div>
+<div><dt class="mono">The challenge</dt><dd>A project budget of about $296K, three possible financing and payment structures, and homeowners who needed to understand the trade-offs.</dd></div>
 <div><dt class="mono">How AI was applied</dt><dd>I used AI to structure the financial information, examine the three payment options, and shape a clear, plain-language presentation for homeowners.</dd></div>
-<div><dt class="mono">What it produced</dt><dd>A 20-slide presentation that set out the estimated budget and the three payment options side by side. All figures were estimates, not actual expenditure.</dd></div>
+<div><dt class="mono">What it produced</dt><dd>A 20-slide presentation that set out the project budget and the three payment options side by side.</dd></div>
 </dl>
-<div class="art"><span class="mono">Project artifact</span><div class="art-grid art-grid--2"><button type="button" class="shot" data-shot="u" aria-label="Enlarge slide 15: Project budget summary"><img src="/assets/recert-budget.webp" width="2160" height="1215" loading="lazy" decoding="async" alt="Slide 15, "Assessment Cost Overview": estimated project costs by category. Dollar amounts and contractor names are blurred."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><button type="button" class="shot" data-shot="p" aria-label="Enlarge slide 16: Payment options"><img src="/assets/recert-payment-options.webp" width="2160" height="1215" loading="lazy" decoding="async" alt="Slide 16, "Payment Options": three payment structures with advantages and considerations for each. Dollar amounts are blurred."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button></div><p class="art-note">Slides 15 and 16: dollar amounts are blurred.</p></div>
+<div class="art"><span class="mono">Project artifact</span><div class="art-grid art-grid--2"><button type="button" class="shot" data-shot="u" aria-label="Enlarge slide 15: Project budget summary"><img src="/assets/recert-budget.webp" width="2160" height="1215" loading="lazy" decoding="async" alt="Slide 15, "Assessment Cost Overview": project costs by category, with the vendor for each and the total project cost."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><button type="button" class="shot" data-shot="p" aria-label="Enlarge slide 16: Payment options"><img src="/assets/recert-payment-options.webp" width="2160" height="1215" loading="lazy" decoding="async" alt="Slide 16, "Payment Options": three payment structures with advantages and considerations for each. Dollar amounts are blurred."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button></div><p class="art-note">Slides 15 and 16. Dollar amounts on slide 16 are blurred.</p></div>
 </div>
 </details>
 </div>
@@ -307,25 +294,10 @@ html,body{overflow-x:clip}
 </div>
 </section>
 
-<!-- 4. Presentation -->
-<section class="wrap sec" aria-labelledby="pr-h">
-<div class="sec-head">
-<div class="lbl"><span class="mono muted">03 — The presentation</span><h2 class="sec-h" id="pr-h">What Homeowners Saw.</h2></div>
-<div class="copy"><p>Selected slides from the November 13, 2025 homeowner presentation. Select a slide to enlarge it.</p></div>
-</div>
-<div class="gal">
-<figure class="wide"><button type="button" class="shot" data-shot="t" aria-label="Enlarge slide 4: Project timeline"><img src="/assets/recert-timeline.webp" width="2160" height="1215" loading="lazy" decoding="async" alt="Slide 4, "12-Month Progress Overview": a timeline of the recertification in four phases, from notification through the start of construction."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><figcaption><span class="mono">Slide 4 of 20 — Project timeline</span>The recertification process in four phases, from notification to the start of construction.</figcaption></figure>
-<figure><button type="button" class="shot" data-shot="b" aria-label="Enlarge slide 10: Contractor comparison"><img src="/assets/recert-bids.webp" width="2160" height="1215" loading="lazy" decoding="async" alt="Slide 10, "Contractor Bid Overview": a table comparing three contractor bids on scope and considerations. Contractor names and bid amounts are blurred."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><figcaption><span class="mono">Slide 10 of 20 — Contractor comparison</span>Three contractor bids compared on scope and considerations. Names and amounts are blurred.</figcaption></figure>
-<figure><button type="button" class="shot" data-shot="u" aria-label="Enlarge slide 15: Project budget summary"><img src="/assets/recert-budget.webp" width="2160" height="1215" loading="lazy" decoding="async" alt="Slide 15, "Assessment Cost Overview": estimated project costs by category. Dollar amounts and contractor names are blurred."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><figcaption><span class="mono">Slide 15 of 20 — Budget summary</span>Estimated project costs by category. Dollar amounts and contractor names are blurred.</figcaption></figure>
-<figure><button type="button" class="shot" data-shot="p" aria-label="Enlarge slide 16: Payment options"><img src="/assets/recert-payment-options.webp" width="2160" height="1215" loading="lazy" decoding="async" alt="Slide 16, "Payment Options": three payment structures with advantages and considerations for each. Dollar amounts are blurred."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><figcaption><span class="mono">Slide 16 of 20 — Payment options</span>Three payment structures: four installments, a 10-year loan, or a 4.5-year loan. Dollar amounts are blurred.</figcaption></figure>
-</div>
-<p class="gal-note">Dollar amounts and contractor names are blurred. All figures were estimates at the time of the presentation and are not actual expenditure. The slides show the work product, not which parts involved AI.</p>
-</section>
-
 <!-- 5. Takeaway -->
 <section class="wrap sec" aria-labelledby="tk-h">
 <div class="sec-head">
-<div class="lbl"><span class="mono muted">04 — My takeaway</span><h2 class="sec-h" id="tk-h">Leading Through Complexity.</h2></div>
+<div class="lbl"><span class="mono muted">03 — My takeaway</span><h2 class="sec-h" id="tk-h">Leading Through Complexity.</h2></div>
 </div>
 <div class="close">
 <span class="mono">The takeaway</span>
@@ -333,7 +305,6 @@ html,body{overflow-x:clip}
 </div>
 <div class="end">
 <a class="btn" href="/ai-innovation"><span aria-hidden="true">←</span> Back to AI &amp; Innovation</a>
-<a class="btn btn--ghost" href="/#leadership">How I lead <span aria-hidden="true">→</span></a>
 </div>
 </section>
 </main>
@@ -344,7 +315,7 @@ html,body{overflow-x:clip}
 <button type="button" class="btn btn--ghost" data-lb-close>Close</button>
 </div>
 <div class="lb-body"><img id="lb-img" alt="" width="2160" height="1215"></div>
-<p class="lb-cap">Dollar amounts and contractor names are blurred. Figures were estimates as presented in November 2025.</p>
+<p class="lb-cap" id="lb-cap"></p>
 </dialog>
 
 <footer class="foot wrap" id="about">
@@ -366,8 +337,8 @@ html,body{overflow-x:clip}
 (function () {
   var dlg = document.getElementById('lb');
   if (!dlg || typeof dlg.showModal !== 'function') return;
-  var S = {"t": {"img": "/assets/recert-timeline.webp", "n": 4, "title": "Project timeline", "alt": "Slide 4, \"12-Month Progress Overview\": a timeline of the recertification in four phases, from notification through the start of construction."}, "b": {"img": "/assets/recert-bids.webp", "n": 10, "title": "Contractor comparison", "alt": "Slide 10, \"Contractor Bid Overview\": a table comparing three contractor bids on scope and considerations. Contractor names and bid amounts are blurred."}, "u": {"img": "/assets/recert-budget.webp", "n": 15, "title": "Project budget summary", "alt": "Slide 15, \"Assessment Cost Overview\": estimated project costs by category. Dollar amounts and contractor names are blurred."}, "p": {"img": "/assets/recert-payment-options.webp", "n": 16, "title": "Payment options", "alt": "Slide 16, \"Payment Options\": three payment structures with advantages and considerations for each. Dollar amounts are blurred."}};
-  var img = document.getElementById('lb-img'), ttl = document.getElementById('lb-title'), num = document.getElementById('lb-n');
+  var S = {"t": {"img": "/assets/recert-timeline.webp", "n": 4, "title": "Project timeline", "alt": "Slide 4, \"12-Month Progress Overview\": a timeline of the recertification in four phases, from notification through the start of construction.", "note": ""}, "b": {"img": "/assets/recert-bids.webp", "n": 10, "title": "Contractor comparison", "alt": "Slide 10, \"Contractor Bid Overview\": a table comparing three contractor bids on scope and considerations. Contractor names and bid amounts are blurred.", "note": " Contractor names and bid amounts are blurred."}, "u": {"img": "/assets/recert-budget.webp", "n": 15, "title": "Project budget summary", "alt": "Slide 15, \"Assessment Cost Overview\": project costs by category, with the vendor for each and the total project cost.", "note": ""}, "p": {"img": "/assets/recert-payment-options.webp", "n": 16, "title": "Payment options", "alt": "Slide 16, \"Payment Options\": three payment structures with advantages and considerations for each. Dollar amounts are blurred.", "note": " Dollar amounts are blurred."}};
+  var cap = document.getElementById('lb-cap'), img = document.getElementById('lb-img'), ttl = document.getElementById('lb-title'), num = document.getElementById('lb-n');
   var opener = null;
   document.querySelectorAll('[data-shot]').forEach(function (b) {
     b.addEventListener('click', function () {
@@ -375,6 +346,7 @@ html,body{overflow-x:clip}
       opener = b;
       img.src = s.img; img.alt = s.alt;
       ttl.textContent = s.title; num.textContent = 'Slide ' + s.n + ' of 20';
+      cap.textContent = 'From the November 13, 2025 homeowner presentation.' + s.note;
       dlg.showModal();
       document.documentElement.style.overflow = 'hidden';
     });
