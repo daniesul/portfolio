@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KCXLV5WGRE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KCXLV5WGRE');
+</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "zcnxaf3eut");
+</script>
+<title>Building a Global Marketing Planning Engine with AI</title>
+<meta name="description" content="How Daniel Sullivan used Claude as a technical collaborator to design, build, and refine a Google Sheets planning system for global Field &amp; Partner Marketing across AMER, EMEA, and APJ.">
+<link rel="canonical" href="https://danielsullivanportfolio.com/ai-marketing-planning-engine">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Daniel Sullivan">
+<meta property="og:title" content="Building a Global Marketing Planning Engine with AI">
+<meta property="og:description" content="How Daniel Sullivan used Claude as a technical collaborator to design, build, and refine a Google Sheets planning system for global Field &amp; Partner Marketing across AMER, EMEA, and APJ.">
+<meta property="og:url" content="https://danielsullivanportfolio.com/ai-marketing-planning-engine">
+<meta property="og:image" content="https://danielsullivanportfolio.com/assets/daniel-sullivan-portrait.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1066">
+<meta property="og:image:alt" content="Portrait of Daniel Sullivan">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+:root{--ground:#F4F3EF;--paper:#FFFFFF;--ink:#111111;--body:#2B2B2B;--muted:#565656;--line:#D6D3CB;--dash:#7E7A72;--focus:#1F4FD8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:#111111}a:hover{color:#565656}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--ink);color:#fff;padding:12px 16px;border-radius:8px;z-index:100;text-decoration:none}
+.skip:focus{top:12px;color:#fff}
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.muted{color:var(--muted)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.site{position:sticky;top:0;z-index:30;background:rgba(244,243,239,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.site-in{display:flex;align-items:center;justify-content:space-between;gap:8px 16px;min-height:68px;flex-wrap:wrap}
+.brand{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.nav{display:flex;flex-wrap:wrap;gap:28px;list-style:none;margin:0;padding:0}
+.nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:15px;font-weight:500;color:var(--ink);border-bottom:2px solid transparent}
+.nav a:hover,.nav a[aria-current="page"]{border-bottom-color:var(--ink);color:var(--ink)}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px 10px;list-style:none;margin:0 0 32px;padding:0;font-size:14px;color:var(--muted)}
+.crumbs li{display:flex;align-items:center}
+.crumbs li+li::before{content:"/";margin-right:10px;color:var(--dash)}
+.crumbs a{color:var(--ink);text-underline-offset:3px;display:inline-block;padding:10px 0}
+.eyebrow{margin:0 0 20px}
+.display{font-family:'Inter Tight',sans-serif;font-weight:700;letter-spacing:-.04em;line-height:.94;margin:0}
+.lede{font-size:clamp(18px,1.5vw,20px);line-height:1.6;color:var(--body);margin:0;max-width:62ch}
+.intro{padding-top:40px}
+.sec{padding-top:104px}
+.sec-head{border-top:1.5px solid var(--ink);padding-top:18px;margin-bottom:36px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:start}
+.sec-head .lbl{grid-column:1 / span 7;display:flex;flex-direction:column;gap:14px}
+.sec-head .copy{grid-column:9 / -1;display:flex;flex-direction:column;gap:16px}
+.sec-head .copy p{margin:0;color:var(--body);max-width:62ch}
+.sec-h{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.025em;line-height:1.02;margin:0}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 22px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:#fff;font:600 15px 'Inter',sans-serif;text-decoration:none;transition:background .2s ease,color .2s ease;cursor:pointer}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:#fff}
+.foot{margin-top:104px;border-top:1.5px solid var(--ink)}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:22px;padding-bottom:22px}
+.tag{display:inline-flex;align-items:center;gap:8px;min-height:30px;padding:0 12px;border-radius:999px;border:1px solid currentColor;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;white-space:nowrap}
+.dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+.dot--o{background:transparent;border:1.5px solid currentColor}
+
+/* Hero */
+.hero-h{font-size:clamp(38px,5.6vw,84px);max-width:20ch}
+.hero-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px 32px;margin-top:40px}
+.hero-grid .lede{grid-column:1 / span 8}
+.hero-grid .lede+.lede{grid-column:1 / span 8;font-size:17px}
+.meta{list-style:none;margin:48px 0 0;padding:20px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.meta li{display:flex;flex-direction:column;gap:6px}
+.meta .mono{color:var(--muted)}
+.meta span:last-child{font-weight:500}
+
+/* Challenge */
+.scope{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.scope li{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:var(--paper);font-size:14.5px;font-weight:500}
+.scope li::before{content:"";width:6px;height:6px;background:var(--ink);border-radius:1px;flex:none}
+
+/* AI capability cards */
+.caps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.cap{background:var(--paper);border-radius:26px;padding:30px;display:flex;flex-direction:column;gap:16px;transition:transform .3s ease,box-shadow .3s ease}
+.cap:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(17,17,17,.07)}
+.cap-top{display:flex;justify-content:space-between;align-items:center}
+.cap-top .mono{color:var(--muted)}
+.cap-ic{width:46px;height:46px;border-radius:14px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center}
+.cap-ic svg{width:24px;height:24px}
+.cap h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(22px,2.2vw,30px);letter-spacing:-.025em;line-height:1.08;margin:0}
+.cap p{margin:0;color:var(--body)}
+.note{margin:18px 0 0;color:var(--muted);font-size:14px}
+
+/* Workflow */
+.legend{display:flex;flex-wrap:wrap;gap:12px 24px;margin:0 0 22px;padding:0;list-style:none}
+.legend li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--body)}
+.sw{width:34px;height:18px;border-radius:6px;flex:none}
+.sw--h{background:var(--ink)}
+.sw--a{background:var(--paper);border:1.5px dashed var(--ink)}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.stage{position:relative;display:flex;flex-direction:column;gap:14px;padding:26px 24px 24px;border-radius:26px;min-height:360px}
+.stage--h{background:var(--ink);color:#fff;border:1.5px solid var(--ink)}
+.stage--a{background:var(--paper);border:1.5px dashed var(--ink)}
+.stage-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.stage-n{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:44px;letter-spacing:-.04em;line-height:1}
+.stage h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,2.3vw,32px);letter-spacing:-.03em;line-height:1;margin:0}
+.stage p{margin:0}
+.stage--h p{color:#E6E3DB}
+.stage--a p{color:var(--body)}
+.snip{margin:auto 0 0;padding:12px 14px;border-radius:12px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px;line-height:1.5;letter-spacing:0;text-transform:none;font-weight:400;overflow-wrap:anywhere}
+.stage--h .snip{background:rgba(255,255,255,.1);color:#fff}
+.stage--a .snip{background:var(--ground);color:var(--ink)}
+.snip-l{display:block;margin-bottom:4px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.stage--h .snip-l{color:#CFCBC2}
+.stage + .stage{margin-left:-1px}
+.link{position:absolute;top:50%;right:-17px;width:34px;height:34px;margin-top:-17px;border-radius:50%;background:var(--ground);border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;z-index:2;font-size:15px}
+.stage:last-child .link{display:none}
+.js .stage{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.js .flow.in .stage{opacity:1;transform:none}
+.js .flow.in .stage:nth-child(2){transition-delay:.12s}
+.js .flow.in .stage:nth-child(3){transition-delay:.24s}
+.js .flow.in .stage:nth-child(4){transition-delay:.36s}
+.loop{margin:18px 0 0;display:flex;align-items:center;gap:12px;color:var(--muted);font-size:14px}
+.loop::before{content:"↺";font-size:20px;color:var(--ink)}
+.guard{margin-top:16px;border:1.5px dashed var(--ink);border-radius:22px;padding:24px 28px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:start}
+.guard .mono{grid-column:1 / span 3}
+.guard p{grid-column:4 / -1;margin:0;font-weight:500;font-size:17px;line-height:1.5;max-width:70ch}
+
+/* Visual proof */
+.proof{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.fig{margin:0;display:flex;flex-direction:column;gap:12px}
+.fig--main{grid-column:1 / span 8}
+.fig--side{grid-column:9 / -1}
+.side{grid-column:9 / -1;display:flex;flex-direction:column;gap:14px}
+.fig--main{grid-column:1 / span 8}
+.shot{display:block;width:100%;padding:0;margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper);cursor:zoom-in;position:relative;font:inherit;color:inherit;transition:border-color .2s ease,box-shadow .3s ease}
+.shot:hover{border-color:var(--ink);box-shadow:0 14px 34px rgba(17,17,17,.08)}
+.shot img{display:block;width:100%;height:auto;background:var(--paper)}
+.shot-z{position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;opacity:.92}
+.shot-z svg{width:16px;height:16px}
+.callout{display:flex;flex-direction:column;gap:6px;padding:16px 18px;border-radius:16px;background:var(--paper);border:1.5px dashed var(--ink)}
+.callout .mono{color:var(--muted)}
+.callout p{margin:0;font-size:15px;color:var(--body)}
+.callout strong{color:var(--ink)}
+.disclaim{margin:18px 0 0;color:var(--muted);font-size:14px;max-width:80ch}
+
+/* Demo CTA */
+.demo{background:var(--ink);color:#fff;border-radius:26px;padding:44px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:center}
+.demo-l{grid-column:1 / span 7;display:flex;flex-direction:column;gap:18px}
+.demo-l .mono{color:#CFCBC2}
+.demo-l h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,50px);letter-spacing:-.03em;line-height:1;margin:0}
+.demo-l p{margin:0;color:#E6E3DB;max-width:56ch}
+.demo-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:6px}
+.demo .btn{background:#fff;color:var(--ink);border-color:#fff}
+.demo .btn:hover{background:transparent;color:#fff}
+.demo a.sec-link{color:#fff;text-underline-offset:4px;font-weight:500}
+.demo a.sec-link:hover{color:#CFCBC2}
+.demo-note{font-size:13.5px;color:#CFCBC2}
+.demo-r{grid-column:8 / -1}
+.mini{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.mini li{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;border-radius:14px;border:1.5px dashed #8E8A82}
+.mini li.h{border:1.5px solid #fff;background:rgba(255,255,255,.08)}
+.mini b{font-family:'Inter Tight',sans-serif;font-size:20px;letter-spacing:-.03em}
+.mini span{font-weight:500}
+.mini em{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#CFCBC2}
+.mini-cap{margin:12px 0 0;font-size:13.5px;color:#CFCBC2}
+
+/* Outcome */
+.take{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.take li{border-top:1.5px solid var(--ink);padding-top:16px;display:flex;flex-direction:column;gap:8px}
+.take .n{color:var(--muted)}
+.take strong{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(22px,2.2vw,28px);letter-spacing:-.025em;line-height:1.08}
+.take span:last-child{color:var(--body)}
+.close{margin-top:40px;background:var(--paper);border-radius:26px;padding:34px 40px;font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(22px,2.4vw,34px);letter-spacing:-.025em;line-height:1.14}
+.end{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+
+/* Lightbox */
+dialog.lb{width:min(1500px,96vw);max-width:none;max-height:94vh;padding:0;border:0;border-radius:22px;background:var(--paper);color:var(--ink);overflow:hidden}
+dialog.lb[open]{display:flex;flex-direction:column}
+dialog.lb::backdrop{background:rgba(17,17,17,.72)}
+.lb-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line)}
+.lb-bar h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.02em;line-height:1.1;margin:4px 0 0}
+.lb-bar .btn{min-height:44px}
+.lb-body{overflow:auto;background:var(--ground);padding:16px}
+.lb-body img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--line)}
+.lb-cap{margin:0;padding:12px 20px 16px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+
+@media (max-width:1100px){
+.flow{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.stage + .stage{margin-left:0}
+.link{display:none}
+.fig--main,.side{grid-column:1 / -1}
+.side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+.wrap{padding-left:24px;padding-right:24px}
+.hero-grid .lede,.hero-grid .lede+.lede,.sec-head .lbl,.sec-head .copy{grid-column:1 / -1}
+.sec-head{gap:16px}
+.meta{grid-template-columns:minmax(0,1fr)}
+.caps,.take{grid-template-columns:minmax(0,1fr)}
+.guard .mono,.guard p{grid-column:1 / -1}
+.guard{gap:12px}
+.demo{padding:30px}
+.demo-l,.demo-r{grid-column:1 / -1}
+}
+@media (max-width:640px){
+.wrap{padding-left:16px;padding-right:16px}
+.sec{padding-top:72px}
+.nav{gap:4px 14px}.nav a{font-size:14px}
+.cap{padding:22px}
+/* Workflow turns vertical */
+.flow{grid-template-columns:minmax(0,1fr);gap:0}
+.stage{min-height:0;padding:22px 20px}
+.stage + .stage{margin-top:34px}
+.link{display:flex;top:auto;right:auto;left:50%;bottom:-34px;margin:0 0 0 -17px;transform:rotate(90deg)}
+.stage:last-child .link{display:none}
+.side{grid-template-columns:minmax(0,1fr)}
+.demo{padding:24px 20px}
+.close{padding:24px 22px}
+.guard{padding:20px}
+dialog.lb{width:100vw;max-height:100dvh;height:100dvh;border-radius:0}
+.lb-body{flex:1;padding:10px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}.js .stage{opacity:1;transform:none}.cap:hover{transform:none}}
+html,body{overflow-x:clip}
+</style>
+</head>
+<body>
+<div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+<div class="wrap site-in">
+<a class="brand" href="/" aria-label="Daniel Sullivan — home">Daniel Sullivan</a>
+<nav aria-label="Primary">
+<ul class="nav">
+<li><a href="/">Home</a></li>
+<li><a href="/#approach">Approach</a></li>
+<li><a href="/#leadership">Leadership</a></li>
+<li><a href="/#work" aria-current="page">Work</a></li>
+<li><a href="/#contact">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- Hero -->
+<section class="wrap intro" aria-labelledby="page-title">
+<nav aria-label="Breadcrumb">
+<ol class="crumbs">
+<li><a href="/#work">Portfolio</a></li>
+<li><a href="/ai-innovation">AI &amp; Innovation</a></li>
+<li><span aria-current="page">Planning Engine</span></li>
+</ol>
+</nav>
+<p class="mono eyebrow muted">AI Innovation / Marketing Operations — Sumo Logic</p>
+<h1 class="display hero-h" id="page-title">Building a Global Marketing Planning Engine with AI</h1>
+<div class="hero-grid">
+<p class="lede">From marketing strategy to a functional planning system, using AI as a technical collaborator.</p>
+<p class="lede">I’m a marketing leader, not an engineer. To give global Field &amp; Partner Marketing one planning system across AMER, EMEA, and APJ, I used Claude to help me design, build, and refine it in Google Sheets. I owned the strategy, the requirements, and every decision. AI helped me turn them into working structure and formulas.</p>
+</div>
+<ul class="meta" aria-label="Project details">
+<li><span class="mono">Company</span><span>Sumo Logic</span></li>
+<li><span class="mono">My role</span><span>Strategy, requirements, validation, and hands-on build with AI</span></li>
+<li><span class="mono">Regions</span><span>AMER · EMEA · APJ</span></li>
+</ul>
+</section>
+
+<!-- 01 Challenge -->
+<section class="wrap sec" aria-labelledby="ch-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">01 — The challenge</span><h2 class="sec-h" id="ch-h">One system for three regions.</h2></div>
+<div class="copy">
+<p>Managing marketing investments across AMER, EMEA, and APJ required one place for planning, data capture, budget allocation, and performance visibility.</p>
+<p>Building it meant turning complex business requirements into scalable spreadsheet architecture, calculations, and standardized workflows.</p>
+</div>
+</div>
+<ul class="scope" aria-label="What the system needed to do">
+<li>Planning</li>
+<li>Data capture</li>
+<li>Budget allocation</li>
+<li>Performance visibility</li>
+</ul>
+</section>
+
+<!-- 02 How I leveraged AI -->
+<section class="wrap sec" aria-labelledby="ai-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">02 — How I leveraged AI</span><h2 class="sec-h" id="ai-h">A technical collaborator, hands-on.</h2></div>
+</div>
+<ul class="caps">
+<li class="cap">
+<div class="cap-top"><span class="mono">01</span><span class="cap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span></div>
+<h3>Spreadsheet architecture</h3>
+<p>I used AI to design and rebuild Google Sheets templates, organize planning data, and set up scalable structures across regions and teams.</p>
+</li>
+<li class="cap">
+<div class="cap-top"><span class="mono">02</span><span class="cap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h-2.5a2.5 2.5 0 0 0-2.5 2.5V18a2 2 0 0 1-2 2H7M8 11h7M13 14l5 5M18 14l-5 5"/></svg></span></div>
+<h3>Formula development</h3>
+<p>I used AI to write, troubleshoot, and refine formulas, automate calculations, and connect data across planning worksheets.</p>
+</li>
+<li class="cap">
+<div class="cap-top"><span class="mono">03</span><span class="cap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L7 5M3.5 12l1.2 1.2L7 11M3.5 18l1.2 1.2L7 17"/></svg></span></div>
+<h3>Data capture &amp; planning logic</h3>
+<p>I worked with AI to turn marketing requirements into standardized inputs, investment categories, prioritization logic, and reporting structures.</p>
+</li>
+<li class="cap">
+<div class="cap-top"><span class="mono">04</span><span class="cap-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-13.7 5.6M4 12A8 8 0 0 1 17.7 6.4"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></span></div>
+<h3>Iterative development</h3>
+<p>I used conversational AI to test ideas, resolve technical issues, rebuild templates, and keep refining the system.</p>
+</li>
+</ul>
+</section>
+
+<!-- 03 Workflow -->
+<section class="wrap sec" aria-labelledby="wf-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">03 — How I built with AI</span><h2 class="sec-h" id="wf-h">Define. Build. Validate. Refine.</h2></div>
+<div class="copy"><p>I led the decisions. AI helped with the technical execution.</p></div>
+</div>
+<ul class="legend" aria-label="Legend">
+<li><span class="sw sw--h" aria-hidden="true"></span>Human-led decision</li>
+<li><span class="sw sw--a" aria-hidden="true"></span>AI-assisted work</li>
+</ul>
+<ol class="flow" id="flow">
+<li class="stage stage--h">
+<div class="stage-top"><span class="stage-n">01</span><span class="tag"><span class="dot"></span>Me</span></div>
+<h3>Define</h3>
+<p>I establish the business requirements, planning logic, and investment governance.</p>
+<div class="snip"><span class="snip-l">Illustrative requirement</span>Every initiative is captured the same way, in every region.</div>
+<span class="link" aria-hidden="true">→</span>
+</li>
+<li class="stage stage--a">
+<div class="stage-top"><span class="stage-n">02</span><span class="tag"><span class="dot dot--o"></span>AI-assisted</span></div>
+<h3>Build</h3>
+<p>AI helps generate formulas, redesign templates, and structure data capture.</p>
+<div class="snip"><span class="snip-l">Illustrative formula</span>=SUMIFS(Plan!E:E, Plan!B:B, A2)</div>
+<span class="link" aria-hidden="true">→</span>
+</li>
+<li class="stage stage--h">
+<div class="stage-top"><span class="stage-n">03</span><span class="tag"><span class="dot"></span>Me</span></div>
+<h3>Validate</h3>
+<p>I test calculations, review outputs, and verify the system meets business requirements.</p>
+<div class="snip"><span class="snip-l">Illustrative check</span>Regional totals match the consolidated total.</div>
+<span class="link" aria-hidden="true">→</span>
+</li>
+<li class="stage stage--a">
+<div class="stage-top"><span class="stage-n">04</span><span class="tag"><span class="dot dot--o"></span>AI-assisted</span></div>
+<h3>Refine</h3>
+<p>I collaborate with AI to troubleshoot issues, improve usability, and evolve the framework.</p>
+<div class="snip"><span class="snip-l">Illustrative prompt</span>This lookup breaks when a region is blank. Can you make it more robust?</div>
+<span class="link" aria-hidden="true">→</span>
+</li>
+</ol>
+<p class="loop">Refine feeds back into Define as requirements evolve. Snippets are illustrative, not excerpts from the live workbook.</p>
+<div class="guard">
+<span class="mono">Human ownership</span>
+<p>I owned the strategy, requirements, validation, and final decisions. AI supported architecture, formulas, troubleshooting, and implementation. It did not manage or optimize the budget.</p>
+</div>
+</section>
+
+<!-- 04 Visual proof -->
+<section class="wrap sec" aria-labelledby="vp-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">04 — Inside the planning system</span><h2 class="sec-h" id="vp-h">From Concept to Working System</h2></div>
+<div class="copy"><p>Views from the interactive planning demo, which recreates the original Google Sheets workbook with fictional data.</p></div>
+</div>
+<div class="proof">
+<figure class="fig fig--main">
+<button type="button" class="shot" data-shot="o" aria-label="Enlarge: Global investment and pipeline overview"><img src="/assets/planning-demo-overview.webp" width="1600" height="1000" loading="lazy" decoding="async" alt="Planning demo overview: planned initiatives, pending and approved investment, forecasted pipeline against target, and pipeline coverage, with regional segmentation for North America, EMEA, and APJ."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button>
+<div class="callout"><span class="mono">What AI helped build</span><p><strong>Consolidated planning visibility.</strong> The cross-region structure and roll-up calculations behind one global view.</p></div>
+</figure>
+<div class="side">
+<figure class="fig">
+<button type="button" class="shot" data-shot="i" aria-label="Enlarge: Initiative register"><img src="/assets/planning-demo-initiatives.webp" width="1600" height="1000" loading="lazy" decoding="async" alt="Planning demo initiative register: every initiative listed with region, category, budget source, and status in one standard format."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button>
+<div class="callout"><span class="mono">What AI helped build</span><p><strong>Standardized data capture.</strong> Consistent inputs, investment categories, and prioritization logic.</p></div>
+</figure>
+<figure class="fig">
+<button type="button" class="shot" data-shot="b" aria-label="Enlarge: Budget reconciliation"><img src="/assets/planning-demo-budget.webp" width="1600" height="1000" loading="lazy" decoding="async" alt="Planning demo budget view: approved plans reconciled to purchase orders and actual spend, with remaining budget by region and budget source."><span class="shot-z" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button>
+<div class="callout"><span class="mono">What AI helped build</span><p><strong>Automated calculations.</strong> Formulas that connect data across planning worksheets.</p></div>
+</figure>
+</div>
+</div>
+<p class="disclaim">These are screenshots of the interactive demo, not the operating workbook. The demo recreates the framework’s structure with 100% fictional data. Select an image to enlarge it.</p>
+</section>
+
+<!-- 05 Demo -->
+<section class="wrap sec" aria-labelledby="demo-h">
+<div class="demo">
+<div class="demo-l">
+<span class="mono">05 — The result</span>
+<h2 id="demo-h">Explore the Planning Engine</h2>
+<p>See how the underlying planning framework brings together investment data, structured workflows, and performance visibility in one interactive system.</p>
+<div class="demo-actions">
+<a class="btn" href="https://planning-framework-demo.danielsullivanportfolio.com/" target="_blank" rel="noopener">Explore Interactive Planning Demo <span aria-hidden="true">→</span><span class="vh">(opens in a new tab)</span></a>
+<a class="sec-link" href="/global-planning-framework">Read the strategy behind it</a>
+</div>
+<span class="demo-note">The demo is an interactive recreation using illustrative data.</span>
+</div>
+<div class="demo-r" aria-hidden="true">
+<ul class="mini">
+<li class="h"><b>01</b><span>Define</span><em>Me</em></li>
+<li><b>02</b><span>Build</span><em>AI-assisted</em></li>
+<li class="h"><b>03</b><span>Validate</span><em>Me</em></li>
+<li><b>04</b><span>Refine</span><em>AI-assisted</em></li>
+</ul>
+<p class="mini-cap">The build process behind the system you can explore.</p>
+</div>
+</div>
+</section>
+
+<!-- 06 Outcome -->
+<section class="wrap sec" aria-labelledby="out-h">
+<div class="sec-head">
+<div class="lbl"><span class="mono muted">06 — Outcome</span><h2 class="sec-h" id="out-h">Strategy Meets Technical Execution</h2></div>
+<div class="copy"><p>By combining marketing expertise with AI-assisted development, I personally architected, built, and continuously refined a scalable global planning system, without relying solely on traditional technical development resources.</p></div>
+</div>
+<ul class="take">
+<li><span class="mono n">01</span><strong>Faster execution</strong><span>AI accelerated spreadsheet development and troubleshooting.</span></li>
+<li><span class="mono n">02</span><strong>Greater technical autonomy</strong><span>I built and refined sophisticated planning capabilities directly.</span></li>
+<li><span class="mono n">03</span><strong>Scalable foundation</strong><span>Standardized structures support global planning and investment visibility.</span></li>
+</ul>
+<div class="end">
+<a class="btn" href="/ai-innovation"><span aria-hidden="true">←</span> Back to AI &amp; Innovation</a>
+<a class="btn btn--ghost" href="/global-planning-framework">Global Planning Framework strategy <span aria-hidden="true">→</span></a>
+</div>
+</section>
+</main>
+
+<dialog class="lb" id="lb" aria-labelledby="lb-title">
+<div class="lb-bar">
+<div><span class="mono muted" id="lb-n">Planning demo</span><h3 id="lb-title">View</h3></div>
+<button type="button" class="btn btn--ghost" data-lb-close>Close</button>
+</div>
+<div class="lb-body"><img id="lb-img" alt="" width="1600" height="1000"></div>
+<p class="lb-cap" id="lb-cap"></p>
+</dialog>
+
+<footer class="foot wrap" id="about">
+<div class="foot-in">
+<span class="brand">Daniel Sullivan</span>
+<nav aria-label="Footer">
+<ul class="nav">
+<li><a href="/">Home</a></li>
+<li><a href="mailto:contact@danielsullivanportfolio.com">Email</a></li>
+<li><a href="https://www.linkedin.com/in/daniel---sullivan/" target="_blank" rel="noopener">LinkedIn</a></li>
+</ul>
+</nav>
+</div>
+</footer>
+</div>
+<script src="/assets/site.js" defer></script>
+<script>
+// Workflow reveal and screenshot viewer. Without JS everything shows in its final state and the screenshots stay as images.
+(function () {
+  var flow = document.getElementById('flow');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (flow && 'IntersectionObserver' in window && !reduce) {
+    document.documentElement.classList.add('js');
+    new IntersectionObserver(function (es, o) {
+      es.forEach(function (e) { if (e.isIntersecting) { flow.classList.add('in'); o.disconnect(); } });
+    }, { threshold: 0.2 }).observe(flow);
+  }
+  var dlg = document.getElementById('lb');
+  if (!dlg || typeof dlg.showModal !== 'function') return;
+  var S = {
+    o: { img: '/assets/planning-demo-overview.webp', title: 'Global investment & pipeline overview', alt: 'Planning demo overview: planned initiatives, pending and approved investment, forecasted pipeline against target, and pipeline coverage, with regional segmentation.' },
+    i: { img: '/assets/planning-demo-initiatives.webp', title: 'Initiative register', alt: 'Planning demo initiative register: every initiative listed with region, category, budget source, and status in one standard format.' },
+    b: { img: '/assets/planning-demo-budget.webp', title: 'Budget reconciliation', alt: 'Planning demo budget view: approved plans reconciled to purchase orders and actual spend, with remaining budget by region and budget source.' }
+  };
+  var cap = document.getElementById('lb-cap'), img = document.getElementById('lb-img'), ttl = document.getElementById('lb-title');
+  var opener = null;
+  document.querySelectorAll('[data-shot]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var s = S[b.getAttribute('data-shot')]; if (!s) return;
+      opener = b;
+      img.src = s.img; img.alt = s.alt; ttl.textContent = s.title;
+      cap.textContent = 'Screenshot of the interactive planning demo, which recreates the Google Sheets workbook with fictional data.';
+      dlg.showModal();
+      document.documentElement.style.overflow = 'hidden';
+    });
+  });
+  function done() { document.documentElement.style.overflow = ''; if (opener) opener.focus(); }
+  dlg.addEventListener('close', done);
+  dlg.querySelector('[data-lb-close]').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+})();
+</script>
+</body>
+</html>
